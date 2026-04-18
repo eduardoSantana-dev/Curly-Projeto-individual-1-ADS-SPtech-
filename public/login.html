@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/login.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+   <div class="loginContainer">
+    <div class="imgContainer">
+        <img class="logo" src="./assets/icon/nome2.svg" alt="">
+        <img class="imgLogin" src="./assets/img/loginImg.png" alt="">
+    </div>
+    <form action="" class="">
+        <img class="logo" src="./assets/icon/nome.svg" alt="">
+        <div class="inputs">
+            <div class="inputContainer">
+                <label for="emailUser">E-mail</label>
+                <div class="inputBox">
+                    <input type="email" id="emailUser" placeholder="Insira seu email">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+            </div>
+             <div class="inputContainer">
+                <label for="inputSenha">Senha</label>
+                <div class="inputBox">
+                    <input type="password" placeholder="Insira sua senha" id="inputSenha">
+                    <div id="olho"><i class="fa-regular fa-eye-slash" onclick="verSenha()" ></i></div>
+                </div>
+            </div>
+        </div>
+        <button class="botao">Entrar</button>
+        <p>Não tem cadastro Ainda? <a href="cadastro.html">cadastre-se</a></p>
+    </form>
+   </div>
+</body>
+<script>
+    function verSenha(){
+        if(inputSenha.type == "text"){
+            inputSenha.type = "password"
+            olho.innerHTML = `<i class="fa-regular fa-eye-slash" onclick="verSenha()" ></i>`
+        }else{
+            inputSenha.type = "text"
+            olho.innerHTML = `<i class="fa-regular fa-eye" onclick="verSenha()" ></i>`
+        }
+    }
+</script>
+</html>

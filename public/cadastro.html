@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+    <div class="cadastroContainer">
+        <div class="imgContainer">
+            <img class="logo" src="./assets/icon/nome.svg" alt="">
+            <img class="imgcadastro" src="./assets/img/cadastroImg.jpg" alt="">
+        </div>
+        <form action="" class="">
+            <p class="titulo">Nova conta</p>
+            <input type="file" id="inserirImagem">
+            <label for="inserirImagem" class="inserirImagemContainer">
+                <img src="./assets/img/semImg.png" alt="">
+                <i class="fa-solid fa-circle-plus"></i>
+            </label>
+            
+            <div class="inputs">
+                <div class="inputContainer">
+                    <label for="nomeUser">Nome</label>
+                    <div class="inputBox">
+                        <input type="text" id="nomeUser" placeholder="Insira seu completo">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <label for="arrobaUser">Nome de usuário</label>
+                    <div class="inputBox">
+                        <input type="text" id="arrobaUser" placeholder="Como deseja ser chamado">
+                        <i class="fa-solid fa-at"></i>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <label for="emailUser">E-mail</label>
+                    <div class="inputBox">
+                        <input type="email" id="emailUser" placeholder="Insira seu email">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                </div>
+                 <div class="inputContainer">
+                    <label for="dataNascUser">Data de nascimento</label>
+                    <div class="inputBox">
+                        <input type="date" id="dataNascUser" placeholder="Insira sua data de nascimento" style="color: var(--amarelo3);">
+                       
+                    </div>
+                </div>
+                
+                <div class="inputContainer">
+                    <label for="inputSenha">Senha</label>
+                    <div class="inputBox">
+                        <input type="password" placeholder="Insira sua senha" id="inputSenha">
+                        <div id="olho"><i class="fa-regular fa-eye-slash" onclick="verSenha()"></i></div>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <label for="inputSenha">Confirmar senha</label>
+                    <div class="inputBox">
+                        <input type="password" placeholder="Repita sua senha" id="inputSenha">
+                        <div id="olho"><i class="fa-regular fa-eye-slash" onclick="verSenha()"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="curvaturasSelect">
+                <span>Curvatura do seu cabelo:</span>
+                <input type="hidden" id="CurvaturaUser">
+                <button type="button" onclick="selecionarCurvatura('2A')" id="2A" class="curvaturasSelectbutton selecionado">2A</button>
+                <button type="button" onclick="selecionarCurvatura('2B')" id="2B" class="curvaturasSelectbutton ">2B</button>
+                <button type="button" onclick="selecionarCurvatura('2C')" id="2C" class="curvaturasSelectbutton ">2C</button>
+                <button type="button" onclick="selecionarCurvatura('3A')" id="3A" class="curvaturasSelectbutton ">3A</button>
+                <button type="button" onclick="selecionarCurvatura('3B')" id="3B" class="curvaturasSelectbutton ">3B</button>
+                <button type="button" onclick="selecionarCurvatura('3C')" id="3C" class="curvaturasSelectbutton ">3C</button>
+                <button type="button" onclick="selecionarCurvatura('4A')" id="4A" class="curvaturasSelectbutton ">4A</button>
+                <button type="button" onclick="selecionarCurvatura('4B')" id="4B" class="curvaturasSelectbutton ">4B</button>
+                <button type="button" onclick="selecionarCurvatura('4C')" id="4C" class="curvaturasSelectbutton ">4C</button>
+            </div>
+            <button class="botao">Cadastre-se</button>
+            <p>Já tem uma conta?<a href="login.html">Entrar</a></p>
+        </form>
+    </div>
+</body>
+<script>
+    function verSenha() {
+        if (inputSenha.type == "text") {
+            inputSenha.type = "password"
+            olho.innerHTML = `<i class="fa-regular fa-eye-slash" onclick="verSenha()" ></i>`
+        } else {
+            inputSenha.type = "text"
+            olho.innerHTML = `<i class="fa-regular fa-eye" onclick="verSenha()" ></i>`
+        }
+    }
+    function selecionarCurvatura(curvatura){
+       let  selecionado = document.getElementById(curvatura)
+       document.querySelectorAll(".curvaturasSelectbutton").forEach(item => {
+       item.classList.remove("selecionado")
+
+       })
+       selecionado.classList.add("selecionado")
+    }
+    CurvaturaUser.value = curvatura
+</script>
+
+</html>

@@ -269,7 +269,7 @@ body {
 
         }
         .box{
-            background-color: var(--box);
+            background-color: var(--roxo);
             box-shadow: var(--sombra);
             border-radius: var(--radius);
         }
