@@ -5,7 +5,7 @@ function listarPost (posts,div){
             imgPost = ` <img  class="imgPost" src="${post.img}" alt="">`
         }
        div.innerHTML += `
-        <div class="post">
+        <div class="post box">
                     <div class="OptionsPost">
                         <i></i>
                     </div>
@@ -42,7 +42,7 @@ function listarPost (posts,div){
 
 if(novoPostCardContainer){
     novoPostCardContainer.innerHTML = `
-       <div id="novoPostCard">
+       <div id="novoPostCard" class="box">
                     <div class="topoNovoPost">
                         <div class="imgUserNovoPost">
                             <img src="https://i.pinimg.com/736x/f9/46/92/f94692772d5300dd8964e048b02adcaa.jpg" alt=""

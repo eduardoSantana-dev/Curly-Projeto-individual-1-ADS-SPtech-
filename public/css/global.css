@@ -12,10 +12,17 @@
     --tamanhoPost: 755px;
     --radius:15px;
     --cinza2:#f1f1f1;
+    --centroContainer:13.5%;
+    --feed:49.7%;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--teste);
@@ -46,7 +53,7 @@ body {
 
         .perfil {
             margin-top: 5%;
-
+            cursor: pointer;
             display: flex;
             gap: 15px;
 
@@ -63,9 +70,6 @@ body {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-
-                    background-color: #F8AC35;
-
                 }
             }
 
@@ -98,6 +102,7 @@ body {
                 color: var(--texto2);
                 align-items: center;
                 gap: 1.2rem;
+                cursor: pointer;
 
                 i {
                     font-size: 1.7rem;
@@ -150,7 +155,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    position: sticky;
+    top: 0px;
     img {
         margin-left: 20px;
         width: 220px;
@@ -214,8 +220,9 @@ body {
                 border-radius: 100px;
 
                 img {
-                    width: 100%;
-                    height: 100%;
+                    
+                    width: 120%;
+                    height: 120%;
                     object-fit: cover;
 
 
@@ -260,4 +267,9 @@ body {
         .c4{
             background-color: var(--amarelo3);
 
+        }
+        .box{
+            background-color: var(--box);
+            box-shadow: var(--sombra);
+            border-radius: var(--radius);
         }

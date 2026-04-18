@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina inicial</title>
+    <title>Perfil</title>
     <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/posts.css">
+    <link rel="stylesheet" href="./css/perfil.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
 
@@ -16,13 +17,30 @@
 
 <body>
     <div id="containerGlobal">
-        <div id="container">
+        <div class="container" id="container">
             <div class="feed" id="feed">
-                <div id="novoPostCardContainer"></div>
+              <div class="perfilContainerFeed">
+                   <div class="perfil">
+                        <div class="imgUserPerfilDiv">
+                            <img src="./assets/userPerfil/WhatsApp Image 2026-04-18 at 10.35.47.jpeg" alt=""
+                                id="imgUserPerfil">
+                        </div>
+                        <div class="nomeArroba">
+                            <span id="nomeUserPerfil">Eduardo Santana</span>
+                            <span id="usuarioUserPerfil">@edu.san07</span>
+                        </div>
+                    </div>
+                    <div class="statusPerfil">
+                        <div class="status box">Seguidores: 50</div>
+                        <div class="status box">Seguidores: 50</div>
+                        <div class="status box " style="color: var(--amarelo1);">Curvatura: <div class="curvatura">3B</div></div>
+                    </div>
+              </div>
+               <div id="novoPostCardContainer"></div>
             </div>
-            <div class="maisPopularesFeed box">
-                <p>Mais populares</p>
-                <div class="listaPopulares">
+              <div class="seguindoPerfil box">
+                <p>Seguindo</p>
+                <div class="listaSeguindoPerfil">
                     <div class="perfil">
                         <div class="imgUserPerfilDiv">
                             <img src="https://i.pinimg.com/736x/f9/46/92/f94692772d5300dd8964e048b02adcaa.jpg" alt=""
@@ -82,10 +100,8 @@
 </body>
 
 </html>
-<script src="./js/navbar.js">
-</script>
+<script src="./js/navbar.js"></script>
 <script src="./js/post.js"></script>
-<!-- testando metodo de chamar função, talvez eu altere quando implementar o banco -->
 <script>
     let posts =
         [
@@ -138,3 +154,4 @@
 
     listarPost(posts, feed)
 </script>
+

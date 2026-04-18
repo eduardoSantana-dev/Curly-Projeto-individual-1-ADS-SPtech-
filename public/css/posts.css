@@ -1,0 +1,234 @@
+#novoPostCard {
+    width: 100%;
+    padding: 1% 1%;
+    .topoNovoPost {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        width: 100%;
+
+        .imgUserNovoPost {
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+
+            img {
+                 width: 120%;
+                height: 120%;
+                object-fit: cover;
+
+                
+
+            }
+        }
+
+        input {
+            flex: 0.97;
+            height: 40px;
+            background-color: var(--cinza);
+            border-radius: 500px;
+            display: flex;
+            align-items: center;
+            padding-inline: 1.4rem;
+            border: none;
+            font-size: 1.1rem;
+            border: none;
+            outline: none;
+            font-weight: 400;
+            color: var(--texto2);
+        }
+
+    }
+
+    .complementosNovoPost {
+        padding-top: 1rem;
+        margin-top: 1.5%;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+
+        border-top: 1px solid var(--cinza);
+
+        .complementos {
+            display: flex;
+            gap: 20px;
+
+            label {
+                margin: 0px;
+                padding: 0px;
+                font-size: 1.1rem;
+                cursor: pointer;
+                color: var(--texto2);
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                i {
+                    font-size: 1.3rem;
+                    color: var(--amarelo1);
+                }
+            }
+
+            label:hover {
+                opacity: 0.7;
+            }
+
+            input {
+                display: none;
+            }
+
+            button {
+                background-color: transparent;
+                border: none;
+                color: var(--texto2);
+                font-size: 1.1rem;
+                cursor: pointer;
+                padding: 0px;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                i {
+
+                    font-size: 1.3rem;
+                    color: var(--roxo);
+                }
+            }
+
+            button:hover {
+                opacity: 0.7;
+            }
+
+            select {
+                font-size: 1.1rem;
+                border-radius: 1px;
+                border: none;
+                outline: none;
+                background-color: transparent;
+
+                &,
+                &::picker(select) {
+                    appearance: base-select;
+                    border: none;
+                    box-shadow: var(--sombra);
+                    border-radius: 10px;
+                }
+
+                cursor: pointer;
+                box-shadow: none;
+                color: var(--texto2);
+            }
+
+        }
+
+        button {
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 5px 25px;
+
+        }
+    }
+
+}
+
+.post {
+    margin-top: 10px;
+    width: 100%;
+    padding: 1% 1%;
+    .perfilPost {
+        display: flex;
+        gap: 20px;
+        .imgUserPostDiv {
+            width: 55px;
+            height: 50px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1000px;
+            
+            img {
+               width: 120%;
+                    height: 120%;
+                object-fit: cover;
+            }
+        }
+
+        .nomeArroba {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+
+            .infoPostUser {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                .nomeUserPost {
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                }
+                .tempoPost{
+                    color: var(--texto2);
+                    font-size: 0.9rem;
+                }
+            }
+
+            .usuarioUserPost {
+                font-size: 1rem;
+                color: var(--texto2);
+            }
+        }
+    }
+    .conteudoPost{
+        .textoPost{
+            p{
+                color: var(--texto1);
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin: 2% 1%;
+            }
+        }
+        .imgPost{
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
+    }
+    .statusPost{
+        margin-top: 10px;
+        display: flex;
+        gap: 20px;
+        button{
+            background-color: var(--cinza2);
+            border: none;
+            padding: 1% 2.5%;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--roxo);
+            display: flex;
+            gap: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            
+            &:hover{
+                transition: 500ms;
+               background-color: var(--roxo);
+                color: #fff;
+            }
+        }
+    }
+
+
+}
+
+            
+
+
+

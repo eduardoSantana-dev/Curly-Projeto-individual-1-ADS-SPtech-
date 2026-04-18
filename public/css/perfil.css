@@ -1,0 +1,61 @@
+.feed {
+    display: flex;
+    flex-direction: column;
+    margin-left: var(--centroContainer);
+    gap: 20px;
+    margin-bottom: 20px;
+    width: var(--feed);
+    .perfil{
+        .imgUserPerfilDiv{
+            width:130px;
+            height:130px;
+        }
+        #nomeUserPerfil{
+            font-size: 2rem;
+        }
+        #usuarioUserPerfil{
+            font-size: 1.5rem;
+        }
+    }
+    .statusPerfil{
+        display: flex;
+        justify-content: start;
+        margin-left: 145px;
+        gap: 3rem;
+        .status{
+            color: var(--roxo);
+            font-weight: 600;
+            font-size: 0.9rem;
+            width: 135px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+    }
+}
+#container {
+display: flex;
+
+}
+.seguindoPerfil{
+    height: max-content;
+    margin-left: 5%;
+    padding: 1% 1.5%;
+    width: 300px;
+    position: sticky;
+    top: 11%;
+    p{
+        margin-top: 2%;
+        font-size: 1.3rem;
+        color: var(--texto2);
+        font-weight: 500;
+    }
+    .listaSeguindoPerfil{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
