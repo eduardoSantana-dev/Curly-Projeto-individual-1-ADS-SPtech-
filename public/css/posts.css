@@ -246,7 +246,7 @@
 }
 
 .modalPostComfoto {
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.904);
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -257,6 +257,7 @@
     padding: 0px;
     opacity: 0;
     transition: 500ms;
+
     .fa-x {
         color: #fff;
         font-size: 1.4rem;
@@ -279,15 +280,16 @@
             max-height: 90%;
             max-width: 90%;
             border-radius: 10px;
+
         }
     }
-   
+
     .PostDetalhesmodal {
         flex: 1;
         background-color: var(--box);
         margin: 0px;
         padding: 20px 15px;
-
+        animation: ease-in-out infoPost 400ms;
 
         .InfopostModal {
 
@@ -397,6 +399,7 @@
             border-top: 1px solid var(--cinza);
             height: 700px;
             overflow-y: scroll;
+
             p {
                 margin-top: 10px;
                 color: var(--texto2);
@@ -452,8 +455,8 @@
                 display: flex;
                 flex-direction: column;
                 gap: 30px;
-                
-                
+
+
 
                 .comentario {
                     padding-inline: 10px;
@@ -490,6 +493,7 @@
             /* largura do scroll */
             .listaComentarios::-webkit-scrollbar {
                 width: 8px;
+
             }
 
             /* fundo do scroll */
@@ -507,17 +511,33 @@
         }
     }
 }
-@keyframes aparecer{
-    from{
+
+@keyframes aparecer {
+    from {
         opacity: 0;
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
- .ModalPostAtivo{
-      opacity: 1;
-      display: flex;
-    animation: aparecer 200ms;
+
+@keyframes infoPost {
+    from {
+        transform: translateX(1000px);
     }
-    
+
+    to {
+     transform: translateX(0px);
+    }
+}
+
+.ModalPostAtivo {
+    opacity: 1;
+    display: flex;
+    animation: aparecer 200ms;
+}
+
+.semFoto {
+    background-color: rgba(0, 0, 0, 0.308);
+}

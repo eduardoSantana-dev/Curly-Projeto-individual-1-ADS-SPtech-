@@ -1,12 +1,12 @@
-function listarPost (posts,div){
-    posts.forEach(post => {
-        let imgPost = ``
-        let temIMG = false
-        if(post.img != ""){
-            temIMG = true
-            imgPost = ` <img  class="imgPost" src="${post.img}" alt="" onclick="abrirPost(true)">`
-        }
-       div.innerHTML += `
+function listarPost(posts, div) {
+  posts.forEach((post) => {
+    let imgPost = ``;
+    let temIMG = false;
+    if (post.img != "") {
+      temIMG = true;
+      imgPost = ` <img  class="imgPost" src="${post.img}" alt="" onclick="abrirPost(true)">`;
+    }
+    div.innerHTML += `
         <div class="post box">
                     <div class="OptionsPost">
                         <i></i>
@@ -35,20 +35,20 @@ function listarPost (posts,div){
                     </div>
                     <div class="statusPost">
                         <button><i class="fa-regular fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
-                        <button><i class="fa-regular fa-comment"></i>${post.comentarios}</button>
+                        <button  onclick="abrirPost(${temIMG})"><i class="fa-regular fa-comment"></i>${post.comentarios}</button>
                     </div>
 
                 </div>
-        `
-    });
-    document.querySelector('body').innerHTML += `
-     <div class="modalPostComfoto " id="modalPostComfoto">
+        `;
+  });
+  document.querySelector("body").innerHTML += `
+     <div class="modalPostComfoto semFoto " id="modalPostComfoto">
         <i class="fa-solid fa-x" onclick="fecharModalPost()"></i>
-        <div class="containerModalImg">
-            <img src="https://i.pinimg.com/originals/34/57/95/3457953dc463079331708a11e0d6097b.jpg" alt="">
+        <div class="containerModalImg"  onclick="fecharModalPost()">
+            <img src="https://i.pinimg.com/originals/34/57/95/3457953dc463079331708a11e0d6097b.jpg" id="ImgcontainerModal" alt=""">
         </div>
-        <div class="PostDetalhesmodal ">
-            <div class="InfopostModal ">
+        <div class="PostDetalhesmodal">
+            <div class="InfopostModal" >
                 <div class="OptionsPost">
                     <i></i>
                 </div>
@@ -104,11 +104,11 @@ function listarPost (posts,div){
             </div>
         </div>
     </div>
-    `
+    `;
 }
 
-if(novoPostCardContainer){
-    novoPostCardContainer.innerHTML = `
+if (novoPostCardContainer) {
+  novoPostCardContainer.innerHTML = `
        <div id="novoPostCard" class="box">
                     <div class="topoNovoPost">
                         <div class="imgUserNovoPost">
@@ -131,23 +131,30 @@ if(novoPostCardContainer){
                         <button class="botao">Postar</button>
                     </div>
                 </div>
-    `
+    `;
 }
-function verificarLinhas(){
-    let campo = textarea_comentario
-    let tamanho = campo.value.length
-    let linhas = campo.rows
-    if(tamanho %30 ==0){
-        campo.rows +=1
-    }
+function verificarLinhas() {
+  let campo = textarea_comentario;
+  let tamanho = campo.value.length;
+  let linhas = campo.rows;
+  if (tamanho % 30 == 0) {
+    campo.rows += 1;
+  }
 }
-function abrirPost(img){
-    if(img){
-        modalPostComfoto.classList.add("ModalPostAtivo")
-        document.querySelector('body').style = "overflow: hidden;"
-    }
+function abrirPost(img) {
+  if (img) {
+   ImgcontainerModal.style = "display:block";
+
+    modalPostComfoto.classList.add("ModalPostAtivo");
+    modalPostComfoto.classList.remove("semFoto");
+    document.querySelector("body").style = "overflow: hidden;";
+  } else {
+   ImgcontainerModal.style = "display:none";
+    modalPostComfoto.classList.add("ModalPostAtivo");
+    modalPostComfoto.classList.add("semFoto");
+  }
 }
-function fecharModalPost(){
-    modalPostComfoto.classList.remove("ModalPostAtivo")
-    document.querySelector('body').style = "overflow: auto;"
+function fecharModalPost() {
+  modalPostComfoto.classList.remove("ModalPostAtivo");
+  document.querySelector("body").style = "overflow: auto;";
 }
