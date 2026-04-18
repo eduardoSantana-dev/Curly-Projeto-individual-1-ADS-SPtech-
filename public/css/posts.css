@@ -1,6 +1,7 @@
 #novoPostCard {
     width: 100%;
     padding: 1% 1%;
+
     .topoNovoPost {
         display: flex;
         gap: 2rem;
@@ -17,11 +18,11 @@
             border-radius: 50%;
 
             img {
-                 width: 120%;
+                width: 120%;
                 height: 120%;
                 object-fit: cover;
 
-                
+
 
             }
         }
@@ -139,9 +140,11 @@
     margin-top: 10px;
     width: 100%;
     padding: 1% 1%;
+
     .perfilPost {
         display: flex;
         gap: 20px;
+
         .imgUserPostDiv {
             width: 55px;
             height: 50px;
@@ -150,10 +153,10 @@
             align-items: center;
             justify-content: center;
             border-radius: 1000px;
-            
+
             img {
-               width: 120%;
-                    height: 120%;
+                width: 120%;
+                height: 120%;
                 object-fit: cover;
             }
         }
@@ -168,13 +171,22 @@
                 display: flex;
                 align-items: center;
                 gap: 15px;
+
                 .nomeUserPost {
                     font-weight: bold;
                     font-size: 1.2rem;
                 }
-                .tempoPost{
+
+                .tempoPost {
                     color: var(--texto2);
                     font-size: 0.9rem;
+                }
+
+                .button_seguir {
+                    padding: 5px 25px;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    cursor: pointer;
                 }
             }
 
@@ -184,26 +196,31 @@
             }
         }
     }
-    .conteudoPost{
-        .textoPost{
-            p{
+
+    .conteudoPost {
+        .textoPost {
+            p {
                 color: var(--texto1);
                 font-size: 1.2rem;
                 font-weight: 500;
                 margin: 2% 1%;
             }
         }
-        .imgPost{
+
+        .imgPost {
             max-width: 90%;
             border-radius: 10px;
             box-shadow: var(--sombra);
+            cursor: pointer;
         }
     }
-    .statusPost{
+
+    .statusPost {
         margin-top: 10px;
         display: flex;
         gap: 20px;
-        button{
+
+        button {
             background-color: var(--cinza2);
             border: none;
             padding: 1% 2.5%;
@@ -216,10 +233,10 @@
             cursor: pointer;
             align-items: center;
             justify-content: center;
-            
-            &:hover{
+
+            &:hover {
                 transition: 500ms;
-               background-color: var(--roxo);
+                background-color: var(--roxo);
                 color: #fff;
             }
         }
@@ -228,7 +245,279 @@
 
 }
 
-            
+.modalPostComfoto {
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    margin: 0px;
+    padding: 0px;
+    opacity: 0;
+    transition: 500ms;
+    .fa-x {
+        color: #fff;
+        font-size: 1.4rem;
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        cursor: pointer;
+
+    }
+
+    .containerModalImg {
+
+        width: 74%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            object-fit: contain;
+            max-height: 90%;
+            max-width: 90%;
+            border-radius: 10px;
+        }
+    }
+   
+    .PostDetalhesmodal {
+        flex: 1;
+        background-color: var(--box);
+        margin: 0px;
+        padding: 20px 15px;
 
 
+        .InfopostModal {
 
+            .perfilPostModal {
+                display: flex;
+                gap: 10px;
+
+                .imgUserPostDiv {
+                    width: 52px;
+                    height: 45px;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 1000px;
+
+                    img {
+                        width: 120%;
+                        height: 120%;
+                        object-fit: cover;
+                    }
+                }
+
+                .nomeArroba {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
+
+                    .infoPostUser {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+
+                        .nomeUserPost {
+                            font-weight: bold;
+                            font-size: 1.rem;
+                        }
+
+                        .tempoPost {
+                            color: var(--texto2);
+                            font-size: 0.7rem;
+                        }
+
+                        .button_seguir {
+                            padding: 5px 25px;
+                            font-size: 0.7rem;
+                            font-weight: 500;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .usuarioUserPost {
+                        font-size: 0.8rem;
+                        color: var(--texto2);
+                    }
+                }
+            }
+
+            .conteudoPost {
+                .textoPost {
+                    p {
+                        color: var(--texto1);
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        margin: 4% 1%;
+                    }
+                }
+
+                .imgPost {
+                    max-width: 90%;
+                    border-radius: 10px;
+                    box-shadow: var(--sombra);
+                }
+            }
+
+            .statusPost {
+                margin-top: 10px;
+                display: flex;
+                gap: 20px;
+
+                button {
+                    background-color: var(--cinza2);
+                    border: none;
+                    padding: 1% 2.5%;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    color: var(--roxo);
+                    display: flex;
+                    gap: 5px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        transition: 500ms;
+                        background-color: var(--roxo);
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .ComentariosPostModal {
+            margin-top: 4%;
+            border-top: 1px solid var(--cinza);
+            height: 700px;
+            overflow-y: scroll;
+            p {
+                margin-top: 10px;
+                color: var(--texto2);
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+
+            .novoComentario {
+                display: flex;
+                margin: 20px 10px;
+                gap: 20px;
+                align-items: start;
+
+                div {
+                    width: 45px;
+                    height: 45px;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 1000px;
+
+                    img {
+                        width: 120%;
+                        height: 120%;
+                        object-fit: cover;
+                    }
+                }
+
+                textarea {
+                    flex: 0.9;
+                    min-height: 40px;
+                    height: fit-content;
+                    padding-block: 10px;
+                    background-color: var(--cinza);
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    padding-inline: 1.4rem;
+                    border: none;
+                    font-size: 1.1rem;
+                    border: none;
+                    outline: none;
+                    font-weight: 400;
+                    color: var(--texto2);
+                    flex-wrap: wrap;
+                    resize: none;
+                    overflow-y: hidden;
+                }
+            }
+
+            .listaComentarios {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                
+                
+
+                .comentario {
+                    padding-inline: 10px;
+
+                    .imgUserPerfilDiv {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .usuarioTempo {
+                        font-size: 0.8rem;
+                        margin-left: 10px;
+                        color: var(--texto2);
+                        font-weight: 500;
+                    }
+
+                    #nomeUserPerfil {
+                        font-size: 0.8rem;
+                    }
+
+                    #usuarioUserPerfil {
+                        font-size: 0.8rem;
+
+                    }
+
+                    .textoComentario {
+                        color: var(--texto2);
+                        font-size: 0.8rem;
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            /* largura do scroll */
+            .listaComentarios::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            /* fundo do scroll */
+            .listaComentarios::-webkit-scrollbar-track {
+                background: #a7a7a7;
+                border-radius: 10px;
+            }
+
+            /* parte que você arrasta */
+            .listaComentarios::-webkit-scrollbar-thumb {
+                background: var(--cinza);
+                border-radius: 10px;
+            }
+
+        }
+    }
+}
+@keyframes aparecer{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+ .ModalPostAtivo{
+      opacity: 1;
+      display: flex;
+    animation: aparecer 200ms;
+    }
+    

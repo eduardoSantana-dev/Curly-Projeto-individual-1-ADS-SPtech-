@@ -29,6 +29,27 @@ body {
     margin: 0px;
     color: var(--texto1);
     background-color: var(--fundo);
+     
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            /* fundo do scroll */
+            &::-webkit-scrollbar-track {
+                background: transparent;
+                border-radius: 10px;
+            }
+
+            /* parte que você arrasta */
+            &::-webkit-scrollbar-thumb {
+                background: #4e4e4e;
+                border-radius: 10px;
+            }
+
+            /* quando passa o mouse */
+            &::-webkit-scrollbar-thumb:hover {
+                background: var(--amarelo1);
+            }
 }
 
 #containerGlobal {
@@ -269,7 +290,7 @@ body {
 
         }
         .box{
-            background-color: var(--roxo);
+            background-color: var(--box);
             box-shadow: var(--sombra);
             border-radius: var(--radius);
         }

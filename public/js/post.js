@@ -1,8 +1,10 @@
 function listarPost (posts,div){
     posts.forEach(post => {
         let imgPost = ``
+        let temIMG = false
         if(post.img != ""){
-            imgPost = ` <img  class="imgPost" src="${post.img}" alt="">`
+            temIMG = true
+            imgPost = ` <img  class="imgPost" src="${post.img}" alt="" onclick="abrirPost(true)">`
         }
        div.innerHTML += `
         <div class="post box">
@@ -19,6 +21,7 @@ function listarPost (posts,div){
                                 <span class="nomeUserPost">${post.usuario_nome}</span>
                                 <span class="curvatura c${post.curvatura[0]}">${post.curvatura}</span>
                                 <span class="tempoPost">${post.tempo}</span>
+                                <button class="botao button_seguir " style="background-color: var(--texto2);opacity:0.4">Seguindo</button>
                             </div>
                             <span class="usuarioUserPost">@${post.arroba}</span>
                         </div>
@@ -38,6 +41,70 @@ function listarPost (posts,div){
                 </div>
         `
     });
+    document.querySelector('body').innerHTML += `
+     <div class="modalPostComfoto " id="modalPostComfoto">
+        <i class="fa-solid fa-x" onclick="fecharModalPost()"></i>
+        <div class="containerModalImg">
+            <img src="https://i.pinimg.com/originals/34/57/95/3457953dc463079331708a11e0d6097b.jpg" alt="">
+        </div>
+        <div class="PostDetalhesmodal ">
+            <div class="InfopostModal ">
+                <div class="OptionsPost">
+                    <i></i>
+                </div>
+                <div class="perfilPostModal">
+                    <div class="imgUserPostDiv">
+                        <img src="./assets/img/semImg.png" alt="" />
+                    </div>
+                    <div class="nomeArroba">
+                        <div class="infoPostUser">
+                            <span class="nomeUserPost">Edurdo Santana</span>
+                            <span class="curvatura c3">3C</span>
+                            <span class="tempoPost">20min</span>
+                            <button class="botao button_seguir "
+                                style="background-color: var(--texto2);opacity:0.4">Seguindo</button>
+                        </div>
+                        <span class="usuarioUserPost">@edu.san07</span>
+                    </div>
+                </div>
+                <div class="conteudoPost">
+                    <div class="textoPost">
+                        <p>Vai tomando essa fotona do meu cabelo hoje familia</p>
+                    </div>
+                </div>
+                <div class="statusPost">
+                    <button><i class="fa-regular fa-thumbs-up"></i> <span>50</span></button>
+                    <button><i class="fa-regular fa-comment"></i>40</button>
+                </div>
+            </div>
+            <div class="ComentariosPostModal">
+                <p>Comentarios</p>
+                <div class="novoComentario">
+                    <div>
+                        <img src="./assets/img/semImg.png" alt="" />
+                    </div>
+                    <textarea name="" placeholder="Deixe um comentario" rows="2" id="textarea_comentario"
+                        oninput="verificarLinhas()"></textarea>
+                </div>
+                <div class="listaComentarios">
+                    <div class="comentario">
+                        <div class="perfil">
+                            <div class="imgUserPerfilDiv">
+                                <img src="./assets/userPerfil/edu.jpeg" alt="" id="imgUserPerfil">
+                            </div>
+                            <div class="nomeArroba">
+                                <span id="nomeUserPerfil">Eduardo Santana <span class="usuarioTempo">20 min</span></span>
+                                <span id="usuarioUserPerfil">@edu.san07</span>
+                            </div>
+                        </div>
+                        <p class="textoComentario">Vai tomando essa fotona do meu cabelo hoje familia</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    `
 }
 
 if(novoPostCardContainer){
@@ -65,4 +132,22 @@ if(novoPostCardContainer){
                     </div>
                 </div>
     `
+}
+function verificarLinhas(){
+    let campo = textarea_comentario
+    let tamanho = campo.value.length
+    let linhas = campo.rows
+    if(tamanho %30 ==0){
+        campo.rows +=1
+    }
+}
+function abrirPost(img){
+    if(img){
+        modalPostComfoto.classList.add("ModalPostAtivo")
+        document.querySelector('body').style = "overflow: hidden;"
+    }
+}
+function fecharModalPost(){
+    modalPostComfoto.classList.remove("ModalPostAtivo")
+    document.querySelector('body').style = "overflow: auto;"
 }
