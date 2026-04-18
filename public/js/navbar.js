@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div id="container">
+            <div id="container" >
                 ${container.innerHTML}
             </div>
              </div>

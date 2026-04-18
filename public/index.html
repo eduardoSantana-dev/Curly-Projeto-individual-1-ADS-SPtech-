@@ -16,12 +16,48 @@
 <body>
     <div id="containerGlobal">
         <div id="container">
-
+            <div class="feed" id="feed">
+             <div id="novoPostCardContainer"></div>
+            </div>
+            <div class="maisPopularesFeed">
+                
+            </div>
         </div>
     </div>
 </body>
 
 </html>
 <script src="./js/navbar.js">
-
 </script>
+<script src="./js/post.js"></script>
+<!-- testando metodo de chamar função, talvez eu altere quando implementar o banco -->
+ <script>
+    let posts = 
+   [
+    {
+      "usuario_img": "https://i.pinimg.com/originals/95/78/fc/9578fc29e79b2730fd63a0a57872adab.jpg",
+      "usuario_nome": "Irmão do jorel",
+      "curvatura": "4A",
+      "tempo": "2h",
+      "arroba": "brother_rorel",
+      "desc": "Gente hoje Conseguir finalizar meu cabelo com dedoliss e ficou perfeito!! ",
+      "img": "",
+      "curtidas": 120,
+      "comentarios": 15
+    },
+    {
+      "usuario_img": "https://i.pinimg.com/736x/f9/46/92/f94692772d5300dd8964e048b02adcaa.jpg",
+      "usuario_nome": "Neymar Junior",
+      "curvatura": "3B",
+      "tempo": "5h",
+      "arroba": "nemidia",
+      "desc": "Vai tomando essa fotona do meu cabelo hoje familia",
+      "img": "https://siterg.uol.com.br/wp-content/uploads/2019/02/neymar1.jpg",
+      "curtidas": 89,
+      "comentarios": 8
+    }
+  ]
+
+
+     listarPost(posts,feed)
+ </script>
