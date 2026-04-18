@@ -1,0 +1,5 @@
+proximos passos:
+organizar codigo de cadastro,
+criar validações de erros no back e no front,
+validações para cada input no front (em tempo real),
+começar login e sessão;
