@@ -27,7 +27,7 @@
                 <img src="./assets/img/semImg.png" alt="">
                 <i class="fa-solid fa-circle-plus"></i>
             </label>
-            
+
             <div class="inputs">
                 <div class="inputContainer">
                     <label for="nomeUser">Nome</label>
@@ -50,14 +50,15 @@
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                 </div>
-                 <div class="inputContainer">
+                <div class="inputContainer">
                     <label for="dataNascUser">Data de nascimento</label>
                     <div class="inputBox">
-                        <input type="date" id="dataNascUser" placeholder="Insira sua data de nascimento" style="color: var(--amarelo3);">
-                       
+                        <input type="date" id="dataNascUser" placeholder="Insira sua data de nascimento"
+                            style="color: var(--amarelo3);">
+
                     </div>
                 </div>
-                
+
                 <div class="inputContainer">
                     <label for="inputSenha">Senha</label>
                     <div class="inputBox">
@@ -66,9 +67,9 @@
                     </div>
                 </div>
                 <div class="inputContainer">
-                    <label for="inputSenha">Confirmar senha</label>
+                    <label for="inputSenhaConfirmacao">Confirmar senha</label>
                     <div class="inputBox">
-                        <input type="password" placeholder="Repita sua senha" id="inputSenha">
+                        <input type="password" placeholder="Repita sua senha" id="inputSenhaConfirmacao">
                         <div id="olho"><i class="fa-regular fa-eye-slash" onclick="verSenha()"></i></div>
                     </div>
                 </div>
@@ -76,17 +77,26 @@
             <div class="curvaturasSelect">
                 <span>Curvatura do seu cabelo:</span>
                 <input type="hidden" id="CurvaturaUser">
-                <button type="button" onclick="selecionarCurvatura('2A')" id="2A" class="curvaturasSelectbutton selecionado">2A</button>
-                <button type="button" onclick="selecionarCurvatura('2B')" id="2B" class="curvaturasSelectbutton ">2B</button>
-                <button type="button" onclick="selecionarCurvatura('2C')" id="2C" class="curvaturasSelectbutton ">2C</button>
-                <button type="button" onclick="selecionarCurvatura('3A')" id="3A" class="curvaturasSelectbutton ">3A</button>
-                <button type="button" onclick="selecionarCurvatura('3B')" id="3B" class="curvaturasSelectbutton ">3B</button>
-                <button type="button" onclick="selecionarCurvatura('3C')" id="3C" class="curvaturasSelectbutton ">3C</button>
-                <button type="button" onclick="selecionarCurvatura('4A')" id="4A" class="curvaturasSelectbutton ">4A</button>
-                <button type="button" onclick="selecionarCurvatura('4B')" id="4B" class="curvaturasSelectbutton ">4B</button>
-                <button type="button" onclick="selecionarCurvatura('4C')" id="4C" class="curvaturasSelectbutton ">4C</button>
+                <button type="button" onclick="selecionarCurvatura('2A')" id="2A"
+                    class="curvaturasSelectbutton selecionado">2A</button>
+                <button type="button" onclick="selecionarCurvatura('2B')" id="2B"
+                    class="curvaturasSelectbutton ">2B</button>
+                <button type="button" onclick="selecionarCurvatura('2C')" id="2C"
+                    class="curvaturasSelectbutton ">2C</button>
+                <button type="button" onclick="selecionarCurvatura('3A')" id="3A"
+                    class="curvaturasSelectbutton ">3A</button>
+                <button type="button" onclick="selecionarCurvatura('3B')" id="3B"
+                    class="curvaturasSelectbutton ">3B</button>
+                <button type="button" onclick="selecionarCurvatura('3C')" id="3C"
+                    class="curvaturasSelectbutton ">3C</button>
+                <button type="button" onclick="selecionarCurvatura('4A')" id="4A"
+                    class="curvaturasSelectbutton ">4A</button>
+                <button type="button" onclick="selecionarCurvatura('4B')" id="4B"
+                    class="curvaturasSelectbutton ">4B</button>
+                <button type="button" onclick="selecionarCurvatura('4C')" id="4C"
+                    class="curvaturasSelectbutton ">4C</button>
             </div>
-            <button class="botao">Cadastre-se</button>
+            <button class="botao" type="button" onclick="cadastrar()">Cadastre-se</button>
             <p>Já tem uma conta?<a href="login.html">Entrar</a></p>
         </form>
     </div>
@@ -101,15 +111,41 @@
             olho.innerHTML = `<i class="fa-regular fa-eye" onclick="verSenha()" ></i>`
         }
     }
-    function selecionarCurvatura(curvatura){
-       let  selecionado = document.getElementById(curvatura)
-       document.querySelectorAll(".curvaturasSelectbutton").forEach(item => {
-       item.classList.remove("selecionado")
+    function selecionarCurvatura(curvatura) {
+        let selecionado = document.getElementById(curvatura)
+        document.querySelectorAll(".curvaturasSelectbutton").forEach(item => {
+            item.classList.remove("selecionado")
 
-       })
-       selecionado.classList.add("selecionado")
+        })
+        selecionado.classList.add("selecionado")
+        CurvaturaUser.value = curvatura
     }
-    CurvaturaUser.value = curvatura
+    nomeUser.value = "teste"
+    arrobaUser.value = "testeArroba"
+    emailUser.value = "email@email"
+    dataNascUser.value = '2026-04-23'
+    inputSenha.value = "senha123"
+    function cadastrar() {
+        let nome_input = nomeUser.value
+        let arroba_input = arrobaUser.value
+        let email_input = emailUser.value
+        let data_input = dataNascUser.value
+        let senha_input = inputSenha.value
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({
+               nome :nome_input,
+               arroba :arroba_input,
+               email :email_input,
+               data :data_input,
+               senha :senha_input,
+               curvatura: CurvaturaUser.value,
+            }),
+        })
+    }
 </script>
 
 </html>
