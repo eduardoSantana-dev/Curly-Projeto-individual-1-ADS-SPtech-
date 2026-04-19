@@ -16,6 +16,25 @@
     --feed:49.7%;
 }
 
+/* modo dark(teste)
+ :root {
+  --fundo: #0f1115;
+  --box: #1a1d23;
+  --roxo: #8b5cf6;
+  --amarelo1: #f8ac35;
+  --amarelo2: #ffc161;
+  --amarelo3: #fe9b00;
+  --texto1: #e4e6eb;
+  --texto2: rgba(255, 255, 255, 0.65);
+  --sombra: 0px 0px 8px rgba(0, 0, 0, 0.6);
+  --cinza: #2a2d34;
+  --cinza2: #20232a;
+  --tamanhoPost: 755px;
+  --radius: 15px;
+  --centroContainer: 13.5%;
+  --feed: 49.7%;
+}  */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 * {
@@ -58,6 +77,7 @@ body {
 }
 
 .navLateral {
+    z-index: 99;
     width: 18.5%;
     height: 100vh;
     position: sticky;
@@ -178,6 +198,7 @@ body {
     align-items: center;
     position: sticky;
     top: 0px;
+    z-index: 90;
     img {
         margin-left: 20px;
         width: 220px;

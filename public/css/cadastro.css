@@ -1,11 +1,13 @@
-body{
+body {
     overflow: hidden;
 }
-.cadastroContainer{
+
+.cadastroContainer {
     display: flex;
 
 }
-.imgContainer{
+
+.imgContainer {
     width: 57%;
     height: 100vh;
     background-color: aqua;
@@ -13,7 +15,8 @@ body{
     margin: 0px;
     padding: 0px;
     justify-content: center;
-    .logo{
+
+    .logo {
         position: absolute;
         top: 0px;
         left: 20px;
@@ -23,23 +26,26 @@ body{
         width: 190px;
     }
 }
-form{
+
+form {
     background-color: var(--box);
-    flex:1;
+    flex: 1;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .titulo{
-       color: var(--roxo);
-       font-size: 2rem;
-       font-weight: 600;
+    .titulo {
+        color: var(--roxo);
+        font-size: 2rem;
+        font-weight: 600;
     }
-    #inserirImagem{
+
+    #inserirImagem {
         display: none;
     }
-    .inserirImagemContainer{
+
+    .inserirImagemContainer {
         cursor: pointer;
         background-color: aqua;
         width: 210px;
@@ -49,14 +55,16 @@ form{
         display: flex;
         align-items: center;
         justify-content: center;
-        img{
+
+        img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            
+
         }
-        i{
+
+        i {
             color: #E8E7E7;
             font-size: 2.7rem;
             position: absolute;
@@ -68,22 +76,25 @@ form{
             width: 2rem;
         }
     }
-    
-    .inputs{
+
+    .inputs {
         display: flex;
         flex-direction: flex;
         flex-wrap: wrap;
         gap: 40px;
         justify-content: center;
         margin-top: 5%;
-        .inputContainer{
+
+        .inputContainer {
             display: flex;
             flex-direction: column;
             gap: 5px;
-            label{
+
+            label {
                 font-weight: 700;
             }
-            .inputBox{
+
+            .inputBox {
                 border: 10px;
                 display: flex;
                 justify-content: space-between;
@@ -94,7 +105,8 @@ form{
                 border: 1px solid rgba(0, 0, 0, 0.170);
                 box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.170);
                 padding-inline: 2%;
-                input{
+
+                input {
                     flex: 1;
                     height: 100%;
                     outline: none;
@@ -103,45 +115,74 @@ form{
                     font-weight: 500;
                     color: var(--texto1);
                 }
-                i{
+
+                i {
                     color: var(--amarelo1);
                     font-size: 1.2rem;
                 }
-                #olho{
+
+                #olho {
+                    cursor: pointer;
+                }
+                 #olho2 {
                     cursor: pointer;
                 }
             }
+            
+        .inputInvalido {
+            border: 1px solid rgba(231, 6, 6, 0.479);
+
+            input {
+                color: red;
+            }
+
+            i {
+                color: red;
+            }
         }
+
+            .divValorInvalido {
+                color: red;
+                font-size: 0.8rem;
+                height: 0px;
+            }
+        }
+
     }
-    button{
+
+    button {
         width: 400px;
         height: 50px;
         font-size: 1.5rem;
-        margin-top:10%
+        margin-top: 5%
     }
-    p{
-        margin-top: 5%;
+
+    p {
+        margin-top: 2%;
         color: var(--texto2);
-        a{
+
+        a {
             color: var(--amarelo1);
             cursor: pointer;
             text-decoration: none;
 
         }
     }
-    .curvaturasSelect{
+
+    .curvaturasSelect {
         display: flex;
         width: 84%;
-        margin-top: 2%;
+        margin-top: 4%;
         align-items: center;
         gap: 10px;
-        span{
+
+        span {
             height: fit-content;
             margin: 0px;
             font-weight: 500;
         }
-    
-        .curvaturasSelectbutton{
+
+        .curvaturasSelectbutton {
             margin: 0px;
             border-radius: 100px;
             padding: 4px;
@@ -153,11 +194,13 @@ form{
             height: fit-content;
             border: none;
             cursor: pointer;
-            &:hover{
+
+            &:hover {
                 background-color: var(--amarelo1);
             }
         }
-        .selecionado{
+
+        .selecionado {
             background-color: var(--amarelo1);
         }
     }

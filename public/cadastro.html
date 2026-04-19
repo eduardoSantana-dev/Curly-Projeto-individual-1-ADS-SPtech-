@@ -22,61 +22,66 @@
         </div>
         <form action="" class="">
             <p class="titulo">Nova conta</p>
-            <input type="file" id="inserirImagem">
+            <input type="file" id="inserirImagem" style="display: block;">
             <label for="inserirImagem" class="inserirImagemContainer">
                 <img src="./assets/img/semImg.png" alt="">
                 <i class="fa-solid fa-circle-plus"></i>
             </label>
 
             <div class="inputs">
-                <div class="inputContainer">
-                    <label for="nomeUser">Nome</label>
-                    <div class="inputBox">
-                        <input type="text" id="nomeUser" placeholder="Insira seu completo">
+                <div class="inputContainer" >
+                    <label for="nome_input">Nome</label>
+                    <div class="inputBox" >
+                        <input type="text" id="nome_input" oninput="validar('nome')" placeholder="Insira seu completo">
                         <i class="fa-regular fa-user"></i>
                     </div>
+                    <div class="divValorInvalido" id="invalidoNome"></div>
                 </div>
                 <div class="inputContainer">
-                    <label for="arrobaUser">Nome de usuário</label>
+                    <label for="arroba_input">Nome de usuário</label>
                     <div class="inputBox">
-                        <input type="text" id="arrobaUser" placeholder="Como deseja ser chamado">
+                        <input type="text" id="arroba_input" oninput="validar('arroba')" placeholder="Como deseja ser chamado">
                         <i class="fa-solid fa-at"></i>
                     </div>
+                    <div class="divValorInvalido" id="invalidoArroba"></div>
                 </div>
-                <div class="inputContainer">
-                    <label for="emailUser">E-mail</label>
+                <div class="inputContainer" id="boxEmail">
+                    <label for="email_input">E-mail</label>
                     <div class="inputBox">
-                        <input type="email" id="emailUser" placeholder="Insira seu email">
+                        <input type="email" id="email_input" oninput="validar('email')" placeholder="Insira seu email">
                         <i class="fa-regular fa-envelope"></i>
                     </div>
+                    <div class="divValorInvalido" id="invalidoEmail"></div>
                 </div>
-                <div class="inputContainer">
-                    <label for="dataNascUser">Data de nascimento</label>
+                <div class="inputContainer" id="boxDataNasc">
+                    <label for="dataNasc_input">Data de nascimento</label>
                     <div class="inputBox">
-                        <input type="date" id="dataNascUser" placeholder="Insira sua data de nascimento"
+                        <input type="date" id="dataNasc_input" oninput="validar('data')" placeholder="Insira sua data de nascimento"
                             style="color: var(--amarelo3);">
-
                     </div>
+                    <div class="divValorInvalido" id="invalidoData"></div>
                 </div>
 
-                <div class="inputContainer">
-                    <label for="inputSenha">Senha</label>
+                <div class="inputContainer" id="boxSenha">
+                    <label for="senha_input">Senha</label>
                     <div class="inputBox">
-                        <input type="password" placeholder="Insira sua senha" id="inputSenha">
+                        <input type="password" placeholder="Insira sua senha" oninput="validar('senha')" id="senha_input">
                         <div id="olho"><i class="fa-regular fa-eye-slash" onclick="verSenha()"></i></div>
                     </div>
+                    <div id="senhaNivel"></div>
                 </div>
-                <div class="inputContainer">
-                    <label for="inputSenhaConfirmacao">Confirmar senha</label>
+                <div class="inputContainer" id="boxConfirmacao">
+                    <label for="confirmacao_input">Confirmar senha</label>
                     <div class="inputBox">
-                        <input type="password" placeholder="Repita sua senha" id="inputSenhaConfirmacao">
-                        <div id="olho"><i class="fa-regular fa-eye-slash" onclick="verSenha()"></i></div>
+                        <input type="password" placeholder="Repita sua senha" id="confirmacao_input" oninput="validar('confirmacao')">
+                        <div id="olho2"><i class="fa-regular fa-eye-slash" onclick="verSenhaConfirmacao()"></i></div>
                     </div>
+                    <div class="divValorInvalido" id="invalidoCorfimacao"></div>
                 </div>
             </div>
             <div class="curvaturasSelect">
                 <span>Curvatura do seu cabelo:</span>
-                <input type="hidden" id="CurvaturaUser">
+                <input type="hidden" id="curvatura_input" value="2A">
                 <button type="button" onclick="selecionarCurvatura('2A')" id="2A"
                     class="curvaturasSelectbutton selecionado">2A</button>
                 <button type="button" onclick="selecionarCurvatura('2B')" id="2B"
@@ -96,56 +101,20 @@
                 <button type="button" onclick="selecionarCurvatura('4C')" id="4C"
                     class="curvaturasSelectbutton ">4C</button>
             </div>
-            <button class="botao" type="button" onclick="cadastrar()">Cadastre-se</button>
+            <button class="botao" type="button" onclick="validar('botao')">Cadastre-se</button>
             <p>Já tem uma conta?<a href="login.html">Entrar</a></p>
         </form>
     </div>
 </body>
 <script>
-    function verSenha() {
-        if (inputSenha.type == "text") {
-            inputSenha.type = "password"
-            olho.innerHTML = `<i class="fa-regular fa-eye-slash" onclick="verSenha()" ></i>`
-        } else {
-            inputSenha.type = "text"
-            olho.innerHTML = `<i class="fa-regular fa-eye" onclick="verSenha()" ></i>`
-        }
-    }
-    function selecionarCurvatura(curvatura) {
-        let selecionado = document.getElementById(curvatura)
-        document.querySelectorAll(".curvaturasSelectbutton").forEach(item => {
-            item.classList.remove("selecionado")
-
-        })
-        selecionado.classList.add("selecionado")
-        CurvaturaUser.value = curvatura
-    }
-    nomeUser.value = "teste"
-    arrobaUser.value = "testeArroba"
-    emailUser.value = "email@email"
-    dataNascUser.value = '2026-04-23'
-    inputSenha.value = "senha123"
-    function cadastrar() {
-        let nome_input = nomeUser.value
-        let arroba_input = arrobaUser.value
-        let email_input = emailUser.value
-        let data_input = dataNascUser.value
-        let senha_input = inputSenha.value
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body:JSON.stringify({
-               nome :nome_input,
-               arroba :arroba_input,
-               email :email_input,
-               data :data_input,
-               senha :senha_input,
-               curvatura: CurvaturaUser.value,
-            }),
-        })
-    }
+    nome_input.value = "teste"
+    arroba_input.value = "testeArroba"
+    email_input.value = "email@email.com"
+    dataNasc_input.value = '2026-04-23'
+    senha_input.value = "senha123"
+    confirmacao_input.value= "senha123"
 </script>
+<script src="./js/scripts/cadastro.js"></script>
+<script src="./js/api/User.js"></script>
 
 </html>

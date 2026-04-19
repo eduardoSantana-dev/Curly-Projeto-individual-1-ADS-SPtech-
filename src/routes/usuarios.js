@@ -1,7 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var usuarioController = require("../controllers/usuarioController")
-router.post("/cadastrar", function (req, res) {
+var upload = require('../config/configUpload')
+router.post("/cadastrar", upload.single('foto'), (req, res) => {
     usuarioController.cadastrar(req,res);
 });
 module.exports = router;
