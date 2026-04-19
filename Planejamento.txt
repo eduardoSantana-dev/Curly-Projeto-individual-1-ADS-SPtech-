@@ -1,2 +1,3 @@
-
+tratar erro de cadastro(ele vai para tela de login mesmo se o cadastro n for inserido);
+cadastro dá erro caso não tenha foto;
 começar login e sessão;

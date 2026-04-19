@@ -22,9 +22,13 @@ function selecionarCurvatura(curvatura) {
         item.classList.remove("selecionado");
     });
     selecionado.classList.add("selecionado");
-    CurvaturaUser.value = curvatura;
+    curvatura_input.value = curvatura;
 }
-
+function mostrarPreview(){
+    if(inserirImagem.value !=''){
+        previewImg.src = URL.createObjectURL(inserirImagem.files[0])
+    }
+}
 
 var listaDivInvalidas = []
 
@@ -45,24 +49,30 @@ function validar(campo) {
     email_input.parentElement.classList.remove('inputInvalido')
     dataNasc_input.parentElement.classList.remove('inputInvalido')
     senha_input.parentElement.classList.remove('inputInvalido')
-    function exibirInvalido(div, mensagem) {
-        listaDivInvalidas.push(div)
-        div.innerHTML = `${mensagem}`;
-    }
+    
     if (nome.length < 3 && (campo == "nome" || campo == "botao")) {
         exibirInvalido(invalidoNome, "Nome muito pequeno");
         nome_input.parentElement.classList.add('inputInvalido')
         tudoCerto = false
     }
-    if (arroba.length < 3 && (campo == "arroba" || campo == "botao")) {
-        exibirInvalido(invalidoArroba, "O nome de usuario muito pequeno");
-        arroba_input.parentElement.classList.add('inputInvalido')
-        tudoCerto = false
+    if(campo == "arroba" || campo == "botao"){
+        if (arroba.length < 3) {
+            exibirInvalido(invalidoArroba, "O nome de usuario muito pequeno");
+            arroba_input.parentElement.classList.add('inputInvalido')
+            tudoCerto = false
+        }else{
+            verificarUnique('arroba', arroba);
+        }
     }
-    if ((!email.includes("@") || !email.includes(".")) && (campo == "email" || campo == "botao")) {
-        exibirInvalido(invalidoEmail, "Insira um email valido");
-        email_input.parentElement.classList.add('inputInvalido')
-        tudoCerto = false
+    if(campo == "email" || campo == "botao"){
+        if ((!email.includes("@") || !email.includes("."))) {
+            exibirInvalido(invalidoEmail, "Insira um email valido");
+            email_input.parentElement.classList.add('inputInvalido')
+            tudoCerto = false
+        }else{
+            verificarUnique("email", email);
+        }
+
     }
     if (dataNasc == "" && (campo == "data" || campo == "botao")) {
         exibirInvalido(invalidoData, "Insira uma data de nascimento");
@@ -103,7 +113,41 @@ function validar(campo) {
         dataNasc_input.parentElement.classList.add('inputInvalido')
         tudoCerto = false
     }
+    
     if(tudoCerto && campo =="botao" && curvatura_input.value != ''){
-        cadastrar(nome,arroba,email,dataNasc,senha,curvatura_input.value,inserirImagem.files[0])
+     cadastrar(nome,arroba,email,dataNasc,senha,curvatura_input.value,inserirImagem.files[0])
     }
+}
+
+function exibirInvalido(div, mensagem) {
+        listaDivInvalidas.push(div)
+        div.innerHTML = `${mensagem}`;
+    }
+async function verificarUnique(tipo, valor) {
+  fetch("/usuarios/verificarCadastro", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      tipo,
+      valor,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (!data.unico) {
+          tudoCerto = false;
+        if (tipo == "arroba") {
+          exibirInvalido(invalidoArroba, "Esse nome de usuario já está em uso");
+          arroba_input.parentElement.classList.add("inputInvalido");
+        }else{
+             exibirInvalido(invalidoEmail, "Já existe uma conta com esse email");
+            email_input.parentElement.classList.add('inputInvalido')
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
