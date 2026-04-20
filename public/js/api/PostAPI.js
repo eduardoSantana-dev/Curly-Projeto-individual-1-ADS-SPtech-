@@ -19,7 +19,6 @@ async function postar() {
         fotoNovoPost.files[0] = ''
         if(window.location == 'http://localhost:3333/'){
             buscarPost(ordemPost.value,filtroPost.value)
-            
         }
     }else{
         alert("Erro ao realizar a postagem")

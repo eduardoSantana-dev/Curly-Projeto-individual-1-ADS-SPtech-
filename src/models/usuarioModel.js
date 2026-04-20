@@ -20,9 +20,19 @@ function buscarDados(id){
     let query = `select * from usuario where idUsuario = ${id};`
     return database.executar(query)
 }
+function seguirUsuario(idUser,idSeguido){
+    let query = `insert into seguir_usuario(idUsuarioSeguido,idUsuarioSeguidor) values(${idSeguido},${idUser});`
+    return database.executar(query)
+}
+function deixaDeSeguir(idUser,idSeguido){
+    let query = `delete from seguir_usuario where idUsuarioSeguido =  ${idSeguido} and idUsuarioSeguidor = ${idUser};`
+    return database.executar(query)
+}
 module.exports = {
     cadastrar,
     verificarUnique,
     login,
     buscarDados,
+    seguirUsuario,
+    deixaDeSeguir,
 }

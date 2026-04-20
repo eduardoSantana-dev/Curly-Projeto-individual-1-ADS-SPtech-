@@ -16,5 +16,10 @@ router.post("/logar", function (req, res) {
 router.get("/userDados/:idUser",function(req,res){
    usuarioController.buscarDados(req,res)
 })
-
+router.post("/seguirPerfil", function (req, res) {
+    usuarioController.seguirUsuario(req,res);
+});
+router.post("/deixarDeSeguir", function (req, res) {
+    usuarioController.deixarDeSeguir(req,res);
+});
 module.exports = router;

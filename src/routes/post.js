@@ -9,5 +9,7 @@ router.post("/postar", upload.single('imgPost'), (req, res) => {
 router.get("/buscarPosts/:filtro1/:filtro2/:idEspectador", function (req, res) {
      postController.buscarPost(req,res);
 });
-
+router.post("/curtir", function(req, res){
+     postController.curtir(req,res);
+});
 module.exports = router;

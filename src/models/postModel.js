@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function novoPost(idUser, desc, img) {
-  let query = `insert post (descricao,img,idUsuario) VALUES( "${desc}",'${img}',${idUser});`;
+  let query = `insert post (descricao,img,idUsuario) VALUES( '${desc}','${img}',${idUser});`;
   return database.executar(query);
 }
 
@@ -26,7 +26,21 @@ function buscarPost(filtro1,filtro2,idEspectador) {
   return database.executar(query);
 
 }
+
+async function curtir(idUser,idPost){
+  let where = `where idPost = ${idPost} and idUsuario = ${idUser}`
+  let jaSegue = await database.executar(`select count(idCurtida) as res from curtida ${where};`)
+  let query
+  if(jaSegue[0].res == 0){
+    query = `insert curtida (idUsuario,idPost) VALUES('${idUser}',${idPost});`;
+  }else{
+    console.log(jaSegue.res)
+    query = `delete from curtida ${where};`;
+  }
+  return database.executar(query);
+}
 module.exports = {
   novoPost,
   buscarPost,
+  curtir,
 };

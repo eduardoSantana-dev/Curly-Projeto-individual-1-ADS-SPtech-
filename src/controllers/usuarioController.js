@@ -73,10 +73,31 @@ async function buscarDados(req, res) {
       res.status(404).send(false)
     }
 }
-
+async function seguirUsuario(req,res) {
+  console.log(req.body)
+  try{
+    const resposta = await usuarioModel.seguirUsuario(req.body.idUser,req.body.idPerfil)
+    res.status(289).send(true);
+  }catch(resposta){
+      console.log(resposta)
+      res.status(404).send(false)
+  }
+}
+async function deixarDeSeguir(req,res) {
+  console.log(req.body)
+  try{
+    const resposta = await usuarioModel.deixaDeSeguir(req.body.idUser,req.body.idPerfil)
+    res.status(289).send(true);
+  }catch(resposta){
+      console.log(resposta)
+      res.status(404).send(false)
+  }
+}
 module.exports = {
   cadastrar,
   login,
   verificarCadastro,
   buscarDados,
+  seguirUsuario,
+  deixarDeSeguir
 };

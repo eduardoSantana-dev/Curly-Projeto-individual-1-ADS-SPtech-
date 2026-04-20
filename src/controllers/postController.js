@@ -2,7 +2,7 @@ var postModel = require("../models/postModel");
 
 async function postar(req,res) {
     let post = req.body;
-    let imgNome = 't'
+    let imgNome = ''
     
      if(req.file){
          imgNome = req.file.filename
@@ -25,7 +25,18 @@ async function buscarPost(req,res) {
         res.status(405).send(posts)
     }
 }
+async function curtir(req,res) {
+    let dados = req.body;
+     try{
+         const resultado = await postModel.curtir(dados.idUser,dados.idPost)
+         res.status(202).send(true)
+     }catch(err){
+         console.log(err)
+         res.status(404).send(false)
+     }
+}
 module.exports = {
     postar,
-    buscarPost
+    buscarPost,
+    curtir,
 }

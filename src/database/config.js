@@ -24,7 +24,9 @@ function executar(instrucao) {
             if (erro) {
                 reject(erro);
             }
-            console.log(resultados);
+           if(resultados.length<20){
+             console.log(resultados);
+           }
             resolve(resultados);
         });
         conexao.on('error', function (erro) {
