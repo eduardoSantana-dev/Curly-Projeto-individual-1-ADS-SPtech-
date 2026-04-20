@@ -29,7 +29,12 @@ async function curtir(req,res) {
     let dados = req.body;
      try{
          const resultado = await postModel.curtir(dados.idUser,dados.idPost)
-         res.status(202).send(true)
+         console.log(resultado)
+         res.status(202).json({
+            sucesso: true,
+            mensagem: resultado
+     })
+        
      }catch(err){
          console.log(err)
          res.status(404).send(false)

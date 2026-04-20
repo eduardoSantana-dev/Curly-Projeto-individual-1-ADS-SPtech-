@@ -1,0 +1,7 @@
+proximos passos(
+ligar o modal de mostrat post com o banco
+)
+
+prototipar:
+sobre mim,
+configurações

@@ -188,6 +188,10 @@
                     font-weight: 500;
                     cursor: pointer;
                 }
+                .seguindo{
+                    background-color: var(--texto2);
+                    opacity:0.4
+                }
             }
 
             .usuarioUserPost {
@@ -239,6 +243,10 @@
                 background-color: var(--roxo);
                 color: #fff;
             }
+        }
+        .buttonCurtircurtido{
+             background-color: var(--roxo);
+                color: #fff;
         }
     }
 

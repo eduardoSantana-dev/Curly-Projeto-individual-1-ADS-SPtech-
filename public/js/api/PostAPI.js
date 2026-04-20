@@ -17,7 +17,7 @@ async function postar() {
     if(postagem){
         desc_novoPost_input.value = ''
         fotoNovoPost.files[0] = ''
-        if(window.location == 'http://localhost:3333/'){
+        if(window.location == 'http://localhost:3333/' || window.location == 'http://localhost:3333/index.html'){
             buscarPost(ordemPost.value,filtroPost.value)
         }
     }else{
@@ -43,5 +43,32 @@ async function buscarPost(ordem,filtro){
         console.error(err)
         
     }
+}
+
+async function curtir(idPost,curtidas) {
+  try {
+    const curtida = await fetch("/posts/curtir", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idUser: localUser.id,
+        idPost,
+      }),
+    });
+    const resposta = await curtida.json()
+    
+    const idButton = document.getElementById(`buttonCurtir${idPost}`)
+    if(resposta.mensagem == 'curtido'){
+        idButton.innerHTML = `<i class="fa-solid fa-thumbs-up"></i> <span>${curtidas+1}</span>`
+         idButton.classList.add('buttonCurtircurtido')
+   }else if(resposta.mensagem == 'descurtido'){
+        idButton.innerHTML = `<i class="fa-regular fa-thumbs-up"></i> <span>${curtidas}</span>`
+         idButton.classList.remove('buttonCurtircurtido')
+   }
+  } catch (err) {
+    console.log(err);
+  }
 }
 

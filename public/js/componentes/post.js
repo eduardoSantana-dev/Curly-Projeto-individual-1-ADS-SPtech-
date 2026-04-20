@@ -5,22 +5,25 @@ function listarPost(posts, div) {
     let temIMG = false;
     let tempo = post.minutos;
     if (tempo >= 60) {
-      tempo = parseInt(tempo / 60) + 'h';
-      if (tempo >= 24 && tempo <48) {
-        tempo = parseInt(tempo / 24) + 'dia';
-      }else if(tempo>=48){
-        tempo = parseInt(tempo / 24) + 'dias';
+      tempo = parseInt(tempo / 60) + "h";
+      if (tempo >= 24 && tempo < 48) {
+        tempo = parseInt(tempo / 24) + "dia";
+      } else if (tempo >= 48) {
+        tempo = parseInt(tempo / 24) + "dias";
       }
-    }else{
-        tempo += 'min'
+    } else {
+      tempo += "min";
     }
-    if (post.img != "") {
+    if (post.img_post != "") {
       temIMG = true;
       imgPost = ` <img  class="imgPost" src="assets/imgPosts/${post.img_post}" alt="" onclick="abrirPost(true)">`;
     }
-    let bseguir = `<button class="botao button_seguir" onclick="seguir()">Seguir</button>`
-    if (post.seguindo == 1){
-        bseguir = `<button class="botao button_seguir" onclick="deixaDeSeguir()" style="background-color: var(--texto2);opacity:0.4">Seguindo</button> `
+    let bseguir = "";
+    if (post.idUsuario != localUser.id) {
+       bseguir = `<button class="botao button_seguir idButtonSeguir${post.idUsuario}" onclick="seguir(${post.idUsuario})">Seguir</button>`;
+      if (post.seguindo == 1) {
+        bseguir = `<button class="botao button_seguir seguindo idButtonSeguir${post.idUsuario}" onclick="deixarDeSeguir(${post.idUsuario})" >Seguindo</button> `;
+      }
     }
     div.innerHTML += `
         <div class="post box">
@@ -50,16 +53,15 @@ function listarPost(posts, div) {
                        ${imgPost}
                     </div>
                     <div class="statusPost">
-                        <button><i class="fa-regular fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
+                        <button onclick="curtir(${post.idPost},${post.curtidas})" id="buttonCurtir${post.idPost}"><i class="fa-regular fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
                         <button  onclick="abrirPost(${temIMG})"><i class="fa-regular fa-comment"></i>${post.comentarios}</button>
                     </div>
 
                 </div>
         `;
   });
-
 }
-  document.querySelector("body").innerHTML += `
+document.querySelector("body").innerHTML += `
      <div class="modalPostComfoto semFoto " id="modalPostComfoto">
         <i class="fa-solid fa-x" onclick="fecharModalPost()"></i>
         <div class="containerModalImg"  onclick="fecharModalPost()">
