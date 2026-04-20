@@ -49,13 +49,35 @@ async function login(req, res) {
     
      res.status(201).json({
         id: usuario[0].id,
+        nome: usuario[0].nome,
+        arroba: usuario[0].arroba,
+        email: usuario[0].email,
+        img: usuario[0].img,
+        curvatura: usuario[0].curvatura,
      });
   } catch (err) {
     res.status(404).send(false);
   }
 }
+async function buscarDados(req, res) {
+    const id = req.params.idUser
+    try{
+      let usuario = await usuarioModel.buscarDados(id);
+      res.status(221).json({
+        nome: usuario[0].nome,
+        arroba: usuario[0].arroba,
+        email: usuario[0].email,
+        img: usuario[0].img,
+        curvatura: usuario[0].curvatura,
+      })
+    }catch(err){
+      res.status(404).send(false)
+    }
+}
+
 module.exports = {
   cadastrar,
   login,
   verificarCadastro,
+  buscarDados,
 };

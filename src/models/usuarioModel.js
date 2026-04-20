@@ -13,11 +13,16 @@ function verificarUnique(valor,tipo){
 }
 function login(email,senha){
     
-    let query = `select idUsuario as id from usuario where email = '${email}' and senha ='${senha}';`
+    let query = `select idUsuario as id,nome,arroba,img,curvatura from usuario where email = '${email}' and senha ='${senha}';`
+    return database.executar(query)
+}
+function buscarDados(id){
+    let query = `select * from usuario where idUsuario = ${id};`
     return database.executar(query)
 }
 module.exports = {
     cadastrar,
     verificarUnique,
     login,
+    buscarDados,
 }

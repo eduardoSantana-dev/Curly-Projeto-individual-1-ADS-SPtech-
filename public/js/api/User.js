@@ -43,7 +43,11 @@ async function login(){
   })
   let dados = await usuario.json()
   if(dados){
-    localStorage.IDUSER = dados.id
+    localStorage.USER_ID = dados.id
+    localStorage.USER_NOME = dados.nome
+    localStorage.USER_ARROBA = dados.arroba
+    localStorage.USER_IMG = dados.img
+    localStorage.USER_CURVATURA = dados.curvatura
     window.location = 'index.html'
   }else{
     erroLogin.style = "display:flex"

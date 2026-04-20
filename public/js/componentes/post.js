@@ -112,7 +112,7 @@ if (novoPostCardContainer) {
        <div id="novoPostCard" class="box">
                     <div class="topoNovoPost">
                         <div class="imgUserNovoPost">
-                            <img src="https://i.pinimg.com/736x/f9/46/92/f94692772d5300dd8964e048b02adcaa.jpg" alt=""
+                            <img src="assets/userPerfil/${localUser.img}" alt=""
                                 id="imgNovoPost">
                         </div>
                         <input type="text" placeholder="Como estão seus cachos hoje?">
@@ -152,6 +152,8 @@ function abrirPost(img) {
    ImgcontainerModal.style = "display:none";
     modalPostComfoto.classList.add("ModalPostAtivo");
     modalPostComfoto.classList.add("semFoto");
+    document.querySelector("body").style = "overflow: hidden;";
+
   }
 }
 function fecharModalPost() {

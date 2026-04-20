@@ -10,12 +10,11 @@ body {
 .imgContainer {
     width: 57%;
     height: 100vh;
-   
     display: flex;
     margin: 0px;
     padding: 0px;
     justify-content: center;
-
+   
     .logo {
         position: absolute;
         top: 0px;

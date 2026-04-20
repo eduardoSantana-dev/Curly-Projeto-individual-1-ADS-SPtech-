@@ -3,12 +3,12 @@
             <div class="containerNavLateral">
                 <div class="perfil">
                     <div class="imgUserNavDiv">
-                        <img src="https://i.pinimg.com/736x/f9/46/92/f94692772d5300dd8964e048b02adcaa.jpg" alt=""
+                        <img src="assets/userPerfil/${localUser.img}" alt=""
                             id="imgUserNav">
                     </div>
                     <div class="nomeArroba">
-                        <span id="nomeUserNav">Neymar Junior</span>
-                        <span id="usuarioUserNav">@nemidia</span>
+                        <span id="nomeUserNav">${localUser.nome}</span>
+                        <span id="usuarioUserNav">@${localUser.arroba}</span>
                     </div>
                 </div>
                 <div class="acessosNav">
