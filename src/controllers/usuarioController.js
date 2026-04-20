@@ -5,7 +5,6 @@ function cadastrar(req, res) {
   let user = req.body;
   let imgNome = "default";
   if (req.file) {
-    console.error("aaaaaaaa");
     imgNome = req.file.filename;
   }
   try {
