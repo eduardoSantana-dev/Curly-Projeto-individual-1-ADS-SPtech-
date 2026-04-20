@@ -1,10 +1,26 @@
 function listarPost(posts, div) {
+  div.innerHTML = "";
   posts.forEach((post) => {
     let imgPost = ``;
     let temIMG = false;
+    let tempo = post.minutos;
+    if (tempo >= 60) {
+      tempo = parseInt(tempo / 60) + 'h';
+      if (tempo >= 24 && tempo <48) {
+        tempo = parseInt(tempo / 24) + 'dia';
+      }else if(tempo>=48){
+        tempo = parseInt(tempo / 24) + 'dias';
+      }
+    }else{
+        tempo += 'min'
+    }
     if (post.img != "") {
       temIMG = true;
-      imgPost = ` <img  class="imgPost" src="${post.img}" alt="" onclick="abrirPost(true)">`;
+      imgPost = ` <img  class="imgPost" src="assets/imgPosts/${post.img_post}" alt="" onclick="abrirPost(true)">`;
+    }
+    let bseguir = `<button class="botao button_seguir" onclick="seguir()">Seguir</button>`
+    if (post.seguindo == 1){
+        bseguir = `<button class="botao button_seguir" onclick="deixaDeSeguir()" style="background-color: var(--texto2);opacity:0.4">Seguindo</button> `
     }
     div.innerHTML += `
         <div class="post box">
@@ -13,15 +29,15 @@ function listarPost(posts, div) {
                     </div>
                     <div class="perfilPost">
                         <div class="imgUserPostDiv">
-                            <img src="${post.usuario_img}" alt=""
+                            <img src="assets/userPerfil/${post.img}" alt=""
                                />
                         </div>
                         <div class="nomeArroba">
                             <div class="infoPostUser">
-                                <span class="nomeUserPost">${post.usuario_nome}</span>
+                                <span class="nomeUserPost">${post.nome}</span>
                                 <span class="curvatura c${post.curvatura[0]}">${post.curvatura}</span>
-                                <span class="tempoPost">${post.tempo}</span>
-                                <button class="botao button_seguir " style="background-color: var(--texto2);opacity:0.4">Seguindo</button>
+                                <span class="tempoPost">${tempo}</span>
+                                ${bseguir}
                             </div>
                             <span class="usuarioUserPost">@${post.arroba}</span>
                         </div>
@@ -41,6 +57,8 @@ function listarPost(posts, div) {
                 </div>
         `;
   });
+
+}
   document.querySelector("body").innerHTML += `
      <div class="modalPostComfoto semFoto " id="modalPostComfoto">
         <i class="fa-solid fa-x" onclick="fecharModalPost()"></i>
@@ -54,7 +72,7 @@ function listarPost(posts, div) {
                 </div>
                 <div class="perfilPostModal">
                     <div class="imgUserPostDiv">
-                        <img src="./assets/img/semImg.png" alt="" />
+                        <img src="assets/img/semImg.png" alt="" />
                     </div>
                     <div class="nomeArroba">
                         <div class="infoPostUser">
@@ -81,7 +99,7 @@ function listarPost(posts, div) {
                 <p>Comentarios</p>
                 <div class="novoComentario">
                     <div>
-                        <img src="./assets/img/semImg.png" alt="" />
+                        <img src="assets/img/semImg.png" alt="" />
                     </div>
                     <textarea name="" placeholder="Deixe um comentario" rows="2" id="textarea_comentario"
                         oninput="verificarLinhas()"></textarea>
@@ -90,7 +108,7 @@ function listarPost(posts, div) {
                     <div class="comentario">
                         <div class="perfil">
                             <div class="imgUserPerfilDiv">
-                                <img src="./assets/userPerfil/edu.jpeg" alt="" id="imgUserPerfil">
+                                <img src="assets/userPerfil/semImg.png" alt="" id="imgUserPerfil">
                             </div>
                             <div class="nomeArroba">
                                 <span id="nomeUserPerfil">Eduardo Santana <span class="usuarioTempo">20 min</span></span>
@@ -105,7 +123,6 @@ function listarPost(posts, div) {
         </div>
     </div>
     `;
-}
 
 if (novoPostCardContainer) {
   novoPostCardContainer.innerHTML = `
@@ -115,20 +132,21 @@ if (novoPostCardContainer) {
                             <img src="assets/userPerfil/${localUser.img}" alt=""
                                 id="imgNovoPost">
                         </div>
-                        <input type="text" placeholder="Como estão seus cachos hoje?">
+                        <input type="text" id="desc_novoPost_input" placeholder="Como estão seus cachos hoje?">
                     </div>
+                
                     <div class="complementosNovoPost">
                         <div class="complementos">
                             <label for="fotoNovoPost"><i class="fa-regular fa-image"></i> Foto</label>
-                            <input type="file" id="fotoNovoPost">
-                            <button class="ButtonProdutoNovoPost"><i class="fa-solid fa-pump-soap"></i> Produto</button>
+                            <input type="file" id="fotoNovoPost" accept="image/*">
+                            <button class="ButtonProdutoNovoPost"><i class="fa-solid fa-pump-soap"></i>Produto</button>
                             <select name="" id="">
                                 <option value="">Comum</option>
                                 <option value="">Dica</option>
                                 <option value="">Pergunta</option>
                             </select>
                         </div>
-                        <button class="botao">Postar</button>
+                        <button class="botao" type="button"  onclick = "postar()">Postar</button>
                     </div>
                 </div>
     `;
@@ -143,17 +161,16 @@ function verificarLinhas() {
 }
 function abrirPost(img) {
   if (img) {
-   ImgcontainerModal.style = "display:block";
+    ImgcontainerModal.style = "display:block";
 
     modalPostComfoto.classList.add("ModalPostAtivo");
     modalPostComfoto.classList.remove("semFoto");
     document.querySelector("body").style = "overflow: hidden;";
   } else {
-   ImgcontainerModal.style = "display:none";
+    ImgcontainerModal.style = "display:none";
     modalPostComfoto.classList.add("ModalPostAtivo");
     modalPostComfoto.classList.add("semFoto");
     document.querySelector("body").style = "overflow: hidden;";
-
   }
 }
 function fecharModalPost() {

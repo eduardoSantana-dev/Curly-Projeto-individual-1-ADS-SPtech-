@@ -56,3 +56,8 @@ async function login(){
     console.log(err)
   }
 }
+
+
+async function  seguir() {
+  
+}
