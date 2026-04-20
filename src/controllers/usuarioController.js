@@ -1,37 +1,61 @@
+
 var usuarioModel = require("../models/usuarioModel");
 
 function cadastrar(req, res) {
   let user = req.body;
-  
-  usuarioModel.cadastrar(
-    user.nome,
-    user.arroba,
-    user.email,
-    user.senha,
-    user.data,
-    user.curvatura,
-    req.file.filename,
-  );
+  let imgNome = "default";
+  if (req.file) {
+    console.error("aaaaaaaa");
+    imgNome = req.file.filename;
+  }
+  try {
+    usuarioModel.cadastrar(
+      user.nome,
+      user.arroba,
+      user.email,
+      user.senha,
+      user.data,
+      user.curvatura,
+      imgNome,
+    );
+    res.status(201).send("Cadastro realizado com sucesso!");
+  } catch (err) {
+    res.status(404).send(err);
+    console.error(err);
+  }
 }
 async function verificarCadastro(req, res) {
-    console.log(req.body)
-    try{
-        let resultado = await usuarioModel.verificarUnique(req.body.valor,req.body.tipo)
-        let unico = false
-        if(resultado[0].count ==0){
-             unico= true
-        }
-        res.json({
-                unico
-            });
-            
-    }catch(error){
-          res.status(400).send(error);
+  try {
+    let resultado = await usuarioModel.verificarUnique(
+      req.body.valor,
+      req.body.tipo,
+    );
+    let unico = false;
+    if (resultado[0].count == 0) {
+      unico = true;
     }
+    res.json({
+      unico,
+    });
+  } catch (error) {
+    res.status(400).send(error);
+  }
+}
+
+async function login(req, res) {
+  const user = req.body;
+  try {
+    let usuario = await usuarioModel.login(user.email, user.senha);
     
-  
+     res.status(201).json({
+        id: usuario[0].id,
+     });
+  } catch (err) {
+    res.status(404).send(false);
+  }
 }
 module.exports = {
   cadastrar,
+  login,
   verificarCadastro,
 };

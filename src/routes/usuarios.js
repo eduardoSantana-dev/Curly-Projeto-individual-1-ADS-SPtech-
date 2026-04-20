@@ -10,5 +10,8 @@ router.post("/cadastrar", upload.single('foto'), (req, res) => {
 router.post("/verificarCadastro", function (req, res) {
     usuarioController.verificarCadastro(req,res);
 });
+router.post("/logar", function (req, res) {
+    usuarioController.login(req,res);
+});
 
 module.exports = router;

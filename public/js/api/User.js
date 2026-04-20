@@ -1,4 +1,4 @@
-function cadastrar(nome, arroba, email, data, senha, curvatura, foto) {
+async function cadastrar(nome, arroba, email, data, senha, curvatura, foto) {
   const formData = new FormData();
   formData.append("nome", nome);
   formData.append("arroba", arroba);
@@ -6,19 +6,49 @@ function cadastrar(nome, arroba, email, data, senha, curvatura, foto) {
   formData.append("data", data);
   formData.append("senha", senha);
   formData.append("curvatura", curvatura);
-  formData.append("foto", foto);
-  fetch("/usuarios/cadastrar", {
-    method: "POST",
-    body: formData,
-  })
-    .then((res) => {
-      console.log("Cadastro realizado com sucesso!");
-      window.location = "login.html"
+   if(foto != undefined){
+    formData.append("foto", foto);
+  }
+  
+  try{
+    const res = await fetch("/usuarios/cadastrar", {
+      method: "POST",
+      body: formData,
     })
-    .catch((err) => {
-      console.log(err);
-      alert(err);
-    });
+   if(res.status == 201){
+      window.location = "login.html"
+   }else{
+    alert('Erro ao realizar cadastro')
+   
+   }
+  }catch(err){
+    console.log(err)
+    alert('Falha ao conectar')
+  }
 }
 
 
+async function login(){
+
+  try{
+    const usuario = await fetch("/usuarios/logar",{
+    method: "POST",
+     headers: {
+    "Content-Type": "application/json"
+  },
+    body: JSON.stringify({
+      email:email_input.value,
+      senha:senha_input.value
+    })
+  })
+  let dados = await usuario.json()
+  if(dados){
+    localStorage.IDUSER = dados.id
+    window.location = 'index.html'
+  }else{
+    erroLogin.style = "display:flex"
+  }
+  }catch(err){
+    console.log(err)
+  }
+}

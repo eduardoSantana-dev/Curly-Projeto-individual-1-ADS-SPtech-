@@ -22,34 +22,38 @@
     </div>
     <form action="" class="">
         <img class="logo" src="./assets/icon/nome.svg" alt="">
+        <p id="erroLogin"> Usuario ou email invalidos tente novamente!</p>
         <div class="inputs">
             <div class="inputContainer">
                 <label for="emailUser">E-mail</label>
                 <div class="inputBox">
-                    <input type="email" id="emailUser" placeholder="Insira seu email">
+                    <input type="email" id="email_input" placeholder="Insira seu email">
                     <i class="fa-regular fa-user"></i>
                 </div>
+                
             </div>
              <div class="inputContainer">
                 <label for="inputSenha">Senha</label>
                 <div class="inputBox">
-                    <input type="password" placeholder="Insira sua senha" id="inputSenha">
+                    <input type="password" placeholder="Insira sua senha" id="senha_input">
                     <div id="olho"><i class="fa-regular fa-eye-slash" onclick="verSenha()" ></i></div>
                 </div>
+                
             </div>
         </div>
-        <button class="botao">Entrar</button>
+        <button class="botao" type="button" onclick="login()">Entrar</button>
         <p>Não tem cadastro Ainda? <a href="cadastro.html">cadastre-se</a></p>
     </form>
    </div>
 </body>
+<script src="./js/api/User.js"></script>
 <script>
     function verSenha(){
-        if(inputSenha.type == "text"){
-            inputSenha.type = "password"
+        if(senha_input.type == "text"){
+            senha_input.type = "password"
             olho.innerHTML = `<i class="fa-regular fa-eye-slash" onclick="verSenha()" ></i>`
         }else{
-            inputSenha.type = "text"
+            senha_input.type = "text"
             olho.innerHTML = `<i class="fa-regular fa-eye" onclick="verSenha()" ></i>`
         }
     }

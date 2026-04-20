@@ -10,7 +10,7 @@ body {
 .imgContainer {
     width: 57%;
     height: 100vh;
-    background-color: aqua;
+   
     display: flex;
     margin: 0px;
     padding: 0px;
@@ -47,7 +47,6 @@ form {
 
     .inserirImagemContainer {
         cursor: pointer;
-        background-color: aqua;
         width: 210px;
         height: 210px;
         border-radius: 50%;
