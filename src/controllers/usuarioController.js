@@ -93,11 +93,13 @@ async function deixarDeSeguir(req,res) {
       res.status(404).send(false)
   }
 }
+
 module.exports = {
   cadastrar,
   login,
   verificarCadastro,
   buscarDados,
   seguirUsuario,
-  deixarDeSeguir
+  deixarDeSeguir,
+
 };

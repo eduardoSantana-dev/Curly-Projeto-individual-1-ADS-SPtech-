@@ -22,4 +22,5 @@ router.post("/seguirPerfil", function (req, res) {
 router.post("/deixarDeSeguir", function (req, res) {
     usuarioController.deixarDeSeguir(req,res);
 });
+
 module.exports = router;

@@ -44,7 +44,8 @@
         }
 
     }
-    #imgNovoPost{
+
+    #imgNovoPost {
         max-width: 90%;
         border-radius: 10px;
         height: 500px;
@@ -52,6 +53,7 @@
         margin-top: 2%;
         display: none;
     }
+
     .complementosNovoPost {
         padding-top: 1rem;
         margin-top: 1.5%;
@@ -87,7 +89,7 @@
 
             input {
                 display: none;
-                
+
             }
 
             button {
@@ -183,6 +185,14 @@
                 .nomeUserPost {
                     font-weight: bold;
                     font-size: 1.2rem;
+                    text-decoration: none;
+                    text-transform: none;
+                    color: var(--texto1);
+
+                    &:active {
+                        color: var(--texto1);
+
+                    }
                 }
 
                 .tempoPost {
@@ -196,15 +206,24 @@
                     font-weight: 500;
                     cursor: pointer;
                 }
-                .seguindo{
+
+                .seguindo {
                     background-color: var(--texto2);
-                    opacity:0.4
+                    opacity: 0.4
                 }
             }
 
             .usuarioUserPost {
                 font-size: 1rem;
                 color: var(--texto2);
+                text-decoration: none;
+                text-transform: none;
+
+
+                &:active {
+                    color: var(--texto2);
+
+                }
             }
         }
     }
@@ -225,7 +244,7 @@
             border-radius: 10px;
             box-shadow: var(--sombra);
             cursor: pointer;
-        margin-left: 1%;
+            margin-left: 1%;
 
         }
     }
@@ -255,9 +274,10 @@
                 color: #fff;
             }
         }
-        .buttonCurtircurtido{
-             background-color: var(--roxo);
-                color: #fff;
+
+        .buttonCurtircurtido {
+            background-color: var(--roxo);
+            color: #fff;
         }
     }
 
@@ -309,8 +329,8 @@
         background-color: var(--box);
         margin: 0px;
         padding: 20px 15px;
-        
-        
+
+
         .InfopostModal {
 
             .perfilPostModal {
@@ -347,6 +367,14 @@
                         .nomeUserPost {
                             font-weight: bold;
                             font-size: 1.rem;
+                            text-decoration: none;
+                            text-transform: none;
+                            color: var(--texto1);
+
+                            &:active {
+                                color: var(--texto1);
+
+                            }
                         }
 
                         .tempoPost {
@@ -360,15 +388,24 @@
                             font-weight: 500;
                             cursor: pointer;
                         }
-                         .seguindo{
-                    background-color: var(--texto2);
-                    opacity:0.4
-                }
+
+                        .seguindo {
+                            background-color: var(--texto2);
+                            opacity: 0.4
+                        }
                     }
 
                     .usuarioUserPost {
                         font-size: 0.8rem;
                         color: var(--texto2);
+                        text-decoration: none;
+                        text-transform: none;
+
+
+                        &:active {
+                            color: var(--texto2);
+
+                        }
                     }
                 }
             }
@@ -415,10 +452,11 @@
                         color: #fff;
                     }
                 }
-                 .buttonCurtircurtido{
-             background-color: var(--roxo);
-                color: #fff;
-        }
+
+                .buttonCurtircurtido {
+                    background-color: var(--roxo);
+                    color: #fff;
+                }
             }
         }
 
@@ -556,7 +594,7 @@
     }
 
     to {
-     transform: translateX(0px);
+        transform: translateX(0px);
     }
 }
 

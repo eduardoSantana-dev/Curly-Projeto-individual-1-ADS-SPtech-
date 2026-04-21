@@ -31,6 +31,13 @@ async function postar() {
 async function buscarPost(ordem, filtro) {
   var postSelect = [{}];
   console.log(ordem);
+   if (filtroDePosts) {
+      ordemPost.value = ordem;
+      filtroPost.value = filtro;
+    }
+  if(filtro == 'curvatura'){
+    filtro += localUser.curvatura
+  }
   try {
     postSelect = await fetch(
       `/posts/buscarPosts/${ordem}/${filtro}/${localUser.id}`,
@@ -38,10 +45,7 @@ async function buscarPost(ordem, filtro) {
     postsLista = await postSelect.json();
     console.log(postsLista);
     listarPost(postsLista, feedPost);
-    if (filtroDePosts) {
-      ordemPost.value = ordem;
-      filtroPost.value = filtro;
-    }
+   
   } catch (err) {
     console.error(err);
   }

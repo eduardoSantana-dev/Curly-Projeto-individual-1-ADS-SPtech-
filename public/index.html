@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
     <script src="./js/scripts/sessao.js"></script>
-
+    <link rel="shortcut icon" href="assets/icon/Simbo.svg" type="image/x-icon">
 </head>
 
 
@@ -30,13 +30,14 @@
                     </select>
                     <select name=""  id="filtroPost" class="box" onchange="buscarPost(ordemPost.value,filtroPost.value)">
                         <option value="0">Qualquer</option>
-                        <option value=`curvatura${localUser.id}`>Mesma curvatura</option>
+                        <option value='curvatura'>Mesma curvatura</option>
                         <option value="seguindo">Seguindo</option>
 
                     </select>
                 </div>
                 <div id="feedPost"></div>
             </div>
+           
             <div class="maisPopularesFeed box" id="teste">
                 <p>Mais populares</p>
                 <div class="listaPopulares">

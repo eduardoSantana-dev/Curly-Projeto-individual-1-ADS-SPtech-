@@ -36,18 +36,26 @@ function listarPost(posts, div) {
                         <i></i>
                     </div>
                     <div class="perfilPost">
-                        <div class="imgUserPostDiv">
+                    
+                        <a href="perfil.html?id=${post.idUsuario}" class="imgUserPostDiv">
                             <img src="assets/userPerfil/${post.img}" alt=""
                                />
-                        </div>
+                        </a>
                         <div class="nomeArroba">
                             <div class="infoPostUser">
-                                <span class="nomeUserPost">${post.nome}</span>
+                               <a  href="perfil.html?id=${post.idUsuario}"class="nomeUserPost">
+                                        ${post.nome}
+                                </a>
+                                
                                 <span class="curvatura c${post.curvatura[0]}">${post.curvatura}</span>
                                 <span class="tempoPost">${formatarTempo(post.minutos)}</span>
+                              
                                 ${bseguir}
                             </div>
-                            <span class="usuarioUserPost">@${post.arroba}</span>
+                            
+                            <a href="perfil.html?id=${post.idUsuario}" class="usuarioUserPost">@${post.arroba}</a>
+                              
+
                         </div>
                     </div>
                     <div class="conteudoPost">
@@ -132,17 +140,17 @@ function exibirModalPost(post, comentarios,reload) {
                     <i></i>
                 </div>
                 <div class="perfilPostModal">
-                    <div class="imgUserPostDiv">
+                     <a href="perfil.html?id=${post.idUsuario}" class="imgUserPostDiv">
                         <img src="assets/userPerfil/${post.img}" alt="" />
-                    </div>
+                    </a>
                     <div class="nomeArroba">
                         <div class="infoPostUser">
-                            <span class="nomeUserPost">${post.nome}</span>
+                             <a href="perfil.html?id=${post.idUsuario}" class="nomeUserPost">${post.nome}</a>
                             <span class="curvatura c${post.curvatura[0]}">${post.curvatura}</span>
                             <span class="tempoPost">${formatarTempo(post.minutos)}</span>
                            ${bseguir}
                         </div>
-                        <span class="usuarioUserPost">@edu.san07</span>
+                         <a href="perfil.html?id=${post.idUsuario}" class="usuarioUserPost">@edu.san07</a>
                     </div>
                 </div>
                 <div class="conteudoPost">
