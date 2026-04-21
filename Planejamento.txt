@@ -1,5 +1,5 @@
 proximos passos(
-ligar o modal de mostrat post com o banco
+ligar o modal de mostrar post com o banco
 )
 
 prototipar:

@@ -12,4 +12,8 @@ router.get("/buscarPosts/:filtro1/:filtro2/:idEspectador", function (req, res) {
 router.post("/curtir", function(req, res){
      postController.curtir(req,res);
 });
+router.get("/buscarComentarios/:idPost/:idEspectador", function(req, res){
+     
+     postController.buscarComentarios(req,res);
+});
 module.exports = router;

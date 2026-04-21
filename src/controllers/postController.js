@@ -40,8 +40,27 @@ async function curtir(req,res) {
          res.status(404).send(false)
      }
 }
+async function buscarComentarios(req,res){
+    const idPost = req.params.idPost
+    const idEspectador = req.params.idEspectador
+    try{
+        const comentarios = await postModel.buscarComentarios(idPost)
+        const post = await postModel.buscarPostUnico(idPost,idEspectador)
+        res.status(202).json({
+            sucesso:true,
+            post,
+            comentarios
+        })
+    }
+     catch(res){
+         console.log(res)
+         res.status(404).send(false)
+     }
+    
+}
 module.exports = {
     postar,
     buscarPost,
     curtir,
+    buscarComentarios,
 }
