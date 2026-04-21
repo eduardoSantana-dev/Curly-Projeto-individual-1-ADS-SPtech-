@@ -58,9 +58,24 @@ async function buscarComentarios(req,res){
      }
     
 }
+async function comentar(req,res){
+    const idPost = req.body.idPost
+    const idUser = req.body.idUser
+    const desc = req.body.desc
+    try{
+        const insert = await postModel.novoComentario(idPost,idUser,desc)
+        res.status(202).send(true)
+    }
+     catch(res){
+         console.log(res)
+         res.status(404).send(false)
+     }
+    
+}
 module.exports = {
     postar,
     buscarPost,
     curtir,
     buscarComentarios,
+    comentar,
 }

@@ -298,8 +298,8 @@
         background-color: var(--box);
         margin: 0px;
         padding: 20px 15px;
-        animation: ease-in-out infoPost 400ms;
-
+        
+        
         .InfopostModal {
 
             .perfilPostModal {
@@ -349,6 +349,10 @@
                             font-weight: 500;
                             cursor: pointer;
                         }
+                         .seguindo{
+                    background-color: var(--texto2);
+                    opacity:0.4
+                }
                     }
 
                     .usuarioUserPost {
@@ -400,6 +404,10 @@
                         color: #fff;
                     }
                 }
+                 .buttonCurtircurtido{
+             background-color: var(--roxo);
+                color: #fff;
+        }
             }
         }
 

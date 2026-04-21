@@ -49,7 +49,9 @@ async function curtir(idUser, idPost) {
 async function buscarComentarios(idPost) {
   let query = `select u.img,u.nome, u.arroba, comentario, timestampdiff(minute,dataComentario,now()) as 'minutos'from comentario 
   join post on comentario.idPost = post.idPost join usuario u on u.idUsuario = comentario.idUsuario 
-  where post.idPost = ${idPost};
+  where post.idPost = ${idPost}
+  order by idComentario desc
+  ;
 `;
   return database.executar(query);
 }
@@ -64,10 +66,16 @@ async function buscarPostUnico(idPost,idEspectador) {
   `;
   return database.executar(query);
 }
+
+function novoComentario(idPost,idUser,desc){
+  let query = `insert into comentario (comentario,idPost,idUsuario) value( '${desc}',${idPost},${idUser});`
+  return database.executar(query);
+}
 module.exports = {
   novoPost,
   buscarPost,
   curtir,
   buscarComentarios,
   buscarPostUnico,
+  novoComentario
 };

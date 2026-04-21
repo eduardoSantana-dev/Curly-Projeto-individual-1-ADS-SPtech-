@@ -13,7 +13,9 @@ router.post("/curtir", function(req, res){
      postController.curtir(req,res);
 });
 router.get("/buscarComentarios/:idPost/:idEspectador", function(req, res){
-     
      postController.buscarComentarios(req,res);
+});
+router.post("/comentar", function(req, res){
+     postController.comentar(req,res);
 });
 module.exports = router;

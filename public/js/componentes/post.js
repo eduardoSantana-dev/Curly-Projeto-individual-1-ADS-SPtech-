@@ -1,26 +1,31 @@
+function formatarTempo(minutos) {
+  let tempo = minutos;
+  if (tempo >= 60) {
+    tempo = parseInt(tempo / 60) + "h";
+    if (tempo >= 24 && tempo < 48) {
+      tempo = parseInt(tempo / 24) + "dia";
+    } else if (tempo >= 48) {
+      tempo = parseInt(tempo / 24) + "dias";
+    }
+  } else {
+    tempo += "min";
+  }
+  return tempo;
+}
+
 function listarPost(posts, div) {
   div.innerHTML = "";
   posts.forEach((post) => {
     let imgPost = ``;
     let temIMG = false;
-    let tempo = post.minutos;
-    if (tempo >= 60) {
-      tempo = parseInt(tempo / 60) + "h";
-      if (tempo >= 24 && tempo < 48) {
-        tempo = parseInt(tempo / 24) + "dia";
-      } else if (tempo >= 48) {
-        tempo = parseInt(tempo / 24) + "dias";
-      }
-    } else {
-      tempo += "min";
-    }
+
     if (post.img_post != "") {
       temIMG = true;
-      imgPost = ` <img  class="imgPost" src="assets/imgPosts/${post.img_post}" alt="" onclick="abrirPost(true)">`;
+      imgPost = ` <img onclick="abrirPost(${post.idPost})" class="imgPost" src="assets/imgPosts/${post.img_post}" alt="" onclick="abrirPost(true)">`;
     }
     let bseguir = "";
     if (post.idUsuario != localUser.id) {
-       bseguir = `<button class="botao button_seguir idButtonSeguir${post.idUsuario}" onclick="seguir(${post.idUsuario})">Seguir</button>`;
+      bseguir = `<button class="botao button_seguir idButtonSeguir${post.idUsuario}" onclick="seguir(${post.idUsuario})">Seguir</button>`;
       if (post.seguindo == 1) {
         bseguir = `<button class="botao button_seguir seguindo idButtonSeguir${post.idUsuario}" onclick="deixarDeSeguir(${post.idUsuario})" >Seguindo</button> `;
       }
@@ -39,7 +44,7 @@ function listarPost(posts, div) {
                             <div class="infoPostUser">
                                 <span class="nomeUserPost">${post.nome}</span>
                                 <span class="curvatura c${post.curvatura[0]}">${post.curvatura}</span>
-                                <span class="tempoPost">${tempo}</span>
+                                <span class="tempoPost">${formatarTempo(post.minutos)}</span>
                                 ${bseguir}
                             </div>
                             <span class="usuarioUserPost">@${post.arroba}</span>
@@ -53,78 +58,14 @@ function listarPost(posts, div) {
                        ${imgPost}
                     </div>
                     <div class="statusPost">
-                        <button onclick="curtir(${post.idPost},${post.curtidas})" id="buttonCurtir${post.idPost}"><i class="fa-regular fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
-                        <button  onclick="abrirPost(${temIMG})"><i class="fa-regular fa-comment"></i>${post.comentarios}</button>
+                        <button onclick="curtir(${post.idPost},${post.curtidas})" class="buttonCurtir${post.idPost}"><i class="fa-regular fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
+                        <button  onclick="abrirPost(${post.idPost})"><i class="fa-regular fa-comment"></i>${post.comentarios}</button>
                     </div>
 
                 </div>
         `;
   });
 }
-document.querySelector("body").innerHTML += `
-     <div class="modalPostComfoto semFoto " id="modalPostComfoto">
-        <i class="fa-solid fa-x" onclick="fecharModalPost()"></i>
-        <div class="containerModalImg"  onclick="fecharModalPost()">
-            <img src="https://i.pinimg.com/originals/34/57/95/3457953dc463079331708a11e0d6097b.jpg" id="ImgcontainerModal" alt=""">
-        </div>
-        <div class="PostDetalhesmodal">
-            <div class="InfopostModal" >
-                <div class="OptionsPost">
-                    <i></i>
-                </div>
-                <div class="perfilPostModal">
-                    <div class="imgUserPostDiv">
-                        <img src="assets/img/semImg.png" alt="" />
-                    </div>
-                    <div class="nomeArroba">
-                        <div class="infoPostUser">
-                            <span class="nomeUserPost">Edurdo Santana</span>
-                            <span class="curvatura c3">3C</span>
-                            <span class="tempoPost">20min</span>
-                            <button class="botao button_seguir "
-                                style="background-color: var(--texto2);opacity:0.4">Seguindo</button>
-                        </div>
-                        <span class="usuarioUserPost">@edu.san07</span>
-                    </div>
-                </div>
-                <div class="conteudoPost">
-                    <div class="textoPost">
-                        <p>Vai tomando essa fotona do meu cabelo hoje familia</p>
-                    </div>
-                </div>
-                <div class="statusPost">
-                    <button><i class="fa-regular fa-thumbs-up"></i> <span>50</span></button>
-                    <button><i class="fa-regular fa-comment"></i>40</button>
-                </div>
-            </div>
-            <div class="ComentariosPostModal">
-                <p>Comentarios</p>
-                <div class="novoComentario">
-                    <div>
-                        <img src="assets/img/semImg.png" alt="" />
-                    </div>
-                    <textarea name="" placeholder="Deixe um comentario" rows="2" id="textarea_comentario"
-                        oninput="verificarLinhas()"></textarea>
-                </div>
-                <div class="listaComentarios">
-                    <div class="comentario">
-                        <div class="perfil">
-                            <div class="imgUserPerfilDiv">
-                                <img src="assets/userPerfil/semImg.png" alt="" id="imgUserPerfil">
-                            </div>
-                            <div class="nomeArroba">
-                                <span id="nomeUserPerfil">Eduardo Santana <span class="usuarioTempo">20 min</span></span>
-                                <span id="usuarioUserPerfil">@edu.san07</span>
-                            </div>
-                        </div>
-                        <p class="textoComentario">Vai tomando essa fotona do meu cabelo hoje familia</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    `;
 
 if (novoPostCardContainer) {
   novoPostCardContainer.innerHTML = `
@@ -161,10 +102,88 @@ function verificarLinhas() {
     campo.rows += 1;
   }
 }
-function abrirPost(img) {
+
+
+function exibirModalPost(post, comentarios,reload) {
+  let bseguir = "";
+  let img = post.img_post
+  if (post.idUsuario != localUser.id) {
+    bseguir = `<button class="botao button_seguir idButtonSeguir${post.idUsuario}" onclick="seguir(${post.idUsuario})">Seguir</button>`;
+    if (post.seguindo == 1) {
+      bseguir = `<button class="botao button_seguir seguindo idButtonSeguir${post.idUsuario}" onclick="deixarDeSeguir(${post.idUsuario})" >Seguindo</button> `;
+    }
+  }
+  modalPostComfoto.innerHTML = `
+     <i class="fa-solid fa-x" onclick="fecharModalPost()"></i>
+        <div class="containerModalImg"  onclick="fecharModalPost()">
+            <img src="assets/imgPosts/${post.img_post}" id="ImgcontainerModal" alt=""">
+        </div>
+        <div class="PostDetalhesmodal" id="PostDetalhesmodal">
+            <div class="InfopostModal" >
+                <div class="OptionsPost">
+                    <i></i>
+                </div>
+                <div class="perfilPostModal">
+                    <div class="imgUserPostDiv">
+                        <img src="assets/userPerfil/${post.img}" alt="" />
+                    </div>
+                    <div class="nomeArroba">
+                        <div class="infoPostUser">
+                            <span class="nomeUserPost">${post.nome}</span>
+                            <span class="curvatura c${post.curvatura[0]}">${post.curvatura}</span>
+                            <span class="tempoPost">${formatarTempo(post.minutos)}</span>
+                           ${bseguir}
+                        </div>
+                        <span class="usuarioUserPost">@edu.san07</span>
+                    </div>
+                </div>
+                <div class="conteudoPost">
+                    <div class="textoPost">
+                        <p>${post.desc}</p>
+                    </div>
+                </div>
+                <div class="statusPost">
+                <button onclick="curtir(${post.idPost},${post.curtidas})" class="buttonCurtir${post.idPost}"><i class="fa-regular fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
+                </div>
+            </div>
+            <div class="ComentariosPostModal">
+                <p>Comentarios(${post.comentarios})</p>
+                <div class="novoComentario">
+                    <div>
+                        <img src="assets/userPerfil/${localUser.img}" alt="" />
+                    </div>
+                    <textarea name="" placeholder="Deixe um comentario" rows="2" id="textarea_comentario"
+                        oninput="verificarLinhas()" onkeypress="comentar(event.key,${post.idPost})"></textarea>
+                </div>
+                <div class="listaComentarios" id="listaComentarios">
+                    
+                </div>
+            </div>
+        </div>
+     `;
+     listaComentarios.innerHTML = ''
+     comentarios.forEach(c => {
+       listaComentarios.innerHTML +=
+        `
+        <div class="comentario">
+                        <div class="perfil">
+                            <div class="imgUserPerfilDiv">
+                                <img src="assets/userPerfil/${c.img}" alt="" id="imgUserPerfil">
+                            </div>
+                            <div class="nomeArroba">
+                                <span id="nomeUserPerfil">${c.nome} <span class="usuarioTempo">${formatarTempo(c.minutos)}</span></span>
+                                <span id="usuarioUserPerfil">@${c.arroba}</span>
+                            </div>
+                        </div>
+                        <p class="textoComentario">${c.comentario}</p>
+                    </div>
+
+        `
+       
+       
+     });
   if (img) {
     ImgcontainerModal.style = "display:block";
-
     modalPostComfoto.classList.add("ModalPostAtivo");
     modalPostComfoto.classList.remove("semFoto");
     document.querySelector("body").style = "overflow: hidden;";
@@ -174,8 +193,19 @@ function abrirPost(img) {
     modalPostComfoto.classList.add("semFoto");
     document.querySelector("body").style = "overflow: hidden;";
   }
+    if(!reload){
+         PostDetalhesmodal.style = ' animation: ease-in-out infoPost 400ms;'
+    }
+
 }
+
 function fecharModalPost() {
   modalPostComfoto.classList.remove("ModalPostAtivo");
   document.querySelector("body").style = "overflow: auto;";
 }
+
+document.querySelector("body").innerHTML += `
+     <div class="modalPostComfoto semFoto " id="modalPostComfoto">
+        
+    </div>
+    `;
