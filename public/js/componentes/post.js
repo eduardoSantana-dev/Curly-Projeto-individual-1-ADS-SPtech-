@@ -73,15 +73,15 @@ if (novoPostCardContainer) {
                     <div class="topoNovoPost">
                         <div class="imgUserNovoPost">
                             <img src="assets/userPerfil/${localUser.img}" alt=""
-                                id="imgNovoPost">
+                               >
                         </div>
-                        <input type="text" id="desc_novoPost_input" placeholder="Como estão seus cachos hoje?">
+                        <input type="text" id="desc_novoPost_input" placeholder="Como estão seus cachos hoje?" >
                     </div>
-                
+                  <img src="" alt="" id="imgNovoPost">
                     <div class="complementosNovoPost">
                         <div class="complementos">
                             <label for="fotoNovoPost"><i class="fa-regular fa-image"></i> Foto</label>
-                            <input type="file" id="fotoNovoPost" accept="image/*">
+                            <input type="file" id="fotoNovoPost" accept="image/*" onchange="mostrarPreview()">
                             <button class="ButtonProdutoNovoPost"><i class="fa-solid fa-pump-soap"></i>Produto</button>
                             <select name="" id="">
                                 <option value="">Comum</option>
@@ -93,6 +93,14 @@ if (novoPostCardContainer) {
                     </div>
                 </div>
     `;
+}
+
+
+function mostrarPreview(){
+    if(fotoNovoPost.value !=''){
+        imgNovoPost.src = URL.createObjectURL(fotoNovoPost.files[0])
+        imgNovoPost.style = 'display:block'
+    }
 }
 function verificarLinhas() {
   let campo = textarea_comentario;

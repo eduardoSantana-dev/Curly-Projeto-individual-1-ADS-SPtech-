@@ -44,7 +44,14 @@
         }
 
     }
-
+    #imgNovoPost{
+        max-width: 90%;
+        border-radius: 10px;
+        height: 500px;
+        margin-left: 1%;
+        margin-top: 2%;
+        display: none;
+    }
     .complementosNovoPost {
         padding-top: 1rem;
         margin-top: 1.5%;
@@ -80,6 +87,7 @@
 
             input {
                 display: none;
+                
             }
 
             button {
@@ -213,9 +221,12 @@
 
         .imgPost {
             max-width: 90%;
+            max-height: 500px;
             border-radius: 10px;
             box-shadow: var(--sombra);
             cursor: pointer;
+        margin-left: 1%;
+
         }
     }
 

@@ -114,3 +114,4 @@ async function comentar(tecla,idPost) {
     }
   }
 }
+
