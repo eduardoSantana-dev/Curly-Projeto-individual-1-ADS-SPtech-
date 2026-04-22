@@ -17,7 +17,9 @@ function login(email,senha){
     return database.executar(query)
 }
 function buscarDados(id){
-    let query = `select * from usuario where idUsuario = ${id};`
+    let query = `select u.*, count(seguidores.idSeguimento) as seguidores, count(seguindo.idSeguimento) as seguindo
+from usuario as u left join seguir_usuario as seguidores on idUsuarioSeguido = u.idUsuario  
+left join seguir_usuario as seguindo on seguindo.idUsuarioSeguidor = u.idUsuario where idUsuario = ${id};`
     return database.executar(query)
 }
 function seguirUsuario(idUser,idSeguido){

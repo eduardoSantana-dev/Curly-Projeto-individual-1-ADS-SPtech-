@@ -25,6 +25,15 @@ async function buscarPost(req,res) {
         res.status(405).send(posts)
     }
 }
+async function buscarPostsUser(req,res) {
+    try{
+        let params = req.params
+        posts = await postModel.buscarPostUser(params.idPerfil,params.idEspectador)
+        res.status(222).send(posts)
+    }catch(posts){
+        res.status(405).send(posts)
+    }
+}
 async function curtir(req,res) {
     let dados = req.body;
      try{
@@ -78,4 +87,5 @@ module.exports = {
     curtir,
     buscarComentarios,
     comentar,
+    buscarPostsUser,
 }

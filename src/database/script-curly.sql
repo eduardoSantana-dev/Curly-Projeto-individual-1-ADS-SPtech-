@@ -1,4 +1,4 @@
-DROP DATABASE curly;
+CREATE DATABASE curly;
 use curly;
 
 
@@ -9,7 +9,7 @@ arroba varchar(50)  not null,
 email varchar(100) unique,
 senha varchar(100)  not null,
 dataNasc date,
-img varchar(1000) default('semImg.png'),
+img varchar(1000) default 'semImg.png',
 curvatura char(2)  not null,
 constraint chkCurvatura check(curvatura in('2A','2B','2C','3A','3B','3C','4A','4B','4C'))
 ) auto_increment = 100;
@@ -51,6 +51,7 @@ idComentario int auto_increment,
 comentario varchar(1000) not null,
 idPost int,
 idUsuario int ,
+dataComentario  datetime not null default current_timestamp,
 constraint idPostComentario foreign key (idPost) references post(idPost),
 constraint idUsuarioComentario foreign key (idUsuario) references usuario(idUsuario),
 primary key(idComentario,idPost,idUsuario)

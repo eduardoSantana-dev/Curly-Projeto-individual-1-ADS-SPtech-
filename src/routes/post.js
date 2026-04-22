@@ -9,6 +9,9 @@ router.post("/postar", upload.single('imgPost'), (req, res) => {
 router.get("/buscarPosts/:filtro1/:filtro2/:idEspectador", function (req, res) {
      postController.buscarPost(req,res);
 });
+router.get("/buscarPostsUser/:idPerfil/:idEspectador", function (req, res) {
+     postController.buscarPostsUser(req,res);
+});
 router.post("/curtir", function(req, res){
      postController.curtir(req,res);
 });

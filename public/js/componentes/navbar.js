@@ -12,26 +12,30 @@
                     </div>
                 </div>
                 <div class="acessosNav">
-                    <div class="acesso">
+                    <a href = "/" class="acesso">
                         <i class="fa-regular fa-compass"></i>
                         <span>Pagina inicial</span>
-                    </div>
-                    <div class="acesso">
+                    </a>
+                    <a href = "#" class="acesso">
                         <i class="fa-regular fa-lightbulb"></i>
                         <span>Dicas</span>
-                    </div>
-                    <div class="acesso">
+                    </a>
+                    <a href = "#" class="acesso">
                         <i class="fa-solid fa-pump-soap"></i>
                         <span>Produtos</span>
-                    </div>
-                    <div class="acesso">
+                    </a>
+                    <a href = "#" class="acesso">
                         <i class="fa-solid fa-images"></i>
                         <span>Galeria</span>
-                    </div>
-                    <div class="acesso">
+                    </a>
+                    <a href = "#" class="acesso">
                         <i class="fa-solid fa-gear"></i>
                         <span>Configurações</span>
-                    </div>
+                    </a>
+                       <a href = "login.html" class="acesso" onclick="localStorage.clear()">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>Sair</span>
+                    </a>
                     <button>Novo post</button>
                 </div>
             </div>

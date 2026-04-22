@@ -28,6 +28,17 @@ function buscarPost(filtro1, filtro2, idEspectador) {
     `;
   return database.executar(query);
 }
+function buscarPostUser(idPerfil,idEspectador) {
+
+  let query = `
+   select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(idCurtida) as curtidas,count(idComentario) as comentarios ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo
+    from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
+    left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = ${idEspectador}
+    where post.idUsuario = ${idPerfil}
+    group by usuario.idUsuario, post.idPost order by post.idPost desc;
+    `;
+  return database.executar(query);
+}
 
 async function curtir(idUser, idPost) {
   let where = `where idPost = ${idPost} and idUsuario = ${idUser}`;
@@ -77,5 +88,6 @@ module.exports = {
   curtir,
   buscarComentarios,
   buscarPostUnico,
-  novoComentario
+  novoComentario,
+  buscarPostUser
 };

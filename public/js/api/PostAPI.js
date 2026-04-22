@@ -15,6 +15,8 @@ async function postar() {
     if (postagem) {
       desc_novoPost_input.value = "";
       fotoNovoPost.files[0] = "";
+       imgNovoPost.src ='';
+       imgNovoPost.style = 'display:none'
       if (
         window.location == "http://localhost:3333/" ||
         window.location == "http://localhost:3333/index.html"
@@ -30,7 +32,6 @@ async function postar() {
 }
 async function buscarPost(ordem, filtro) {
   var postSelect = [{}];
-  console.log(ordem);
    if (filtroDePosts) {
       ordemPost.value = ordem;
       filtroPost.value = filtro;
@@ -43,8 +44,21 @@ async function buscarPost(ordem, filtro) {
       `/posts/buscarPosts/${ordem}/${filtro}/${localUser.id}`,
     );
     postsLista = await postSelect.json();
-    console.log(postsLista);
     listarPost(postsLista, feedPost);
+   
+  } catch (err) {
+    console.error(err);
+  }
+}
+async function buscarPostUSer(idUser) {
+  var postSelect = [{}];
+  try {
+    postSelect = await fetch(
+      `/posts/buscarPostsUser/${idUser}/${localUser.id}`,
+    );
+    postsLista = await postSelect.json();
+    console.log(postsLista);
+    listarPost(postsLista, postsDoPerfil);
    
   } catch (err) {
     console.error(err);
