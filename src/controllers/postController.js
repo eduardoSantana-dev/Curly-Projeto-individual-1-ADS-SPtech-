@@ -20,6 +20,7 @@ async function buscarPost(req,res) {
         let params = req.params
         
         posts = await postModel.buscarPost(params.filtro1,params.filtro2,params.idEspectador)
+        console.log('posts')
         res.status(222).send(posts)
     }catch(posts){
         res.status(405).send(posts)
@@ -29,6 +30,7 @@ async function buscarPostsUser(req,res) {
     try{
         let params = req.params
         posts = await postModel.buscarPostUser(params.idPerfil,params.idEspectador)
+        console.log(posts)
         res.status(222).send(posts)
     }catch(posts){
         res.status(405).send(posts)

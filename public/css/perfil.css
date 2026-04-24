@@ -28,7 +28,12 @@
             font-size: 1.2rem;
             font-weight: 500;
             cursor: pointer;
-        }
+            height: 100%;
+        }  
+        .seguindo {
+                            background-color: var(--texto2);
+                            opacity: 0.4
+                        }
     }
 
     .statusPerfil {

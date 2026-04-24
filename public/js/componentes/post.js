@@ -18,17 +18,22 @@ function listarPost(posts, div) {
   posts.forEach((post) => {
     let imgPost = ``;
     let temIMG = false;
-
+    let bseguir = "";
+    let bCurtir = ''
+    let iconLike = 'regular'
     if (post.img_post != "") {
       temIMG = true;
       imgPost = ` <img onclick="abrirPost(${post.idPost})" class="imgPost" src="assets/imgPosts/${post.img_post}" alt="" onclick="abrirPost(true)">`;
     }
-    let bseguir = "";
     if (post.idUsuario != localUser.id) {
       bseguir = `<button class="botao button_seguir idButtonSeguir${post.idUsuario}" onclick="seguir(${post.idUsuario})">Seguir</button>`;
       if (post.seguindo == 1) {
         bseguir = `<button class="botao button_seguir seguindo idButtonSeguir${post.idUsuario}" onclick="deixarDeSeguir(${post.idUsuario})" >Seguindo</button> `;
       }
+    }
+    if(post.curtido){
+        bCurtir= 'buttonCurtircurtido'
+        iconLike = 'solid'
     }
     div.innerHTML += `
         <div class="post box">
@@ -66,7 +71,7 @@ function listarPost(posts, div) {
                        ${imgPost}
                     </div>
                     <div class="statusPost">
-                        <button onclick="curtir(${post.idPost},${post.curtidas})" class="buttonCurtir${post.idPost}"><i class="fa-regular fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
+                        <button onclick="curtir(${post.idPost},${post.curtidas})" class="buttonCurtir${post.idPost} ${bCurtir}"><i class="fa-${iconLike} fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
                         <button  onclick="abrirPost(${post.idPost})"><i class="fa-regular fa-comment"></i>${post.comentarios}</button>
                     </div>
 
@@ -123,12 +128,18 @@ function verificarLinhas() {
 function exibirModalPost(post, comentarios,reload) {
   let bseguir = "";
   let img = post.img_post
+   let bCurtir = ''
+    let iconLike = 'regular'
   if (post.idUsuario != localUser.id) {
     bseguir = `<button class="botao button_seguir idButtonSeguir${post.idUsuario}" onclick="seguir(${post.idUsuario})">Seguir</button>`;
     if (post.seguindo == 1) {
       bseguir = `<button class="botao button_seguir seguindo idButtonSeguir${post.idUsuario}" onclick="deixarDeSeguir(${post.idUsuario})" >Seguindo</button> `;
     }
   }
+  if(post.curtido){
+        bCurtir= 'buttonCurtircurtido'
+        iconLike = 'solid'
+    }
   modalPostComfoto.innerHTML = `
      <i class="fa-solid fa-x" onclick="fecharModalPost()"></i>
         <div class="containerModalImg"  onclick="fecharModalPost()">
@@ -159,7 +170,7 @@ function exibirModalPost(post, comentarios,reload) {
                     </div>
                 </div>
                 <div class="statusPost">
-                <button onclick="curtir(${post.idPost},${post.curtidas})" class="buttonCurtir${post.idPost}"><i class="fa-regular fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
+                <button onclick="curtir(${post.idPost},${post.curtidas})" class="buttonCurtir${post.idPost} ${bCurtir}"><i class="fa-${iconLike} fa-thumbs-up"></i> <span>${post.curtidas}</span></button>
                 </div>
             </div>
             <div class="ComentariosPostModal">

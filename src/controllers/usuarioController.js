@@ -68,6 +68,9 @@ async function buscarDados(req, res) {
         email: usuario[0].email,
         img: usuario[0].img,
         curvatura: usuario[0].curvatura,
+        seguidores: usuario[0].seguidores,
+        seguindo: usuario[0].seguindo,
+        usuario_segue:usuario[0].usuario_segue,
       })
     }catch(err){
       res.status(404).send(false)

@@ -20,9 +20,13 @@ function buscarPost(filtro1, filtro2, idEspectador) {
   }
 
   let query = `
-   select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(idCurtida) as curtidas,count(idComentario) as comentarios ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo
+   select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(DISTINCT curtida.idCurtida) as curtidas,count(idComentario) as comentarios
+    ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,
+    case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo,
+    case when espectadorCurtida.idUsuario IS NOT NULL then 1 else 0 end as curtido
     from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
     left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = ${idEspectador}
+    left join curtida espectadorCurtida on post.idPost = espectadorCurtida.idPost and espectadorCurtida.idUsuario = ${idEspectador}
     ${where}
     group by usuario.idUsuario, post.idPost order by ${filtro1}
     `;
@@ -31,9 +35,13 @@ function buscarPost(filtro1, filtro2, idEspectador) {
 function buscarPostUser(idPerfil,idEspectador) {
 
   let query = `
-   select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(idCurtida) as curtidas,count(idComentario) as comentarios ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo
+   select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',
+   count(DISTINCT curtida.idCurtida) as curtidas,count(idComentario) as comentarios ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,
+   case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo,
+   case when espectadorCurtida.idUsuario IS NOT NULL then 1 else 0 end as curtido
     from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
     left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = ${idEspectador}
+    left join curtida espectadorCurtida on post.idPost = espectadorCurtida.idPost and espectadorCurtida.idUsuario = ${idEspectador}
     where post.idUsuario = ${idPerfil}
     group by usuario.idUsuario, post.idPost order by post.idPost desc;
     `;
@@ -68,10 +76,12 @@ async function buscarComentarios(idPost) {
 }
 async function buscarPostUnico(idPost,idEspectador) {
   let query = `
-  select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(idCurtida) as curtidas,count(idComentario) as comentarios ,
-  case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo
+  select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(DISTINCT curtida.idCurtida) as curtidas,count(idComentario) as comentarios ,
+  case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo,
+  case when espectadorCurtida.idUsuario IS NOT NULL then 1 else 0 end as curtido
   from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost 
   left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = ${idEspectador}
+  left join curtida espectadorCurtida on post.idPost = espectadorCurtida.idPost and espectadorCurtida.idUsuario = ${idEspectador}
   where post.idPost = ${idPost}
   group by usuario.idUsuario, post.idPost;
   `;

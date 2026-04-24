@@ -9,7 +9,7 @@ arroba varchar(50)  not null,
 email varchar(100) unique,
 senha varchar(100)  not null,
 dataNasc date,
-img varchar(1000) default 'semImg.png',
+img varchar(1000) default('semImg.png'),
 curvatura char(2)  not null,
 constraint chkCurvatura check(curvatura in('2A','2B','2C','3A','3B','3C','4A','4B','4C'))
 ) auto_increment = 100;
@@ -51,7 +51,7 @@ idComentario int auto_increment,
 comentario varchar(1000) not null,
 idPost int,
 idUsuario int ,
-dataComentario  datetime not null default current_timestamp,
+dataComentario datetime not null default current_timestamp,
 constraint idPostComentario foreign key (idPost) references post(idPost),
 constraint idUsuarioComentario foreign key (idUsuario) references usuario(idUsuario),
 primary key(idComentario,idPost,idUsuario)
@@ -59,9 +59,6 @@ primary key(idComentario,idPost,idUsuario)
 
 select * from usuario;
 select * from post;
-insert post (idPost,descricao,img,idUsuario) VALUES(default,
-"TESTE",'',100
-);
 
 select * from seguir_usuario;
 
@@ -73,8 +70,23 @@ select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMEST
 from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
 
 left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = 100
-group by usuario.idUsuario, post.idPost order by minutos;
+group by usuario.idUsuario, post.idPost order by dataPost desc;
     
+
+select u.img,u.nome, u.arroba, comentario, timestampdiff(minute,dataComentario,now()) as 'minutos'from comentario join post on comentario.idPost = post.idPost join usuario u on u.idUsuario = comentario.idUsuario where post.idPost = 101;
+
+insert into comentario (comentario,idPost,idUsuario) value(
+'Caramba que top ein',101,100
+);
+select * from comentario;
+delete from comentario where idComentario between 1000 and 1040;
+delete from post where idPost between 100 and 140;
+select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(idCurtida) as curtidas,count(idComentario) as comentarios ,
+case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo
+from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost 
+left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = 101
+where post.idPost = 100
+group by usuario.idUsuario, post.idPost;
 
 
 

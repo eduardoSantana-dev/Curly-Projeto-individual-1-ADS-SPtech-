@@ -84,9 +84,12 @@ async function curtir(idPost, curtidas) {
       if (resposta.mensagem == "curtido") {
         button.innerHTML = `<i class="fa-solid fa-thumbs-up"></i> <span>${curtidas + 1}</span>`;
         button.classList.add("buttonCurtircurtido");
+        button.onclick = () => curtir(idPost,curtidas+1)
       } else if (resposta.mensagem == "descurtido") {
-        button.innerHTML = `<i class="fa-regular fa-thumbs-up"></i> <span>${curtidas}</span>`;
+        button.innerHTML = `<i class="fa-regular fa-thumbs-up"></i> <span>${curtidas-1}</span>`;
         button.classList.remove("buttonCurtircurtido");
+        button.onclick = () => curtir(idPost,curtidas-1)
+
       }
     });
   } catch (err) {
