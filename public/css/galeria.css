@@ -1,0 +1,140 @@
+.titulo {
+    color: var(--amarelo1);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+.listaCardSelecao {
+    display: flex;
+    gap: 40px 150px;
+    margin-left: 10%;
+    margin-top: 2%;
+    flex-wrap: wrap;
+    margin-bottom: 5%;
+
+    .containerCard {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .card {
+            width: 300px;
+            height: 340px;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                min-width: 100%;
+                min-height: 100%;
+                object-fit: cover;
+            }
+
+            .label {
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.343);
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+                font-size: 2.9rem;
+                font-weight: bold;
+
+                &:hover {
+                    color: var(--amarelo1);
+                    transition: 0.2s;
+                    background-color: rgba(0, 0, 0, 0.56);
+
+                }
+            }
+        }
+
+        .curvaturaLista {
+            display: flex;
+            justify-content: space-evenly;
+
+            .curvatura {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+}
+
+.selects {
+    margin-left: 10%;
+    margin-top: 2%;
+    display: flex;
+    gap: 30px;
+
+    select {
+
+        border: none;
+        color: var(--roxo);
+        height: 35px;
+        width: 230px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding-inline: 1%;
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 0px 4px 0px hsla(0, 0%, 0%, 0.100);
+
+        &,
+        &::picker(select) {
+            appearance: base-select;
+            border: none;
+            box-shadow: 0px 4px 4px 0px hsla(0, 0%, 0%, 0.100);
+            border-radius: 0px 0px 10px 10px;
+            color: var(--roxo);
+
+        }
+
+        border-radius: 100px;
+
+        &:open {
+            border-radius: 15px 15px 0px 0px;
+
+
+        }
+    }
+}
+   .listaImagens{
+    margin-left: 10%;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+     .card {
+        cursor: pointer;
+        width: 300px;
+        height: 340px;
+        overflow: hidden;
+        border-radius: 15px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+
+        span {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    }
+   }
