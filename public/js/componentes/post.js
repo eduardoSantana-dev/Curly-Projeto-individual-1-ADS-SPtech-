@@ -80,33 +80,7 @@ function listarPost(posts, div) {
   });
 }
 
-if (novoPostCardContainer) {
-  novoPostCardContainer.innerHTML = `
-       <div id="novoPostCard" class="box">
-                    <div class="topoNovoPost">
-                        <div class="imgUserNovoPost">
-                            <img src="assets/userPerfil/${localUser.img}" alt=""
-                               >
-                        </div>
-                        <input type="text" id="desc_novoPost_input" placeholder="Como estão seus cachos hoje?" >
-                    </div>
-                  <img src="" alt="" id="imgNovoPost">
-                    <div class="complementosNovoPost">
-                        <div class="complementos">
-                            <label for="fotoNovoPost"><i class="fa-regular fa-image"></i> Foto</label>
-                            <input type="file" id="fotoNovoPost" accept="image/*" onchange="mostrarPreview()">
-                            <button class="ButtonProdutoNovoPost"><i class="fa-solid fa-pump-soap"></i>Produto</button>
-                            <select name="" id="">
-                                <option value="">Comum</option>
-                                <option value="">Dica</option>
-                                <option value="">Pergunta</option>
-                            </select>
-                        </div>
-                        <button class="botao" type="button"  onclick = "postar()">Postar</button>
-                    </div>
-                </div>
-    `;
-}
+
 
 
 function mostrarPreview(){
@@ -193,7 +167,7 @@ function exibirModalPost(post, comentarios,reload) {
        listaComentarios.innerHTML +=
         `
         <div class="comentario">
-                        <div class="perfil">
+                        <a href="perfil.html?id=${c.idUsuario}" class="perfil">
                             <div class="imgUserPerfilDiv">
                                 <img src="assets/userPerfil/${c.img}" alt="" id="imgUserPerfil">
                             </div>
@@ -201,7 +175,7 @@ function exibirModalPost(post, comentarios,reload) {
                                 <span id="nomeUserPerfil">${c.nome} <span class="usuarioTempo">${formatarTempo(c.minutos)}</span></span>
                                 <span id="usuarioUserPerfil">@${c.arroba}</span>
                             </div>
-                        </div>
+                        </a>
                         <p class="textoComentario">${c.comentario}</p>
                     </div>
 
@@ -236,3 +210,31 @@ document.querySelector("body").innerHTML += `
         
     </div>
     `;
+
+function chamarNovoCardInput () {
+  novoPostCardContainer.innerHTML = `
+       <div id="novoPostCard" class="box">
+                    <div class="topoNovoPost">
+                        <div class="imgUserNovoPost">
+                            <img src="assets/userPerfil/${localUser.img}" alt=""
+                               >
+                        </div>
+                        <input type="text" id="desc_novoPost_input" placeholder="Como estão seus cachos hoje?" >
+                    </div>
+                  <img src="" alt="" id="imgNovoPost">
+                    <div class="complementosNovoPost">
+                        <div class="complementos">
+                            <label for="fotoNovoPost"><i class="fa-regular fa-image"></i> Foto</label>
+                            <input type="file" id="fotoNovoPost" accept="image/*" onchange="mostrarPreview()">
+                            <button class="ButtonProdutoNovoPost"><i class="fa-solid fa-pump-soap"></i>Produto</button>
+                            <select name="" id="">
+                                <option value="">Comum</option>
+                                <option value="">Dica</option>
+                                <option value="">Pergunta</option>
+                            </select>
+                        </div>
+                        <button class="botao" type="button"  onclick = "postar()">Postar</button>
+                    </div>
+                </div>
+    `;
+}

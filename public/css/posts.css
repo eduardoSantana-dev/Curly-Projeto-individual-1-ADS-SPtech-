@@ -526,7 +526,10 @@
 
                 .comentario {
                     padding-inline: 10px;
+                    .perfil{
+                    text-decoration: none;
 
+                    }
                     .imgUserPerfilDiv {
                         width: 40px;
                         height: 40px;
@@ -541,6 +544,7 @@
 
                     #nomeUserPerfil {
                         font-size: 0.8rem;
+                        color: var(--texto1);
                     }
 
                     #usuarioUserPerfil {

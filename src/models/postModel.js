@@ -66,7 +66,7 @@ async function curtir(idUser, idPost) {
   return resposta;
 }
 async function buscarComentarios(idPost) {
-  let query = `select u.img,u.nome, u.arroba, comentario, timestampdiff(minute,dataComentario,now()) as 'minutos'from comentario 
+  let query = `select u.idUsuario, u.img,u.nome, u.arroba, comentario, timestampdiff(minute,dataComentario,now()) as 'minutos'from comentario 
   join post on comentario.idPost = post.idPost join usuario u on u.idUsuario = comentario.idUsuario 
   where post.idPost = ${idPost}
   order by idComentario desc
@@ -92,6 +92,15 @@ function novoComentario(idPost,idUser,desc){
   let query = `insert into comentario (comentario,idPost,idUsuario) value( '${desc}',${idPost},${idUser});`
   return database.executar(query);
 }
+function galeria(filtro,ordem){
+  console.log(filtro+"a aa "+ ordem)
+  let query = `select post.idPost,post.img,curvatura
+  from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost
+  left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
+  where post.img != ''
+  group by usuario.idUsuario, post.idPost order by count(distinct idCurtida) desc;`
+  return database.executar(query);
+}
 module.exports = {
   novoPost,
   buscarPost,
@@ -99,5 +108,6 @@ module.exports = {
   buscarComentarios,
   buscarPostUnico,
   novoComentario,
-  buscarPostUser
+  buscarPostUser,
+  galeria,
 };

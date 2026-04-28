@@ -83,6 +83,23 @@ async function comentar(req,res){
      }
     
 }
+async function galeria(req,res) {
+    console.log(req.params)
+    const ordem = req.params.ordem
+    const filtro = req.params.filtro
+    try{
+        const galeria = await postModel.galeria(filtro,ordem)
+        res.status(202).json({
+            sucess:true,
+            data:galeria
+        })
+    }catch(galeria){
+         res.status(402).json({
+            sucess:false,
+            
+        })
+    }
+}
 module.exports = {
     postar,
     buscarPost,
@@ -90,4 +107,5 @@ module.exports = {
     buscarComentarios,
     comentar,
     buscarPostsUser,
+    galeria,
 }

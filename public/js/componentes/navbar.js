@@ -1,7 +1,7 @@
  containerGlobal.innerHTML = `
            <div class="navLateral">
             <div class="containerNavLateral">
-                <div class="perfil">
+                <a href="perfil.html?id=${localUser.id}" class="perfil">
                     <div class="imgUserNavDiv">
                         <img src="assets/userPerfil/${localUser.img}" alt=""
                             id="imgUserNav">
@@ -10,7 +10,7 @@
                         <span id="nomeUserNav">${localUser.nome}</span>
                         <span id="usuarioUserNav">@${localUser.arroba}</span>
                     </div>
-                </div>
+                </a>
                 <div class="acessosNav">
                     <a href = "/" class="acesso">
                         <i class="fa-regular fa-compass"></i>
@@ -24,7 +24,7 @@
                         <i class="fa-solid fa-pump-soap"></i>
                         <span>Produtos</span>
                     </a>
-                    <a href = "#" class="acesso">
+                    <a href = "galeriaSelecao.html" class="acesso">
                         <i class="fa-solid fa-images"></i>
                         <span>Galeria</span>
                     </a>
@@ -42,7 +42,7 @@
         </div>
         <div class="subContainerGlobal">
             <div class="navTopo">
-                <img src="./assets/icon/completo.svg" alt="">
+               <a href="index.html"> <img src="./assets/icon/completo.svg" alt=""></a>
                 <div class="navTopoElements">
                     <div class="inputPesquisar">
                         <i class="fa-solid fa-magnifying-glass"></i>

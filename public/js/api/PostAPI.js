@@ -32,6 +32,8 @@ async function postar() {
 }
 async function buscarPost(ordem, filtro) {
   var postSelect = [{}];
+
+  feedPost.innerHTML =`<img src="assets/loading.gif" class="loading" alt="">`
    if (filtroDePosts) {
       ordemPost.value = ordem;
       filtroPost.value = filtro;
@@ -135,4 +137,6 @@ async function comentar(tecla,idPost) {
     }
   }
 }
+
+
 

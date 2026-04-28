@@ -97,7 +97,7 @@ body {
             cursor: pointer;
             display: flex;
             gap: 15px;
-
+            text-decoration: none;
                 .imgUserNavDiv {
                 width: 50px;
                 height: 50px;
@@ -121,6 +121,7 @@ body {
                 #nomeUserNav {
                     font-weight: bold;
                     font-size: 1.2rem;
+                    color: var(--texto1);
                 }
 
                 #usuarioUserNav {
@@ -313,4 +314,11 @@ body {
             background-color: var(--box);
             box-shadow: var(--sombra);
             border-radius: var(--radius);
+        }
+
+        .loading{
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            transition: 100ms;
         }
