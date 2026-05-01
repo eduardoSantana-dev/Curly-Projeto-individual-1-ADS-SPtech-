@@ -22,5 +22,10 @@ router.post("/seguirPerfil", function (req, res) {
 router.post("/deixarDeSeguir", function (req, res) {
     usuarioController.deixarDeSeguir(req,res);
 });
-
+router.post("/verificarSenha", function (req, res) {
+    usuarioController.verificarSenha(req,res);
+});
+router.post("/update",upload.single('foto'),   (req, res) =>{
+    usuarioController.atualizarUser(req,res);
+});
 module.exports = router;

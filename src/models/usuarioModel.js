@@ -13,7 +13,7 @@ function verificarUnique(valor,tipo){
 }
 function login(email,senha){
     
-    let query = `select idUsuario as id,nome,arroba,img,curvatura from usuario where email = '${email}' and senha ='${senha}';`
+    let query = `select idUsuario as id,nome,arroba,img,curvatura,email from usuario where email = '${email}' and senha ='${senha}';`
     return database.executar(query)
 }
 function buscarDados(id){
@@ -33,6 +33,29 @@ function deixaDeSeguir(idUser,idSeguido){
     let query = `delete from seguir_usuario where idUsuarioSeguido =  ${idSeguido} and idUsuarioSeguidor = ${idUser};`
     return database.executar(query)
 }
+function verificarSenha(id,senha){
+    let query =`select count(*) as user from usuario where senha = '${senha}' and idUsuario = ${id};`
+    return database.executar(query)
+
+}
+function atualizarUser(id,nome,arroba,email,senha,img){
+    console.log(senha)
+    if(senha){
+        senha = `,senha = '${senha}'`
+    }else{
+        senha = ' '
+    }
+    
+    if(img && img != 'default'){
+        img = `,img = '${img}'`
+    }else{
+        img = ' '
+    }
+    console.log(img)
+    let query =`update usuario set nome = '${nome}',email ='${email}',arroba ='${arroba}' ${senha} ${img} where idUsuario = ${id};`
+    return database.executar(query)
+
+}
 module.exports = {
     cadastrar,
     verificarUnique,
@@ -40,4 +63,6 @@ module.exports = {
     buscarDados,
     seguirUsuario,
     deixaDeSeguir,
+    verificarSenha,
+    atualizarUser
 }

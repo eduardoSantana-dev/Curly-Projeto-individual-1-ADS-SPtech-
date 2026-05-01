@@ -17,27 +17,27 @@
 
 <body>
     <div id="containerGlobal">
-        <div class="container" id="container">
+        <div class="container" id="container" style="display: none;">
             <p class="titulo">Galeria</p>
             <div class="selects">
-                  <select name="" id="ordemPost" class="box"  onchange="">
-                        <option value="todos">Todos</option>
-                        <option value="curvatura">Mesma curvatura</option>
-                        <option value="curvatura">Ondulado(2A,2B,2C)</option>
-                        <option value="curvatura">Cacheado(3A,3B,3C)</option>
-                        <option value="curvatura">Crespo(4A,4B,4C)</option>
-                        <option value="curvatura">2A</option>
-                        <option value="curvatura">2B</option>
-                        <option value="curvatura">2C</option>
-                        <option value="curvatura">3A</option>
-                        <option value="curvatura">3B</option>
-                        <option value="curvatura">3C</option>
-                        <option value="curvatura">4A</option>
-                        <option value="curvatura">4B</option>
-                        <option value="curvatura">4C</option>
+                  <select name="" id="filtroPost" class="box" onchange="chamarGaleria(filtroPost.value,ordemPost.value)">
+                        <option value='todos'>Todos</option>
+                        <option value='igual'>Mesma curvatura</option>
+                        <option value="2">Ondulado(2A,2B,2C)</option>
+                        <option value="3">Cacheado(3A,3B,3C)</option>
+                        <option value="4">Crespo(4A,4B,4C)</option>
+                        <option value="2A">2A</option>
+                        <option value="2B">2B</option>
+                        <option value="2C">2C</option>
+                        <option value="3A">3A</option>
+                        <option value="3B">3B</option>
+                        <option value="3C">3C</option>
+                        <option value="4A">4A</option>
+                        <option value="4B">4B</option>
+                        <option value="4C">4C</option>
                         
                     </select>
-                    <select name=""  id="filtroPost" class="box" onchange="">
+                    <select name=""  id="ordemPost" class="box" onchange="chamarGaleria(filtroPost.value,ordemPost.value)">
                        <option value="minutos">Mais recente</option>
                         <option value="curtidas">Mais curtidos</option>
                         <option value="seguidores">Mais seguidores</option>

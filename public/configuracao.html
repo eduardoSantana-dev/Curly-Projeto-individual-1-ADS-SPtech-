@@ -21,9 +21,9 @@
                 <p class="titulo">Configurações</p>
                 <p class="divisao">Seu perfil</p>
                 <div class="imgUserEdit">
-                    <img src="assets/userPerfil/semImg.png" alt="">
+                    <img src="assets/userPerfil/semImg.png" id="imgAlterarImg" alt="">
                     <label for="alterarImg" class="botao">Alterar foto de perfil</label>
-                    <input type="file" id="alterarImg" accept="image/*">
+                    <input type="file" id="alterarImg" accept="image/*" onchange="mostrarPreview()">
                 </div>
                 <div class="inputs">
                     <div class="inputContainer">
@@ -38,40 +38,41 @@
                     <div class="inputContainer">
                         <label for="nome_input">Nome de usuário</label>
                         <div class="inputBox">
-                            <input type="text" id="nome_input" oninput="validar('nome')" value="edu.san07">
+                            <input type="text" id="arroba_input" oninput="validar('arroba')" value="edu.san07">
                             <i class="fa-solid fa-at"></i>
                         </div>
 
-                        <div class="divValorInvalido" id="invalidoNome"></div>
+                        <div class="divValorInvalido" id="invalidoArroba"></div>
                     </div>
                     <div class="inputContainer">
                         <label for="nome_input">Email</label>
                         <div class="inputBox">
-                            <input type="text" id="nome_input" oninput="validar('nome')" value="eduardo@gmail.com">
+                            <input type="text" id="email_input" oninput="validar('email')" value="eduardo@gmail.com">
                             <i class="fa-regular fa-envelope"></i>
                         </div>
 
-                        <div class="divValorInvalido" id="invalidoNome"></div>
+                        <div class="divValorInvalido" id="invalidoEmail"></div>
                     </div>
                     <div class="inputContainer">
                         <label for="nome_input">Senha atual</label>
                         <div class="inputBox">
-                            <input type="password" id="nome_input" oninput="validar('nome')">
-                            <i class="fa-regular fa-eye-slash"></i>
+                            <input type="password" id="senha_input">
+                            <i class="fa-regular fa-eye-slash" onclick="verSenha(senha_input,olho1)" id="olho1" style="cursor: pointer;"></i>
+                            
                         </div>
+                        <div class="divValorInvalido" id="invalidoSenha"></div>
 
-                        <div class="divValorInvalido" id="invalidoNome"></div>
                     </div>
                     <div class="inputContainer">
                         <label for="nome_input">Nova senha (opcional)</label>
                         <div class="inputBox">
-                            <input type="password" id="nome_input" oninput="validar('nome')">
-                            <i class="fa-regular fa-eye-slash"></i>
+                            <input type="password" id="novaSenha_input" oninput="validar('novaSenha')">
+                            <i  class="fa-regular fa-eye-slash" onclick="verSenha(novaSenha_input,olho2)" id="olho2" style="cursor: pointer;"></i>
                         </div>
 
-                        <div class="divValorInvalido" id="invalidoNome"></div>
+                        <div id="senhaNivel"></div>
                     </div>
-                    <button class="botao">Salvar</button>
+                    <button class="botao" onclick="validar('botao')">Salvar</button>
                 </div>
                 <p class="divisao">Preferências</p>
                 <div class="temaEscolha">
@@ -79,12 +80,19 @@
                     <div class="butoesTema">
                         <div>
                             <button  id="bClaro" onclick="mudarTema('claro')"><i class="fa-regular fa-sun"></i></button>
-                            <span>Claro</span>
+                            <span>Padrão</span>
                         </div>
                         <div>
-                            <button onclick="mudarTema('escuro')" id="bEscuro"><i
-                                    class="fa-regular fa-moon"></i></button>
-                            <span>Escuro</span>
+                            <button onclick="mudarTema('escuro')" id="bEscuro" ><i class="fa-regular fa-moon"></i></button>
+                            <span>Dark</span>
+                        </div>
+                        <div>
+                            <button onclick="mudarTema('azul')" id="bAzul" ><i class="fa-solid fa-water"></i></button>
+                            <span>Ocean Blue</span>
+                        </div>
+                        <div>
+                            <button onclick="mudarTema('neon')" id="bNeon" ><i class="fa-solid fa-bolt-lightning"></i></button>
+                            <span>Neon</span>
                         </div>
                     </div>
                 </div>
@@ -96,46 +104,5 @@
 
 </html>
 <script src="./js/componentes/navbar.js"></script>
-<script>
-    if(localStorage.TEMA == 'escuro'){
-        bEscuro.classList.add('selecionado')
-    }else{
-        bClaro.classList.add('selecionado')
-    }
-    function mudarTema(tema) {
-        if (tema == 'escuro') {
-            document.documentElement.style.setProperty('--fundo', '#0f1115');
-            document.documentElement.style.setProperty('--box', '#1a1d23');
-            document.documentElement.style.setProperty('--roxo', '#8b5cf6');
-            document.documentElement.style.setProperty('--amarelo1', '#f8ac35');
-            document.documentElement.style.setProperty('--amarelo2', '#ffc161');
-            document.documentElement.style.setProperty('--amarelo3', '#fe9b00');
-            document.documentElement.style.setProperty('--texto1', '#e4e6eb');
-            document.documentElement.style.setProperty('--texto2', 'rgba(255, 255, 255, 0.65)');
-            document.documentElement.style.setProperty('--sombra', '0px 0px 10px 0px rgba(0,0,0,0.6)');
-            document.documentElement.style.setProperty('--cinza', '#2a2d34');
-            document.documentElement.style.setProperty('--cinza2', '#20232a');
-            document.documentElement.style.setProperty('--cinza3', '#333333');
-            bEscuro.classList.add('selecionado')
-            bClaro.classList.remove('selecionado')
-            localStorage.TEMA = 'escuro'
-        } else {
-            document.documentElement.style.setProperty('--fundo', '#F0F2F5');
-            document.documentElement.style.setProperty('--box', '#fff');
-            document.documentElement.style.setProperty('--roxo', '#693B99');
-            document.documentElement.style.setProperty('--amarelo1', '#F8AC35');
-            document.documentElement.style.setProperty('--amarelo2', '#FFC161');
-            document.documentElement.style.setProperty('--amarelo3', '#FE9B00');
-            document.documentElement.style.setProperty('--texto1', '#201919');
-            document.documentElement.style.setProperty('--texto2', 'rgba(48, 48, 48, 0.72)');
-            document.documentElement.style.setProperty('--sombra', '0px 0px 4px 0px hsla(0, 0%, 0%, 0.100)');
-            document.documentElement.style.setProperty('--cinza', '#E9E9EA');
-            document.documentElement.style.setProperty('--cinza3', '#cccccc');
-            document.documentElement.style.setProperty('--cinza2', '#f1f1f1');
-            bEscuro.classList.remove('selecionado')
-            bClaro.classList.add('selecionado')
-            localStorage.TEMA = 'claro'
-
-        }
-    }
-</script>
+<script src="./js/api/User.js"></script>
+<script src="./js/scripts/config.js"></script>

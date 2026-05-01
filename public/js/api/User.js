@@ -43,6 +43,7 @@ async function login() {
       localStorage.USER_ID = dados.id;
       localStorage.USER_NOME = dados.nome;
       localStorage.USER_ARROBA = dados.arroba;
+      localStorage.USER_EMAIL = dados.email;
       localStorage.USER_IMG = dados.img;
       localStorage.USER_CURVATURA = dados.curvatura;
       window.location = "index.html";
@@ -101,4 +102,38 @@ async function deixarDeSeguir(idPerfil) {
   } catch (err) {
     console.log(err);
   }
+}
+  
+
+async function atualizarUser(nome,arroba,email,novaSenha,img,senha){
+
+  const formData = new FormData();
+      formData.append("nome", nome);
+      formData.append("arroba", arroba);
+      formData.append("email", email);
+      formData.append("senha", novaSenha);
+      formData.append("id", localUser.id);
+      if (img != undefined) {
+        formData.append("foto", img);
+      }
+      const res = await fetch("/usuarios/update", {
+        method: "POST",
+        body: formData,
+      });
+      if (novaSenha.length > 0) {
+        senha = novaSenha;
+      }
+      const user = {
+        email: email,
+        senha,
+      };
+      const dados = await reqPost("/usuarios/logar", user);
+      if (dados) {
+        localStorage.USER_NOME = dados.nome;
+        localStorage.USER_ARROBA = dados.arroba;
+        localStorage.USER_EMAIL = dados.email;
+        localStorage.USER_IMG = dados.img;
+        localStorage.USER_CURVATURA = dados.curvatura;
+        window.location.reload();
+      }
 }

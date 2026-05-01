@@ -96,7 +96,45 @@ async function deixarDeSeguir(req,res) {
       res.status(404).send(false)
   }
 }
+async function verificarSenha(req,res) {
+  
 
+  try{
+    const resposta = await usuarioModel.verificarSenha(req.body.idUser,req.body.senha)
+    console.log(resposta)
+     res.status(202).json({
+            sucess:true,
+            data:resposta[0].user
+        })
+  }catch(resposta){
+      console.log(resposta)
+        res.status(402).json({
+            sucess:false,
+            data:resposta
+        })
+  }
+}
+async function atualizarUser(req,res) {
+  const user = req.body
+  let imgNome = "default";
+  if (req.file) {
+    imgNome = req.file.filename;
+  }
+  try{
+    const resposta = await usuarioModel.atualizarUser(user.id,user.nome,user.arroba,user.email,user.senha,imgNome)
+    console.log(resposta)
+     res.status(202).json({
+            sucess:true,
+            data:resposta
+        })
+  }catch(resposta){
+      console.log(resposta)
+        res.status(402).json({
+            sucess:false,
+            data:resposta
+        })
+  }
+}
 module.exports = {
   cadastrar,
   login,
@@ -104,5 +142,7 @@ module.exports = {
   buscarDados,
   seguirUsuario,
   deixarDeSeguir,
+  verificarSenha,
+  atualizarUser
 
 };

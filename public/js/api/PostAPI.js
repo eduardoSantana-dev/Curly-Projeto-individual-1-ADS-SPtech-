@@ -1,17 +1,28 @@
 async function postar() {
   let desc = desc_novoPost_input.value;
   let img = fotoNovoPost.files[0];
+  let categoria = categoria_input.value;
+
   const novoPost = new FormData();
   novoPost.append("desc", desc);
   novoPost.append("idUser", localUser.id);
+  novoPost.append("categoria", categoria);
+
   if (img != undefined) {
     novoPost.append("imgPost", img);
   }
+  if(categoria == 'galeria' && img == undefined){
+    alert('Para fazer um post de galeria é necessário adicionar uma imagem')
+  }else{
+
+  
+
   try {
     const postagem = await fetch("/posts/postar", {
       method: "POST",
       body: novoPost,
     });
+
     if (postagem) {
       desc_novoPost_input.value = "";
       fotoNovoPost.files[0] = "";
@@ -29,6 +40,7 @@ async function postar() {
   } catch (err) {
     console.error("Erro ao inserir post" + err);
   }
+}
 }
 async function buscarPost(ordem, filtro) {
   var postSelect = [{}];

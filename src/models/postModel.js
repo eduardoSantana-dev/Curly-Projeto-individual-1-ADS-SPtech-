@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
-function novoPost(idUser, desc, img) {
-  let query = `insert post (descricao,img,idUsuario) VALUES( '${desc}','${img}',${idUser});`;
+function novoPost(idUser, desc, img,categoria) {
+  let query = `insert post (descricao,img,idUsuario,categoria) VALUES( '${desc}','${img}',${idUser},'${categoria}');`;
   return database.executar(query);
 }
 
@@ -93,12 +93,28 @@ function novoComentario(idPost,idUser,desc){
   return database.executar(query);
 }
 function galeria(filtro,ordem){
-  console.log(filtro+"a aa "+ ordem)
-  let query = `select post.idPost,post.img,curvatura
+  let orderBy
+
+  switch(ordem){
+    case 'minutos':
+    orderBy = 'post.idPost'
+    break
+    case 'curtidas':
+    orderBy = 'count(distinct idCurtida)'
+    break
+    case 'seguidores':
+      orderBy = 'count(distinct idUsuarioSeguidor)'
+      break
+  }
+  console.log("AQUI"+filtro)
+  if(filtro == 'todos'){
+    filtro =''
+  }
+  let query = `select post.idPost,post.img,curvatura,TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos'
   from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost
   left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
-  where post.img != ''
-  group by usuario.idUsuario, post.idPost order by count(distinct idCurtida) desc;`
+  where post.img != '' and post.categoria ='galeria' and curvatura like '%${filtro}%'
+  group by usuario.idUsuario, post.idPost order by ${orderBy} desc;`
   return database.executar(query);
 }
 module.exports = {

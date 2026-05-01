@@ -227,10 +227,11 @@ function chamarNovoCardInput () {
                             <label for="fotoNovoPost"><i class="fa-regular fa-image"></i> Foto</label>
                             <input type="file" id="fotoNovoPost" accept="image/*" onchange="mostrarPreview()">
                             <button class="ButtonProdutoNovoPost"><i class="fa-solid fa-pump-soap"></i>Produto</button>
-                            <select name="" id="">
-                                <option value="">Comum</option>
-                                <option value="">Dica</option>
-                                <option value="">Pergunta</option>
+                            <select name="" id="categoria_input">
+                                <option value="comum">Comum</option>
+                                <option value="galeria">Galeria</option>
+                                <option value="dica">Dica</option>
+                                <option value="pergunta">Pergunta</option>
                             </select>
                         </div>
                         <button class="botao" type="button"  onclick = "postar()">Postar</button>

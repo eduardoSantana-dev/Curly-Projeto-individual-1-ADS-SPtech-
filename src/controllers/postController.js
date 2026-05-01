@@ -8,7 +8,7 @@ async function postar(req,res) {
          imgNome = req.file.filename
      }
      try{
-         const resultado = await postModel.novoPost(post.idUser,post.desc,imgNome)
+         const resultado = await postModel.novoPost(post.idUser,post.desc,imgNome,post.categoria)
          res.status(202).send(true)
      }catch(err){
          console.log(err)
@@ -84,7 +84,7 @@ async function comentar(req,res){
     
 }
 async function galeria(req,res) {
-    console.log(req.params)
+
     const ordem = req.params.ordem
     const filtro = req.params.filtro
     try{
