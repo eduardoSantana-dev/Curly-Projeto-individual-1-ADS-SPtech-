@@ -1,0 +1,173 @@
+#container {
+    display: flex;
+    justify-content: center;
+
+    .cont {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+.titulo {
+
+    font-size: 50px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        width: 520px;
+        text-align: center;
+        word-spacing: 5px;
+        line-height: 70px;
+    }
+}
+
+.slogam {
+    width: 800px;
+    font-weight: 500;
+    margin-top: 1%;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--texto2);
+}
+
+.dilemasLista {
+    display: flex;
+    justify-content: space-between;
+    width: 1085px;
+
+    margin-top: 3%;
+
+    .dilema {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-direction: column;
+
+        img {
+            width: 202px;
+            height: 323px;
+            border-radius: 10px;
+        }
+
+        span {
+            color: var(--roxo);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+    }
+
+    .baixo {
+        span {
+            color: var(--amarelo1);
+        }
+
+        margin-top: 48px;
+    }
+
+}
+
+.containerHistoria {
+  
+    width: 100%;
+    display: flex;
+    
+    margin-top: 5%;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+        width: 45%;
+       
+        margin-top: 3%;
+    }
+
+    div {
+        
+        width: 50%;
+    }
+
+    .subtitulo {
+        font-size: 45px;
+        font-weight: 700;
+        span{
+            color: var(--amarelo1);
+        }
+    }
+    .historia{
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: var(--texto1);
+        opacity: 0.87;
+        text-align: start;
+        margin-top: 7%;
+        line-height: 170%;
+    }
+}
+.edu{
+    margin-top: 10%;
+    width: 100%;
+    margin-bottom: 5%;
+    .subtitulo {
+        font-size: 45px;
+        font-weight: 700;
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        .curvatura{
+        width: 30px;
+        height: 30px;
+        margin-left: 1%;
+        margin-top: 1%;
+        font-size: 0.8rem;
+        color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .infos{
+        display: flex;
+        gap: 25px;
+        margin-top: 4%;
+        img{
+            width: 350px;
+            height: 350px;
+           
+            border-radius: 15px;
+        }
+        .dadosEdu{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .subtitulo{
+                color: var(--roxo);
+            }
+            .info{
+                color: var(--texto);
+                opacity: 0.9;
+                font-weight: 600;
+            }
+            .links{
+                display: flex;
+                gap: 30px;
+               
+                a{
+                    text-decoration: none;
+                     color: #323D4C;
+                     &:hover{
+                        color: var(--roxo);
+                     }
+                }
+                
+                font-size: 60px;
+                
+            }
+
+        }
+    }
+}

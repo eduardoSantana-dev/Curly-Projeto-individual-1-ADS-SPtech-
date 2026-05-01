@@ -13,7 +13,7 @@ if(localStorage.USER_ID){
     }
     setarTema(localStorage.TEMA)
 }else{
-     window.location = "login.html"  
+     // window.location = "login.html"  
 }
 
 // funções globais para requisições 
