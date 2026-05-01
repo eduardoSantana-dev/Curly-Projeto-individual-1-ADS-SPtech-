@@ -62,7 +62,11 @@
     width: 300px;
     position: sticky;
     top: 11%;
-
+    .perfil{
+           &:hover{
+                transform: scale(1.1);
+            }
+    }
     p {
         margin-top: 2%;
         font-size: 1.3rem;

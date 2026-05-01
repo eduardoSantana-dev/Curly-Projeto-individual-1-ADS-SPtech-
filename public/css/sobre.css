@@ -47,11 +47,14 @@
         align-items: center;
         gap: 5px;
         flex-direction: column;
-
+ &:hover{
+                transform: scale(1.1);
+            }
         img {
             width: 202px;
             height: 323px;
             border-radius: 10px;
+           
         }
 
         span {
@@ -106,6 +109,7 @@
         text-align: start;
         margin-top: 7%;
         line-height: 170%;
+        
     }
 }
 .edu{
@@ -137,7 +141,9 @@
         img{
             width: 350px;
             height: 350px;
-           
+            &:hover{
+                transform: scale(1.1);
+            }
             border-radius: 15px;
         }
         .dadosEdu{
@@ -161,7 +167,9 @@
                      color: #323D4C;
                      &:hover{
                         color: var(--roxo);
+                        transform: scale(1.2);
                      }
+                     
                 }
                 
                 font-size: 60px;

@@ -141,6 +141,9 @@ body {
             gap: 2.2rem;
 
             .acesso {
+                 &:hover{
+                transform: scale(1.04);
+            }
                 width: 100%;
                 display: flex;
                 color: var(--texto2);
