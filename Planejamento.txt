@@ -1,7 +1,0 @@
-proximos passos(
-ligar o modal de mostrar post com o banco
-)
-
-prototipar:
-sobre mim,
-configurações

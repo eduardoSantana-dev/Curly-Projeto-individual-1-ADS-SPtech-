@@ -112,6 +112,7 @@ form {
                     font-size: 1.1rem;
                     font-weight: 500;
                     color: var(--texto1);
+                    background-color: transparent;
                 }
 
                 i {

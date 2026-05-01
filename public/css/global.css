@@ -9,11 +9,13 @@
     --texto2: rgba(48, 48, 48, 0.72);
     --sombra: 0px 0px 4px 0px hsla(0, 0%, 0%, 0.100);
     --cinza: #E9E9EA;
+    --cinza3: #cccccc;
+    --cinza2:#f1f1f1;
     --tamanhoPost: 755px;
     --radius:15px;
-    --cinza2:#f1f1f1;
     --centroContainer:13.5%;
     --feed:49.7%;
+
 }
 
 /* modo dark(teste)
@@ -41,6 +43,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: 400ms;
 }
 body {
     font-family: 'Inter', sans-serif;
@@ -218,7 +221,7 @@ body {
 
         i {
 
-            color: black;
+            color:var(--texto1);
             opacity: 0.5;
         }
 
