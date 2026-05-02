@@ -11,7 +11,14 @@ function mostrarPreview() {
 
 if (localStorage.TEMA == "escuro") {
   bEscuro.classList.add("selecionado");
-} else {
+} 
+else if(localStorage.TEMA == "azul"){
+  bAzul.classList.add("selecionado");
+}
+else if(localStorage.TEMA == "neon"){
+  bNeon.classList.add("selecionado");
+}
+else {
   bClaro.classList.add("selecionado");
 }
 function mudarTema(tema) {
