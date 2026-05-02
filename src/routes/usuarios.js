@@ -28,4 +28,10 @@ router.post("/verificarSenha", function (req, res) {
 router.post("/update",upload.single('foto'),   (req, res) =>{
     usuarioController.atualizarUser(req,res);
 });
+router.get("/populares", function(req,res) {
+    usuarioController.buscarPopulares(req,res);
+});
+router.get("/seguindo/:idUser", function(req,res) {
+    usuarioController.buscarSeguindo(req,res);
+});
 module.exports = router;

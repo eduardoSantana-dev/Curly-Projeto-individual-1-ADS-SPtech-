@@ -55,6 +55,8 @@ async function login() {
   }
 }
 
+
+
 async function seguir(idPerfil) {
   try {
     const usuario = await fetch("/usuarios/seguirPerfil", {
@@ -137,3 +139,5 @@ async function atualizarUser(nome,arroba,email,novaSenha,img,senha){
         window.location.reload();
       }
 }
+
+

@@ -18,17 +18,17 @@
 <body>
     <div id="containerGlobal">
         <div id="container" style="display: none;">
-            
+
             <div class="feed" id="feed">
                 <div id="novoPostCardContainer"></div>
                 <div class="ContainerFiltros" id="filtroDePosts">
-                    <select name="" id="ordemPost" class="box"  onchange="buscarPost(ordemPost.value,filtroPost.value)">
+                    <select name="" id="ordemPost" class="box" onchange="buscarPost(ordemPost.value,filtroPost.value)">
                         <option value="minutos">Mais recente</option>
                         <option value="curtidas">Mais curtidos</option>
                         <option value="seguidores">Mais seguidores</option>
-                        
+
                     </select>
-                    <select name=""  id="filtroPost" class="box" onchange="buscarPost(ordemPost.value,filtroPost.value)">
+                    <select name="" id="filtroPost" class="box" onchange="buscarPost(ordemPost.value,filtroPost.value)">
                         <option value="0">Qualquer</option>
                         <option value='curvatura'>Mesma curvatura</option>
                         <option value="seguindo">Seguindo</option>
@@ -37,75 +37,24 @@
                 </div>
                 <div id="feedPost"></div>
             </div>
-           
+
             <div class="maisPopularesFeed box" id="teste">
                 <p>Mais populares</p>
-                <div class="listaPopulares">
-                    <div class="perfil">
-                        <div class="imgUserPerfilDiv">
-                            <img src="assets/userPerfil/semImg.png" alt=""
-                                id="imgUserPerfil">
-                        </div>
-                        <div class="nomeArroba">
-                            <span id="nomeUserPerfil">Usuario</span>
-                            <span id="usuarioUserPerfil">@user</span>
-                        </div>
-                    </div>
-                    <div class="perfil">
-                        <div class="imgUserPerfilDiv">
-                            <img src="assets/userPerfil/semImg.png" alt=""
-                                id="imgUserPerfil">
-                        </div>
-                        <div class="nomeArroba">
-                            <span id="nomeUserPerfil">Usuario</span>
-                            <span id="usuarioUserPerfil">@user</span>
-                        </div>
-                    </div>
-                    <div class="perfil">
-                        <div class="imgUserPerfilDiv">
-                            <img src="assets/userPerfil/semImg.png" alt=""
-                                id="imgUserPerfil">
-                        </div>
-                        <div class="nomeArroba">
-                            <span id="nomeUserPerfil">Usuario</span>
-                            <span id="usuarioUserPerfil">@user</span>
-                        </div>
-                    </div>
-                    <div class="perfil">
-                        <div class="imgUserPerfilDiv">
-                            <img src="assets/userPerfil/semImg.png" alt=""
-                                id="imgUserPerfil">
-                        </div>
-                        <div class="nomeArroba">
-                            <span id="nomeUserPerfil">Usuario</span>
-                            <span id="usuarioUserPerfil">@user</span>
-                        </div>
-                    </div>
-                    <div class="perfil">
-                        <div class="imgUserPerfilDiv">
-                            <img src="assets/userPerfil/semImg.png" alt=""
-                                id="imgUserPerfil">
-                        </div>
-                        <div class="nomeArroba">
-                            <span id="nomeUserPerfil">Usuario</span>
-                            <span id="usuarioUserPerfil">@user</span>
-                        </div>
-                    </div>
+                <div class="listaPopulares" id="listaPopulares">
+
+
 
                 </div>
 
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>
 <script src="./js/componentes/post.js"></script>
 <script src="./js/api/PostAPI.js"></script>
 <script src="./js/api/User.js"></script>
-<script src="./js/componentes/navbar.js">
-</script>
-<script>
-    chamarNovoCardInput()
-   buscarPost(ordemPost.value,filtroPost.value)
-</script>
+<script src="./js/componentes/navbar.js"></script>
+<script src="js/scripts/home.js"></script>

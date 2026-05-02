@@ -27,4 +27,24 @@ async function buscarUser(){
     console.log('dados')
    }
 }
+
+async function buscarPopulares(id) {
+  const seguindo = await reqGet(`/usuarios//seguindo/${id}`);
+  console.log(seguindo.data);
+  seguindo.data.forEach((user) => {
+    listaSeguindoPerfil.innerHTML += `
+        <a href="perfil.html?id=${user.idUsuario}" class="perfil">
+                        <div class="imgUserPerfilDiv">
+                            <img src="assets/userPerfil/${user.img}" alt=""
+                                id="imgUserPerfil">
+                        </div>
+                        <div class="nomeArroba">
+                            <span class="nomeUserPerfilSeguindo">${user.nome}</span>
+                            <span class="usuarioUserPerfilSeguindo">@${user.arroba}</span>
+                        </div>
+                    </a>
+        `;
+  });
+}
+buscarPopulares(idPerfil)
 buscarUser()

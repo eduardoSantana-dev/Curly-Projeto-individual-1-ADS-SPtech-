@@ -29,7 +29,6 @@ primary key(idPost,IdUsuario)
 
 
 
-
 create table seguir_usuario (
 idSeguimento int auto_increment,
 idUsuarioSeguido int, 
@@ -61,54 +60,10 @@ constraint idUsuarioComentario foreign key (idUsuario) references usuario(idUsua
 primary key(idComentario,idPost,idUsuario)
 )auto_increment = 1000;
 
-select * from usuario;
-select * from post;
-
-select idUsuarioseguidor as 'segue o ',idUsuarioSeguido from seguir_usuario;
 
 
 
-select * from curtida;
-select count(idCurtida) from curtida where idPost = 137 and idUsuario = 101;
 
-select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(idCurtida) as curtidas,count(idComentario) as comentarios ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo
-from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
-
-left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = 100
-group by usuario.idUsuario, post.idPost order by dataPost desc;
-    
-
-select u.img,u.nome, u.arroba, comentario, timestampdiff(minute,dataComentario,now()) as 'minutos'from comentario join post on comentario.idPost = post.idPost join usuario u on u.idUsuario = comentario.idUsuario where post.idPost = 101;
-
-insert into comentario (comentario,idPost,idUsuario) value(
-'Caramba que top ein',101,100
-);
-select * from comentario;
-
-delete from comentario where idComentario between 1000 and 1040;
-
-delete from post where idPost between 100 and 140;
-
-select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(curtida.idCurtida) as curtidas,count(idComentario) as comentarios ,
-case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo,
-case when espectadorCurtida.idUsuario IS NOT NULL then 1 else 0 end as curtido
-from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost 
-left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = 101
-left join curtida espectadorCurtida on post.idPost = espectadorCurtida.idPost and espectadorCurtida.idUsuario = 101
-
-group by usuario.idUsuario, post.idPost;
-
-
-select u.*, count(distinct seguidores.idSeguimento) as seguidores, count(distinct seguindo.idSeguimento) as seguindo,
-case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo
-from usuario as u left join seguir_usuario as seguidores on idUsuarioSeguido = u.idUsuario  
-left join seguir_usuario as seguindo on seguindo.idUsuarioSeguidor = u.idUsuario 
-left join seguir_usuario espectador on u.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = 101
-where idUsuario = 102
-;
-
-
-select * from usuario where email = "email" and senha ="senha";
 
 SHOW TABLES;
 /*CREATE USER 'apiCurly'@'%' IDENTIFIED BY 'Senha@forte';

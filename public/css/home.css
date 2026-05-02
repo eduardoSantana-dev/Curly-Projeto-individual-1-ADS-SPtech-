@@ -63,9 +63,20 @@
     position: sticky;
     top: 11%;
     .perfil{
+        text-decoration: none;
            &:hover{
-                transform: scale(1.1);
+                transform: scale(1.05);
             }
+            .nomeUserPerfilPopulares {
+                color: var(--texto1);
+            font-weight: bold;
+                    font-size: 1rem;
+                    opacity: 0.8;
+        }
+        .usuarioUserPerfilPopulares {
+            font-size: 1rem;
+                    color: var(--texto2);
+        }
     }
     p {
         margin-top: 2%;
