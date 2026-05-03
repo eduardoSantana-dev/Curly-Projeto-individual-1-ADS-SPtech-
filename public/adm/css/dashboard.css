@@ -1,21 +1,23 @@
 .container {
     height: 100%;
-    padding: 1% 5%;
+    padding: 0.5% 5%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .contEsquerda {
-    margin-top: 1%;
+   
     width: 55%;
 }
 
 .topoEsquerda {
-
+    margin-top: 2%;
     display: flex;
     gap: 40px;
     background-attachment: #354155a5;
     .card {
         width: 300px;
-        height: 170px;
+        height: 160px;
         border-radius: var(--radius);
         display: flex;
         flex-direction: column;
@@ -102,7 +104,7 @@
     width: 100%;
     background-color: var(--box);
     margin-top: 3%;
-    height: 370px;
+    height: 350px;
     border-radius: var(--radius);
     padding: 2% 2%;
     display: flex;
@@ -122,7 +124,7 @@
     width: 100%;
     
     margin-top: 2%;
-    height: 300px;
+    height: 270px;
     display: flex;
     justify-content: space-between;
     .card{
@@ -166,5 +168,72 @@
                 }
             }
         }
+    }
+}
+.contDireita{
+    width: 42%;
+
+    margin-top: 4%;
+
+}
+.usuariosListas{
+    display: flex;
+    justify-content: space-between;
+}
+.usuariosDash{
+    background-color: var(--box);
+    border-radius: var(--radius);
+    height: 420px;
+    width: 47%;
+    padding: 2% 3%;
+    p{
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .listaUsuario{
+        margin-top: 7%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .perfil{
+            display: flex;
+            gap: 20px;
+            img{
+                width: 65px;
+                height: 50px;
+                border-radius: 100%;
+                object-fit: cover;
+                display: flex;
+            }
+            .nomeUserPerfil{
+                font-weight: bold;
+                font-size: 1.1rem;
+            }  
+            .usuarioUserPerfil{
+                font-weight: 500;
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+        }
+    }
+}
+.graficoLinhaPosts{
+    width: 100%;
+    background-color: var(--box);
+    margin-top: 2%;
+    flex:1;
+    border-radius: var(--radius);
+    padding: 2% 2%;
+    display: flex;
+    flex-direction: column;
+    p{
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .grafico{
+
+        height:340px;
+
+
     }
 }

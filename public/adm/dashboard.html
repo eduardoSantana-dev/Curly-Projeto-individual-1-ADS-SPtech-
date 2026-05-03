@@ -15,8 +15,8 @@
 
     <div id="nav"></div>
     <div class="container">
-        <div class="titulo">Bem vindo de volta, Eduardo</div>
         <div class="contEsquerda">
+            <div class="titulo">Bem vindo de volta, Eduardo</div>
             <div class="topoEsquerda">
                 <div class="card cRoxo">
                     <p>Usuários</p>
@@ -41,7 +41,7 @@
             <div class="graficoLinhaUsers">
                 <p>Usuários nos últimos dias</p>
                 <div class="grafico">
-                    <canvas id="graficoLinhaUsers" width="400" height="150"></canvas>
+                    <canvas id="graficoLinhaUsers" width="400" height="130"></canvas>
                 </div>
             </div>
             <div class="graficosRoscas">
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="card">
+                <div class="card">
                     <p>Posts por tipo de cabelo</p>
                     <div>
                         <div class="grafico"> <canvas id="postsPorCurvatura"></canvas></div>
@@ -80,7 +80,27 @@
                     </div>
                 </div>
             </div>
-            
+
+        </div>
+        <div class="contDireita">
+            <div class="usuariosListas">
+                <div class="usuariosDash">
+                    <p>Mais populares</p>
+                    <div class="listaUsuario" id="listaPopularesPerfil">
+                    </div>
+                </div>
+                <div class="usuariosDash">
+                    <p>Ultimos cadastros</p>
+                    <div class="listaUsuario" id="listaCadastrosPerfil">
+                    </div>
+                </div>
+            </div>
+            <div class="graficoLinhaPosts">
+                <p>Interações por hora</p>
+                <div class="grafico">
+                    <canvas id="graficoLinhaPosts" width="400" height="150"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -90,7 +110,35 @@
 <script src="js/scripts/graficosDash.js"></script>
 
 <script>
-  
+    for (let i = 0; i < 5; i++) {
+        listaPopularesPerfil.innerHTML += `
+     <div class="perfil">
+                           
+                                <img src="../assets/userPerfil/semImg.png" alt="" id="imgUserPerfil">
+                            
+                            <div class="nomeArroba">
+                                <span class="nomeUserPerfil">Eduardo Santana Santos</span>
+                                <span class="usuarioUserPerfil">@edu.san</span>
+                            </div>
+                        </div>
+    `
+    }
+    for (let i = 0; i < 5; i++) {
+        listaCadastrosPerfil.innerHTML += `
+     <div class="perfil">
+                           
+                                <img src="../assets/userPerfil/semImg.png" alt="" id="imgUserPerfil">
+                            
+                            <div class="nomeArroba">
+                                <span class="nomeUserPerfil">Eduardo Santana Santos</span>
+                                <span class="usuarioUserPerfil">@edu.san</span>
+                            </div>
+                        </div>
+    `
+    }
+
+
 </script>
+
 
 </html>
