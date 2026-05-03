@@ -110,14 +110,14 @@ function setarTema(tema) {
   } else if (tema == "neon") {
 
     document.documentElement.style.setProperty("--fundo", "#111525");
-    document.documentElement.style.setProperty("--box", "#161B2E");
+    document.documentElement.style.setProperty("--box", "#1A2038");
     document.documentElement.style.setProperty("--roxo", "#CB3CFF");
     document.documentElement.style.setProperty("--amarelo1", "#00C2FF");
     document.documentElement.style.setProperty("--amarelo2", "#5EDCFF");
     document.documentElement.style.setProperty("--amarelo3", "#009DCC");
     document.documentElement.style.setProperty("--texto1", "#FFFFFF");
     document.documentElement.style.setProperty("--texto2","rgba(255, 255, 255, 0.72)",);
-    document.documentElement.style.setProperty("--sombra","0px 0px 12px 0px rgba(0, 194, 255, 0.12)",);
+    document.documentElement.style.setProperty("--sombra","0px 0px 12px 0px rgba(0, 195, 255, 0.04)",);
     document.documentElement.style.setProperty("--cinza", "#232845");
     document.documentElement.style.setProperty("--cinza3", "#2D3355");
     document.documentElement.style.setProperty("--cinza2", "#1A2035");

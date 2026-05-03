@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/globalAdm.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div id="nav"></div>
+    <div class="container">
+        <div class="titulo">Bem vindo de volta, Eduardo</div>
+        <div class="contEsquerda">
+            <div class="topoEsquerda">
+                <div class="card cRoxo">
+                    <p>Usuários</p>
+                    <span>102</span>
+                </div>
+                <div class="card cAzul">
+                    <p>Postagens</p>
+                    <span>321</span>
+                </div>
+                <div class="acessosRapidosTopo">
+                    <a href="#">
+                        <span class="circulo cRoxo"><i class="fa-regular fa-user"></i></span>
+                        <span>Usuários</span>
+                    </a>
+                    <a href="#" class="Aazul">
+                        <span class="circulo cAzul"><i class="fa-regular fa-compass"></i></span>
+                        <span>Postagens</span>
+                    </a>
+
+                </div>
+            </div>
+            <div class="graficoLinhaUsers">
+                <p>Usuários nos últimos dias</p>
+                <div class="grafico">
+                    <canvas id="graficoLinhaUsers" width="400" height="150"></canvas>
+                </div>
+            </div>
+            <div class="graficosRoscas">
+                <div class="card">
+                    <p>Usuários por tipo de cabelo</p>
+                    <div>
+                        <div class="grafico"> <canvas id="usersPorCurvatura"></canvas></div>
+                        <div class="tiposListas">
+                            <div class="tipo"><span style="border-color: var(--azul2);"></span>
+                                <p>Ondulado (40%)</p>
+                            </div>
+                            <div class="tipo"><span style="border-color: var(--azul4);"></span>
+                                <p>Cacheado (30%)</p>
+                            </div>
+                            <div class="tipo"><span style="border-color: var(--azul3);"></span>
+                                <p>Crespo (20%)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="card">
+                    <p>Posts por tipo de cabelo</p>
+                    <div>
+                        <div class="grafico"> <canvas id="postsPorCurvatura"></canvas></div>
+                        <div class="tiposListas">
+                            <div class="tipo"><span style="border-color: var(--azul2);"></span>
+                                <p>Ondulado (21%)</p>
+                            </div>
+                            <div class="tipo"><span style="border-color: var(--azul4);"></span>
+                                <p>Cacheado (53%)</p>
+                            </div>
+                            <div class="tipo"><span style="border-color: var(--azul3);"></span>
+                                <p>Crespo (26%)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+<script src="js/componentes/nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/scripts/graficosDash.js"></script>
+
+<script>
+  
+</script>
+
+</html>

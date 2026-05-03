@@ -46,8 +46,8 @@
    transition: 400ms; 
 }
 body {
+    
     font-family: 'Inter', sans-serif;
-    background-color: var(--teste);
     margin: 0px;
     color: var(--texto1);
     background-color: var(--fundo);

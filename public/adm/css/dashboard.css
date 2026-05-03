@@ -1,0 +1,170 @@
+.container {
+    height: 100%;
+    padding: 1% 5%;
+}
+
+.contEsquerda {
+    margin-top: 1%;
+    width: 55%;
+}
+
+.topoEsquerda {
+
+    display: flex;
+    gap: 40px;
+    background-attachment: #354155a5;
+    .card {
+        width: 300px;
+        height: 170px;
+        border-radius: var(--radius);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: bold;
+        color: #fff;
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 6%;
+        }
+
+        span {
+            margin-top: 10%;
+            font-size: 3rem;
+        }
+    }
+
+    .cAzul {
+        background: var(--gradienteAzul);
+    }
+
+    .cRoxo {
+        background: var(--gradienteRoxo);
+    }
+
+    .acessosRapidosTopo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        a {
+            text-decoration: none;
+            color: var(--texto1);
+            display: flex;
+            align-items: center;
+            background: var(--box);
+            gap: 40px;
+            padding: 7% 5%;
+            border-radius: var(--radius);
+
+            &:hover {
+                background: var(--gradienteRoxo);
+
+                .circulo {
+                    background: transparent;
+                }
+            }
+
+            .circulo {
+                background-color: aqua;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+
+                i {
+                    color: #fff;
+
+                    font-size: 25px;
+                }
+            }
+
+            span {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+        }
+
+        .Aazul {
+            &:hover {
+
+                background: var(--gradienteAzul);
+
+            }
+        }
+
+    }
+}
+.graficoLinhaUsers{
+    width: 100%;
+    background-color: var(--box);
+    margin-top: 3%;
+    height: 370px;
+    border-radius: var(--radius);
+    padding: 2% 2%;
+    display: flex;
+    flex-direction: column;
+    p{
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .grafico{
+
+        height: 700px;
+
+
+    }
+}
+.graficosRoscas{
+    width: 100%;
+    
+    margin-top: 2%;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    .card{
+        p{
+             font-size: 1rem;
+        font-weight: bold;
+        }
+        width: 47%;
+        background-color: var(--box);
+        border-radius: var(--radius);
+        padding: 2% 2%;
+        div{
+            display: flex;
+            margin-top: 1%;
+            gap: 20px;
+            .grafico{
+               
+                height: 200px;
+                width: 200px;
+                margin-top: 5%;
+            }
+            .tiposListas{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .tipo{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+
+                    span{
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                        border: 4px solid;
+                        
+                    }
+                    p{
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}
