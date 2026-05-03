@@ -1,0 +1,156 @@
+.container {
+    height: 100%;
+    padding: 1% 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.selects {
+    margin-top: 4%;
+    display: flex;
+    gap: 30px;
+
+    .inputPesquisar {
+        width: 360px;
+        height: 43px;
+        background-color: var(--box);
+        border-radius: var(--radius);
+        border-left: 3px solid var(--roxo);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: 10px;
+
+        input {
+            flex: 1;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            color: var(--texto1);
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        i {
+            color: var(--texto2);
+        }
+
+    }
+
+    select {
+
+        border: none;
+        color: var(--texto1);
+        height: 43px;
+        width: 230px;
+        font-size: 0.9rem;
+        padding-inline: 1%;
+        display: flex;
+        align-items: center;
+
+
+        background-color: var(--box);
+
+        &,
+        &::picker(select) {
+            appearance: base-select;
+            border: none;
+            border-left: 3px solid var(--roxo);
+
+            border-radius: 0px 0px 10px 10px;
+            color: var(--texto1);
+            background-color: var(--box);
+
+        }
+
+        border-radius: var(--radius);
+
+        &:open {
+            border-radius: 10px 10px 0px 0px;
+
+        }
+    }
+}
+
+#listaUsers {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 2%;
+
+    .user {
+        background-color: var(--box);
+        border-radius: var(--radius);
+        border-left: 3px solid var(--roxo);
+        padding-inline: 2%;
+        display: flex;
+        align-items: center;
+        height: 70px;
+        justify-content: space-between;
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            object-fit: cover;
+            display: flex;
+        }
+        .imgNomeArroba{
+            display: flex;
+            align-items: center;
+        }
+        .nomeArroba {
+            margin-left: 5%;
+            display: flex;
+            flex-direction: column;
+
+            .nome {
+                font-size: 1rem;
+                font-weight: bold;
+                display: flex;
+                gap: 20px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 450px;
+                
+            }
+
+            .arroba {
+                opacity: 0.8;
+                font-size: 0.9rem;
+            }
+
+            .curvatura {
+                font-size: 0.8rem;
+                width: 25px;
+                height: 25px;
+                font-weight: 500;
+                border-radius: 50px;
+                color: #fff;
+                background-color: var(--azul);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        }
+        .email{
+            font-size: 1.3rem;
+                font-weight: bold;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 500px;
+        }
+        .status{
+            color: var(--azul);
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        i{
+            font-size: 1.5rem;
+            color: var(--roxo);
+            cursor: pointer;
+        }
+    }
+}

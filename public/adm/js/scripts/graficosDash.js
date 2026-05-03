@@ -1,3 +1,6 @@
+ let gridColor = '#354155a5'
+ let ticksColor ='#fff'
+ let linhaComentarioColor = '#F8AC35'
  const linha1 = document.getElementById('graficoLinhaUsers');
 
     new Chart(linha1, {
@@ -31,27 +34,27 @@
                     min: 5,
                     max: 20,
                     grid: {
-                        color: '#354155a5',
+                        color: gridColor,
                         lineWidth: 1,
                         drawBorder: false,
                         drawTicks: false
                     },
                     ticks: {
                         padding: 15,
-                        color: '#fff',
+                        color: ticksColor,
                     }
                 },
                 x: {
 
                     grid: {
-                        color: '#354155a5',
+                        color: gridColor,
                         lineWidth: 1,
                         drawBorder: false,
                         drawTicks: false
                     },
                      ticks: {
                         padding: 5,
-                        color: '#fff',
+                        color: ticksColor,
                     }
                 }
             }
@@ -199,8 +202,8 @@
                  data: [5, 3, 18, 60, 95, 140, 110, 170],
                 borderWidth: 2,
                 borderRadius: 3,
-                borderColor: '#FFFFFF',
-                backgroundColor: '#FFFFFF',
+                borderColor: linhaComentarioColor,
+                backgroundColor: linhaComentarioColor,
     
                 tension: 0.2,
 
@@ -222,27 +225,27 @@
 
                     
                     grid: {
-                        color: '#354155a5',
+                        color: gridColor,
                         lineWidth: 1,
                         drawBorder: false,
                         drawTicks: false
                     },
                     ticks: {
                         padding: 15,
-                        color: '#fff',
+                        color: ticksColor,
                     }
                 },
                 x: {
 
                     grid: {
-                        color: '#354155a5',
+                        color: gridColor,
                         lineWidth: 1,
                         drawBorder: false,
                         drawTicks: false
                     },
                     ticks: {
                         padding: 5,
-                        color: '#fff',
+                        color: ticksColor,
                     }
                 }
             }

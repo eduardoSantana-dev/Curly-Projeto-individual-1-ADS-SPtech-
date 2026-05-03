@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+    <link rel="stylesheet" href="css/globalAdm.css">
+    <link rel="stylesheet" href="css/postsDash.css">
+    <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div id="nav"></div>
+    <div class="container">
+        <div class="titulo">Posts</div>
+        <div class="selects">
+             <div class="inputPesquisar">
+                 <input type="text" placeholder="Pesquisar pelo nome">
+                 <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+            <select name="" id="">
+                <option value="">Todos usuários</option>
+                <option value="">Ativos</option>
+                <option value="">Desativados</option>
+                
+            </select>
+             <select name="" id="">
+                <option value="">Mais recentes</option>
+                <option value="">Mais seguidos</option>
+                <option value="">Mais engajados</option>
+             
+            </select>
+        </div>
+        <div id="listaPosts">
+          
+        </div>
+    </div>
+
+</body>
+<script src="js/componentes/nav.js"></script>
+
+<script>
+     for(let i =0; i<10; i++){
+         listaPosts.innerHTML +=`
+          <div class="post">
+                <div class="img">
+                    <img src="../assets/userPerfil/2f0374091dd7c9417c115542.jpg" alt="">
+                </div>
+                <div class="infoPost">
+                    <div class="perfil">
+                    
+                        <img src="../assets/userPerfil/semImg.png" alt="" >
+                            
+                            <div class="nomeArroba">
+                                <span class="nomeUserPerfil">Eduardo Santana Santos <span class="curvatura">2B</span></span>
+                                <span class="usuarioUserPerfil">@edu.san</span>
+                            </div>
+                    </div>
+                    <p class="descPost">Gente hoje Conseguir finalizar meu cabelo com dedoliss e ficou4242442442 perfeito!!</p>
+                    <div class="statusPost">
+                         <div class="status">
+                            <i class="fa-regular fa-thumbs-up"></i>
+                            <span>50</span>
+                        </div>
+                        <div class="status">
+                            <i class="fa-regular fa-comment"></i>
+                            <span>50</span>
+                        </div>
+                        <div class="tipoPost">Comum</div>
+                    </div>
+                </div>
+                <div class="deletar"><i class="fa-solid fa-xmark"></i></div>
+           </div>
+         `
+
+     }
+</script>
+
+
+</html>

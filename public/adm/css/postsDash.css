@@ -1,0 +1,188 @@
+.container {
+    height: 100%;
+    padding: 1% 7%;
+    display: flex;
+    flex-direction: column;
+}
+
+.selects {
+    margin-top: 4%;
+    display: flex;
+    gap: 30px;
+
+    .inputPesquisar {
+        width: 360px;
+        height: 43px;
+        background-color: var(--box);
+        border-radius: var(--radius);
+        border-left: 3px solid var(--roxo);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: 10px;
+
+        input {
+            flex: 1;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            color: var(--texto1);
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        i {
+            color: var(--texto2);
+        }
+
+    }
+
+    select {
+
+        border: none;
+        color: var(--texto1);
+        height: 43px;
+        width: 230px;
+        font-size: 0.9rem;
+        padding-inline: 1%;
+        display: flex;
+        align-items: center;
+
+
+        background-color: var(--box);
+
+        &,
+        &::picker(select) {
+            appearance: base-select;
+            border: none;
+            border-left: 3px solid var(--roxo);
+
+            border-radius: 0px 0px 10px 10px;
+            color: var(--texto1);
+            background-color: var(--box);
+
+        }
+
+        border-radius: var(--radius);
+
+        &:open {
+            border-radius: 10px 10px 0px 0px;
+
+        }
+    }
+}
+
+#listaPosts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 40px;
+    margin-top: 2%;
+
+    .post {
+
+        background-color: var(--box);
+        border-radius: var(--radius);
+        border-left: 3px solid var(--roxo);
+        padding-block: 1%;
+        padding-left: 1%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: fit-content;
+        height: 170px;
+        .img {
+            width: 190px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: var(--radius);
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .infoPost {
+            margin-left: 5%;
+            height: 100%;
+            
+            .perfil {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+                img {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 100%;
+                    object-fit: cover;
+                    display: flex;
+                }
+
+                .nomeArroba {
+                    display: flex;
+                    flex-direction: column;
+
+                    .nomeUserPerfil {
+                        font-size: 1rem;
+                        font-weight: bold;
+                        display: flex;
+                        gap: 10PX;
+                        align-items: center;
+                        .curvatura {
+                            font-size: 0.6rem;
+                            width: 20px;
+                            height: 20px;
+                            font-weight: 500;
+                            border-radius: 50px;
+                            color: #fff;
+                            background-color: var(--azul);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+            .descPost{
+                margin-top: 2%;
+                width: 500px;
+                height: 55px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .statusPost{
+                display: flex;
+                gap: 30px;
+                margin-top: 2%;
+                align-items: center;
+                .status{
+                    color: var(--azul);
+                    font-weight: 500;
+                }
+                .tipoPost{
+                    width: 160px;
+                    background-color: var(--azul);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 5px;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+    .deletar{
+        
+        height: 110%;
+        padding-right: 1%;
+          i{    
+            cursor: pointer;
+            margin-left: 5%;
+        }
+    }
+
+}

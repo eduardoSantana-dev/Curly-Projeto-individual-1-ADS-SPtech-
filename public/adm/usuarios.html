@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+    <link rel="stylesheet" href="css/globalAdm.css">
+    <link rel="stylesheet" href="css/usuarios.css">
+    <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div id="nav"></div>
+    <div class="container">
+        <div class="titulo">Usuários</div>
+        <div class="selects">
+             <div class="inputPesquisar">
+                 <input type="text" placeholder="Pesquisar pelo nome">
+                 <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+            <select name="" id="">
+                <option value="">Todos usuários</option>
+                <option value="">Ativos</option>
+                <option value="">Desativados</option>
+                
+            </select>
+             <select name="" id="">
+                <option value="">Mais recentes</option>
+                <option value="">Mais seguidos</option>
+                <option value="">Mais engajados</option>
+             
+            </select>
+        </div>
+        <div id="listaUsers">
+           
+        </div>
+    </div>
+
+</body>
+<script src="js/componentes/nav.js"></script>
+
+<script>
+    for(let i =0; i<10; i++){
+        listaUsers.innerHTML +=`
+         <div class="user">
+               <div class="imgNomeArroba">
+                 <img src="../assets/userPerfil/semImg.png" alt="">
+                <div class="nomeArroba">
+                    <span class="nome">Eduardo Santana Santos <span class="curvatura">2B</span></span>
+                    <span class="arroba">@edu.san07</span>
+                </div>
+               </div>
+                <span class="email">
+                    eduardo.santana07n@gmail.com
+                </span>
+                <span class="status">Ativo</span>
+                <i class="fa-solid fa-xmark"></i>
+                
+            </div>
+        `
+
+    }
+</script>
+
+
+</html>

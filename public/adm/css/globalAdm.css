@@ -4,13 +4,13 @@
 :root {
     --fundo: #111525;
     --box: #1A2038;
+    --texto1: #FFFFFF;
+    --texto2: rgba(255, 255, 255, 0.72);
     --roxo: #CB3CFF;
     --azul: #00C2FF;
     --azul2: #00FFEE;
     --azul3: #146F9B;
     --azul4: #003CFF;
-    --texto1: #FFFFFF;
-    --texto2: rgba(255, 255, 255, 0.72);
     --sombra: 0px 0px 4px 0px hsla(0, 0%, 0%, 0.100);
     --radius: 10px;
     --gradienteRoxo: linear-gradient(135deg,#D946EF 0%,#A855F7 45%,#7C3AED 100%);
