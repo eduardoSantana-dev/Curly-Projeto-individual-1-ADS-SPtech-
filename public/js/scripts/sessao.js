@@ -49,7 +49,7 @@ async function reqPost(url, jsonDados) {
     return false;
   }
 }
-function setarTema(tema) {
+function setarTema(tema,button) {
   if (tema == "escuro") {
     document.documentElement.style.setProperty("--fundo", "#0f1115");
     document.documentElement.style.setProperty("--box", "#1a1d23");
@@ -69,7 +69,11 @@ function setarTema(tema) {
     document.documentElement.style.setProperty("--cinza", "#2a2d34");
     document.documentElement.style.setProperty("--cinza2", "#20232a");
     document.documentElement.style.setProperty("--cinza3", "#333333");
+   
+    
   } else if (tema == "claro") {
+   
+    
     document.documentElement.style.setProperty("--fundo", "#F0F2F5");
     document.documentElement.style.setProperty("--box", "#fff");
     document.documentElement.style.setProperty("--roxo", "#693B99");
@@ -89,6 +93,9 @@ function setarTema(tema) {
     document.documentElement.style.setProperty("--cinza3", "#cccccc");
     document.documentElement.style.setProperty("--cinza2", "#f1f1f1");
   } else if (tema == "azul") {
+   
+    
+
     document.documentElement.style.setProperty("--fundo", "#EEF4FF");
     document.documentElement.style.setProperty("--box", "#FFFFFF");
     document.documentElement.style.setProperty("--roxo", "#3B82F6");
@@ -108,6 +115,8 @@ function setarTema(tema) {
     document.documentElement.style.setProperty("--cinza3", "#E2E8F0");
     document.documentElement.style.setProperty("--cinza2", "#F1F5F9");
   } else if (tema == "neon") {
+   
+    
 
     document.documentElement.style.setProperty("--fundo", "#111525");
     document.documentElement.style.setProperty("--box", "#1A2038");

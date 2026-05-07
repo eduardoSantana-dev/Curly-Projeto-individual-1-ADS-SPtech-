@@ -120,15 +120,24 @@
                 border: none;
                 outline: none;
                 background-color: transparent;
-
+               
                 &,
                 &::picker(select) {
                     appearance: base-select;
                     border: none;
                     box-shadow: var(--sombra);
                     border-radius: 10px;
+                background-color: var(--box);
+                    color: var(--texto2);
+                   
                 }
-
+                & option{
+                    font-weight: 500;
+                    &:hover{
+                    
+                    color: var(--roxo);
+                    }
+                }
                 cursor: pointer;
                 box-shadow: none;
                 color: var(--texto2);

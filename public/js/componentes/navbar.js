@@ -1,3 +1,4 @@
+const temaNav = localStorage.TEMA
  containerGlobal.innerHTML = `
            <div class="navLateral">
             <div class="containerNavLateral">
@@ -42,7 +43,7 @@
         </div>
         <div class="subContainerGlobal">
             <div class="navTopo">
-               <a href="index.html"> <img src="./assets/icon/completo.svg" alt=""></a>
+               <a href="index.html"> <img src="./assets/icon/${temaNav =='claro' ? 'completo': temaNav =='escuro' ? 'completoDark':temaNav =='neon' ? 'completoNeon': 'completoAzul'}.svg" id="navLogo" alt=""></a>
                 <div class="navTopoElements">
                     <div class="inputPesquisar">
                         <i class="fa-solid fa-magnifying-glass"></i>

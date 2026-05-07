@@ -12,7 +12,8 @@ overflow: hidden;
     padding: 0px;
     .imgLogin{
         width: 100%;
-        object-fit: contain;
+ 
+     height: 100%;
     }
     .logo{
         position: absolute;
@@ -91,9 +92,10 @@ form{
     }
     button{
         width: 400px;
-        height: 50px;
+        min-height: 50px;
         font-size: 1.5rem;
-        margin-top:10%
+        margin-top:10%;
+      
     }
     p{
         margin-top: 5%;
@@ -105,4 +107,11 @@ form{
 
         }
     }
+}
+
+.adm{
+    position: absolute;
+    bottom: 10px;
+    text-decoration: none;
+    color: var(--texto2);
 }

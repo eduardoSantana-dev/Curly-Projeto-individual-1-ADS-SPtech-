@@ -226,7 +226,7 @@ function chamarNovoCardInput () {
                         <div class="complementos">
                             <label for="fotoNovoPost"><i class="fa-regular fa-image"></i> Foto</label>
                             <input type="file" id="fotoNovoPost" accept="image/*" onchange="mostrarPreview()">
-                            <button class="ButtonProdutoNovoPost"><i class="fa-solid fa-pump-soap"></i>Produto</button>
+                           
                             <select name="" id="categoria_input">
                                 <option value="comum">Comum</option>
                                 <option value="galeria">Galeria</option>

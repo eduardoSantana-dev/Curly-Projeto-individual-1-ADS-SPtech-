@@ -24,12 +24,15 @@ else {
 function mudarTema(tema) {
   if (tema == "escuro") {
     setarTema("escuro");
+    navLogo.src = './assets/icon/completoDark.svg'
     bAzul.classList.remove("selecionado")
     bNeon.classList.remove("selecionado")
     bEscuro.classList.add("selecionado");
     bClaro.classList.remove("selecionado");
     localStorage.TEMA = "escuro";
   } else if (tema == "azul") {
+  navLogo.src = './assets/icon/completoAzul.svg'
+    
     bAzul.classList.add("selecionado")
     bNeon.classList.remove("selecionado")
     bEscuro.classList.remove("selecionado");
@@ -37,6 +40,8 @@ function mudarTema(tema) {
     setarTema("azul");
     localStorage.TEMA = "azul";
   } else if (tema == "neon") {
+  navLogo.src = './assets/icon/completoNeon.svg'
+
      bAzul.classList.remove("selecionado")
     bNeon.classList.add("selecionado")
     bEscuro.classList.remove("selecionado");
@@ -44,6 +49,8 @@ function mudarTema(tema) {
     setarTema("neon");
     localStorage.TEMA = "neon";
   } else {
+  navLogo.src = './assets/icon/completo.svg'
+
      bAzul.classList.remove("selecionado")
     bNeon.classList.remove("selecionado")
     bEscuro.classList.remove("selecionado");

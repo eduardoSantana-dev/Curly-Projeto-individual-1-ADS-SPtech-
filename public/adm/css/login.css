@@ -1,0 +1,102 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 99vh;
+    flex-direction: column;
+}
+p{
+    font-size: 3rem;
+    font-weight:bolder ;
+}
+form{
+    margin-top: 1%;
+    width: 520px;
+    height: 600px;
+    background-color: var(--box);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+      height: 180px;
+}
+   .inputContainer {
+    margin-bottom: 9%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 80%;
+
+            label {
+                font-weight: 700;
+            }
+
+            .inputBox {
+                border: 10px;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                height: 50px;
+                border-radius: 10px;
+                align-items: center;
+                background-color: var(--box2);
+                padding-inline: 2%;
+
+                input {
+                    flex: 1;
+                    height: 100%;
+                    outline: none;
+                    border: none;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    color: var(--texto1);
+                    background-color: transparent;
+                }
+
+                i {
+                    color: var(--azul);
+                    font-size: 1.2rem;
+                }
+
+                #olho {
+                    cursor: pointer;
+                }
+                
+            }
+            
+        .inputInvalido {
+            border: 1px solid rgba(231, 6, 6, 0.479);
+
+            input {
+                color: red;
+            }
+
+            i {
+                color: red;
+            }
+        }
+
+            .divValorInvalido {
+                color: red;
+                font-size: 0.8rem;
+                height: 0px;
+            }
+        }
+button{
+    background-color: var(--roxo);
+    color: #fff;
+    width: 80%;
+    padding-block:1% ;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: bolder;
+    cursor: pointer;
+    border: none;
+    margin-top: 7%;
+    &:hover{
+        opacity: 0.9;
+        
+    }
+}

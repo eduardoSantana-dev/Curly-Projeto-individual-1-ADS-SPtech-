@@ -1,6 +1,6 @@
 nav.innerHTML = `
 
-        <div class="logo"><img src="../assets/icon/Simbo.svg" alt=""></div>
+        <div class="logo"><img src="../assets/icon/SimboNeon.svg" alt=""> <span class="textosNav">Administrativo</span></div>
         <div class="perfil"><img src="../assets/userPerfil/semImg.png" alt=""><span class="textosNav">Eduardo Santana Santos</span></div>
         <a href="dashboard.html" class="acesso " id="acessoDash">
             <i class="fa-regular fa-house"></i>
