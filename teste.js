@@ -39,9 +39,10 @@ async function reqPost(url,jsonDados){
 }
 async function imprimir() {
   a = {
-    "id":102
+    "email":"eduardo@curley.com",
+    "senha":'adm123'
 }
-  console.log(await reqPost('http://localhost:3333/usuarios/testePOST',a))
+  console.log(await reqPost('http://localhost:3333/admin/login',a))
 }
 
 imprimir()

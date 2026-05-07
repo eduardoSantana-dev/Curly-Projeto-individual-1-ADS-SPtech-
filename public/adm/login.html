@@ -7,6 +7,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/globalAdm.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="js/scripts/sessao.js"></script>
     <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
 
 </head>
@@ -14,25 +15,26 @@
 <body>
     <div class="container">
         <p>Administrativo</p>
-        <form action="dashboard.html" onsubmit="logar()">
+        <form onsubmit="logar()">
             <img src="../assets/icon/nomeNeon.svg" alt="">
+            <div id="erroMensagem">Email ou senha inválidas (você tem 3 tentativas)</div>
             <div class="inputContainer" style="margin-top: -5%;">
                 <label for="emailUser">E-mail</label>
                 <div class="inputBox">
-                    <input type="text" id="email_input" placeholder="Insira seu email">
+                    <input type="text" id="email_input" placeholder="Insira seu email" value="eduardo@curley.com">
                     <i class="fa-regular fa-user"></i>
                 </div>
 
             </div>
-             <div class="inputContainer">
+            <div class="inputContainer">
                 <label for="emailUser">Senha</label>
                 <div class="inputBox">
-                    <input type="password" id="senha_input" placeholder="Insira sua senha">
+                    <input type="password" id="senha_input" placeholder="Insira sua senha" value="adm123">
                     <div id="olho"><i class="fa-regular fa-eye-slash" onclick="verSenha()"></i></div>
                 </div>
 
             </div>
-            <button>Entrar</button>
+            <button type="button" onclick="logar()" id="buttonEntrar">Entrar</button>
         </form>
     </div>
 </body>
@@ -46,5 +48,48 @@
             olho.innerHTML = `<i class="fa-regular fa-eye" onclick="verSenha()" ></i>`
         }
     }
+    if (localStorage.ADM_LOGIN_DESBLOQUEIO_HORA && localStorage.ADM_LOGIN_DESBLOQUEIO_HORA > Date.now()) {
+        erroMensagem.style.display = 'flex'
+        erroMensagem.innerHTML = `Você realizou muitas tentativas, volte mais tarde`
+        buttonEntrar.style.display = 'none'
+    }
+    
+    if(!localStorage.ADM_LOGIN_TENTATIVAS){
+        localStorage.ADM_LOGIN_TENTATIVAS = 3
+    }
+    async function logar() {
+        let tentativas = localStorage.ADM_LOGIN_TENTATIVAS
+        if (localStorage.ADM_LOGIN_TENTATIVAS > 0) {
+            const login = {
+                'email': email_input.value,
+                'senha': senha_input.value,
+            }
+            try {
+                const result = await reqPost('http://localhost:3333/admin/login', login)
+                const usuario = result.data[0]
+                if (usuario) {
+                    sessionStorage.ADM_ID = usuario.id
+                    sessionStorage.ADM_EMAIL = usuario.email
+                    sessionStorage.ADM_NOME = usuario.nome
+                    window.location = 'dashboard.html'
+                } else {
+
+                    localStorage.ADM_LOGIN_TENTATIVAS -=1
+                    erroMensagem.style.display = 'flex'
+                    erroMensagem.innerHTML = `Email ou senha inválidas (você tem ${tentativas} tentativas)`
+
+                }
+            } catch (err) {
+                alert('erro ao logar')
+            }
+
+        } else {
+            erroMensagem.style.display = 'flex'
+            erroMensagem.innerHTML = `Você realizou muitas tentativas, volte mais tarde`
+            buttonEntrar.style.display = 'none'
+            localStorage.ADM_LOGIN_DESBLOQUEIO_HORA = Date.now() + 1800000
+        }
+    }
 </script>
+
 </html>

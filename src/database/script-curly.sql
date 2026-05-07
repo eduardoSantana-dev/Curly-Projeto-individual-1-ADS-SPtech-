@@ -14,6 +14,13 @@ curvatura char(2)  not null,
 constraint chkCurvatura check(curvatura in('2A','2B','2C','3A','3B','3C','4A','4B','4C'))
 ) auto_increment = 100;
 
+create table adm (
+idAdm int primary key auto_increment,
+nome varchar(100)  not null,
+email varchar(100) unique,
+senha varchar(100)  not null
+) auto_increment = 100;
+insert into adm (nome,email,senha) value('Eduardo','eduardo@curley.com','adm123');
 
 create table post (
 idPost int auto_increment,
