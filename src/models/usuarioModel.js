@@ -12,7 +12,7 @@ function verificarUnique(valor, tipo) {
   return database.executar(query);
 }
 function login(email, senha) {
-  let query = `select idUsuario as id,nome,arroba,img,curvatura,email from usuario where email = '${email}' and senha ='${senha}';`;
+  let query = `select idUsuario as id,nome,arroba,img,curvatura,email from usuario where email = '${email}' and senha ='${senha}' and statusUsuario = 'ativo';`;
   return database.executar(query);
 }
 function buscarDados(id,idEspectador) {
@@ -56,7 +56,7 @@ function atualizarUser(id, nome, arroba, email, senha, img) {
 }
 function buscarPopulares() {
   let query = `select idUsuario,nome,arroba,img, count(distinct seguidores.idSeguimento) as seguidores
-    from usuario as u left join seguir_usuario as seguidores on idUsuarioSeguido = u.idUsuario group by idUsuario order by seguidores desc limit 5;`;
+    from usuario as u left join seguir_usuario as seguidores on idUsuarioSeguido = u.idUsuario group by idUsuario order by seguidores desc limit 5; `;
     return database.executar(query)
 }
 function buscarSeguindo(id){

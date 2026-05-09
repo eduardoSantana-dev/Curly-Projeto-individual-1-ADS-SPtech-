@@ -87,6 +87,7 @@ function mostrarPreview() {
   if (fotoNovoPost.value != "") {
     imgNovoPost.src = URL.createObjectURL(fotoNovoPost.files[0]);
     imgNovoPost.style = "display:block";
+    categoria_input.style.display ="flex"
   }
 }
 function verificarLinhas() {
@@ -222,11 +223,9 @@ function chamarNovoCardInput() {
                             <label for="fotoNovoPost"><i class="fa-regular fa-image"></i> Foto</label>
                             <input type="file" id="fotoNovoPost" accept="image/*" onchange="mostrarPreview()">
                            
-                            <select name="" id="categoria_input">
+                            <select name="" id="categoria_input" style="display:none">
                                 <option value="comum">Comum</option>
                                 <option value="galeria">Galeria</option>
-                                <option value="dica">Dica</option>
-                                <option value="pergunta">Pergunta</option>
                             </select>
                         </div>
                         <button class="botao" type="button"  onclick = "postar()">Postar</button>

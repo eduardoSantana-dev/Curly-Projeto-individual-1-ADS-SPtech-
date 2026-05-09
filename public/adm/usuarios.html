@@ -7,6 +7,8 @@
     <title>Usuários</title>
     <link rel="stylesheet" href="css/globalAdm.css">
     <link rel="stylesheet" href="css/usuarios.css">
+   <script src="js/scripts/sessao.js"></script>
+
     <script src="https://kit.fontawesome.com/5fcf1c6510.js" crossorigin="anonymous"></script>
 
 </head>
@@ -18,20 +20,18 @@
         <div class="titulo">Usuários</div>
         <div class="selects">
              <div class="inputPesquisar">
-                 <input type="text" placeholder="Pesquisar pelo nome">
+                 <input type="text" placeholder="Pesquisar pelo nome" id="pesquisa_input" oninput="buscarUsuarios()">
                  <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-            <select name="" id="">
-                <option value="">Todos usuários</option>
-                <option value="">Ativos</option>
-                <option value="">Desativados</option>
+            <select name="" id="filtroSelect" onchange="buscarUsuarios()">
+                <option value="ativo">Ativos</option>
+                <option value="todos">Todos usuários</option>
+                <option value="desativado">Desativados</option>
                 
             </select>
-             <select name="" id="">
-                <option value="">Mais recentes</option>
-                <option value="">Mais seguidos</option>
-                <option value="">Mais engajados</option>
-             
+             <select name="" id="ordemSelect" onchange="buscarUsuarios()">
+                <option value="dataRegistro">Mais recentes</option>
+                <option value="seguidores">Mais seguidos</option>
             </select>
         </div>
         <div id="listaUsers">
@@ -41,28 +41,10 @@
 
 </body>
 <script src="js/componentes/nav.js"></script>
+<script src="js/scripts/usuarios.js"></script>
 
 <script>
-    for(let i =0; i<10; i++){
-        listaUsers.innerHTML +=`
-         <div class="user">
-               <div class="imgNomeArroba">
-                 <img src="../assets/userPerfil/semImg.png" alt="">
-                <div class="nomeArroba">
-                    <span class="nome">Eduardo Santana Santos <span class="curvatura">2B</span></span>
-                    <span class="arroba">@edu.san07</span>
-                </div>
-               </div>
-                <span class="email">
-                    eduardo.santana07n@gmail.com
-                </span>
-                <span class="status">Ativo</span>
-                <i class="fa-solid fa-xmark"></i>
-                
-            </div>
-        `
-
-    }
+ 
 </script>
 
 

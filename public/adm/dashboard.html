@@ -21,11 +21,11 @@
             <div class="topoEsquerda">
                 <div class="card cRoxo">
                     <p>Usuários</p>
-                    <span>102</span>
+                    <span id="qtdUsuarioSpan">102</span>
                 </div>
                 <div class="card cAzul">
                     <p>Postagens</p>
-                    <span>321</span>
+                    <span id="qtdPostsSpan">321</span>
                 </div>
                 <div class="acessosRapidosTopo">
                     <a href="usuarios.html">
@@ -50,16 +50,8 @@
                     <p>Usuários por tipo de cabelo</p>
                     <div>
                         <div class="grafico"> <canvas id="usersPorCurvatura"></canvas></div>
-                        <div class="tiposListas">
-                            <div class="tipo"><span style="border-color: var(--azul2);"></span>
-                                <p>Ondulado (40%)</p>
-                            </div>
-                            <div class="tipo"><span style="border-color: var(--azul4);"></span>
-                                <p>Cacheado (30%)</p>
-                            </div>
-                            <div class="tipo"><span style="border-color: var(--azul3);"></span>
-                                <p>Crespo (20%)</p>
-                            </div>
+                        <div class="tiposListas" id="tiposListasUsers">
+                            
                         </div>
                     </div>
                 </div>
@@ -67,16 +59,8 @@
                     <p>Posts por tipo de cabelo</p>
                     <div>
                         <div class="grafico"> <canvas id="postsPorCurvatura"></canvas></div>
-                        <div class="tiposListas">
-                            <div class="tipo"><span style="border-color: var(--azul2);"></span>
-                                <p>Ondulado (21%)</p>
-                            </div>
-                            <div class="tipo"><span style="border-color: var(--azul4);"></span>
-                                <p>Cacheado (53%)</p>
-                            </div>
-                            <div class="tipo"><span style="border-color: var(--azul3);"></span>
-                                <p>Crespo (26%)</p>
-                            </div>
+                        <div class="tiposListas" id="tiposListasPosts">
+                            
                         </div>
                     </div>
                 </div>
@@ -109,34 +93,10 @@
 <script src="js/componentes/nav.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/scripts/graficosDash.js"></script>
+<script src="js/scripts/dashboard.js"></script>
 
 <script>
-    for (let i = 0; i < 3; i++) {
-        listaPopularesPerfil.innerHTML += `
-     <div class="perfil">
-                           
-                                <img src="../assets/userPerfil/semImg.png" alt="" id="imgUserPerfil">
-                            
-                            <div class="nomeArroba">
-                                <span class="nomeUserPerfil">Eduardo Santana Santos</span>
-                                <span class="usuarioUserPerfil">@edu.san</span>
-                            </div>
-                        </div>
-    `
-    }
-    for (let i = 0; i < 3; i++) {
-        listaCadastrosPerfil.innerHTML += `
-     <div class="perfil">
-                           
-                                <img src="../assets/userPerfil/semImg.png" alt="" id="imgUserPerfil">
-                            
-                            <div class="nomeArroba">
-                                <span class="nomeUserPerfil">Eduardo Santana Santos</span>
-                                <span class="usuarioUserPerfil">@edu.san</span>
-                            </div>
-                        </div>
-    `
-    }
+  
 
 
 </script>

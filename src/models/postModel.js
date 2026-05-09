@@ -13,10 +13,10 @@ function buscarPost(filtro1, filtro2, idEspectador) {
     filtro1 = "dataPost desc";
   }
   if (filtro2.includes("curvatura")) {
-    where = `where usuario.curvatura = '${filtro2.substring(9)}'`;
+    where = `and where usuario.curvatura = '${filtro2.substring(9)}'`;
   }
   if (filtro2 == "seguindo") {
-    where = "where espectador.idUsuarioSeguidor IS NOT NULL";
+    where = "and where espectador.idUsuarioSeguidor IS NOT NULL";
   }
 
   let query = `
@@ -27,7 +27,7 @@ function buscarPost(filtro1, filtro2, idEspectador) {
     from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
     left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = ${idEspectador}
     left join curtida espectadorCurtida on post.idPost = espectadorCurtida.idPost and espectadorCurtida.idUsuario = ${idEspectador}
-    ${where}
+    where statusUsuario = 'ativo'  ${where}
     group by usuario.idUsuario, post.idPost order by ${filtro1}
     `;
   return database.executar(query);

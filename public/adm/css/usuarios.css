@@ -146,11 +146,15 @@
             color: var(--azul);
             font-size: 1.3rem;
             font-weight: bold;
+            text-transform: capitalize;
         }
         i{
             font-size: 1.5rem;
             color: var(--roxo);
             cursor: pointer;
         }
+    }
+    .userDesativado{
+        opacity: 0.6;
     }
 }

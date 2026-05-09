@@ -17,10 +17,6 @@ const temaNav = localStorage.TEMA
                         <i class="fa-regular fa-compass"></i>
                         <span>Pagina inicial</span>
                     </a>
-                    <a href = "#" class="acesso">
-                        <i class="fa-regular fa-lightbulb"></i>
-                        <span>Dicas</span>
-                    </a>
                     <a href = "galeriaSelecao.html" class="acesso" id="acessoGaleria">
                     <i class="fa-solid fa-images"></i>
                     <span>Galeria</span>
@@ -43,7 +39,7 @@ const temaNav = localStorage.TEMA
         </div>
         <div class="subContainerGlobal">
             <div class="navTopo">
-               <a href="index.html"> <img src="./assets/icon/${temaNav =='claro' ? 'completo': temaNav =='escuro' ? 'completoDark':temaNav =='neon' ? 'completoNeon': 'completoAzul'}.svg" id="navLogo" alt=""></a>
+               <a href="index.html"> <img src="./assets/icon/${temaNav =='azul' ? 'completoAzul': temaNav =='escuro' ? 'completoDark':temaNav =='neon' ? 'completoNeon': 'completo'}.svg" id="navLogo" alt=""></a>
                 <div class="navTopoElements">
                     <div class="inputPesquisar">
                         <i class="fa-solid fa-magnifying-glass"></i>

@@ -26,6 +26,7 @@ async function postar() {
     if (postagem) {
       desc_novoPost_input.value = "";
       fotoNovoPost.files[0] = "";
+      fotoNovoPost.value = "";
        imgNovoPost.src ='';
        imgNovoPost.style = 'display:none'
       if (
