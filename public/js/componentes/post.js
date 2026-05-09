@@ -1,16 +1,19 @@
 function formatarTempo(minutos) {
   let tempo = minutos;
+  let tipo = "min";
   if (tempo >= 60) {
-    tempo = parseInt(tempo / 60) + "h";
-    if (tempo >= 24 && tempo < 48) {
-      tempo = parseInt(tempo / 24) + "dia";
-    } else if (tempo >= 48) {
-      tempo = parseInt(tempo / 24) + "dias";
+    tempo = parseInt(tempo / 60);
+    tipo = "h";
+    if (tempo >= 24) {
+      tempo = parseInt(tempo / 24);
+      if (tempo >= 2) {
+        tipo = " dias atrás";
+      }else{
+        return 'ontem'
+      }
     }
-  } else {
-    tempo += "min";
   }
-  return tempo;
+  return tempo + tipo;
 }
 
 function listarPost(posts, div) {
@@ -19,8 +22,8 @@ function listarPost(posts, div) {
     let imgPost = ``;
     let temIMG = false;
     let bseguir = "";
-    let bCurtir = ''
-    let iconLike = 'regular'
+    let bCurtir = "";
+    let iconLike = "regular";
     if (post.img_post != "") {
       temIMG = true;
       imgPost = ` <img onclick="abrirPost(${post.idPost})" class="imgPost" src="assets/imgPosts/${post.img_post}" alt="" onclick="abrirPost(true)">`;
@@ -31,9 +34,9 @@ function listarPost(posts, div) {
         bseguir = `<button class="botao button_seguir seguindo idButtonSeguir${post.idUsuario}" onclick="deixarDeSeguir(${post.idUsuario})" >Seguindo</button> `;
       }
     }
-    if(post.curtido){
-        bCurtir= 'buttonCurtircurtido'
-        iconLike = 'solid'
+    if (post.curtido) {
+      bCurtir = "buttonCurtircurtido";
+      iconLike = "solid";
     }
     div.innerHTML += `
         <div class="post box">
@@ -80,14 +83,11 @@ function listarPost(posts, div) {
   });
 }
 
-
-
-
-function mostrarPreview(){
-    if(fotoNovoPost.value !=''){
-        imgNovoPost.src = URL.createObjectURL(fotoNovoPost.files[0])
-        imgNovoPost.style = 'display:block'
-    }
+function mostrarPreview() {
+  if (fotoNovoPost.value != "") {
+    imgNovoPost.src = URL.createObjectURL(fotoNovoPost.files[0]);
+    imgNovoPost.style = "display:block";
+  }
 }
 function verificarLinhas() {
   let campo = textarea_comentario;
@@ -98,22 +98,21 @@ function verificarLinhas() {
   }
 }
 
-
-function exibirModalPost(post, comentarios,reload) {
+function exibirModalPost(post, comentarios, reload) {
   let bseguir = "";
-  let img = post.img_post
-   let bCurtir = ''
-    let iconLike = 'regular'
+  let img = post.img_post;
+  let bCurtir = "";
+  let iconLike = "regular";
   if (post.idUsuario != localUser.id) {
     bseguir = `<button class="botao button_seguir idButtonSeguir${post.idUsuario}" onclick="seguir(${post.idUsuario})">Seguir</button>`;
     if (post.seguindo == 1) {
       bseguir = `<button class="botao button_seguir seguindo idButtonSeguir${post.idUsuario}" onclick="deixarDeSeguir(${post.idUsuario})" >Seguindo</button> `;
     }
   }
-  if(post.curtido){
-        bCurtir= 'buttonCurtircurtido'
-        iconLike = 'solid'
-    }
+  if (post.curtido) {
+    bCurtir = "buttonCurtircurtido";
+    iconLike = "solid";
+  }
   modalPostComfoto.innerHTML = `
      <i class="fa-solid fa-x" onclick="fecharModalPost()"></i>
         <div class="containerModalImg"  onclick="fecharModalPost()">
@@ -126,7 +125,7 @@ function exibirModalPost(post, comentarios,reload) {
                 </div>
                 <div class="perfilPostModal">
                      <a href="perfil.html?id=${post.idUsuario}" class="imgUserPostDiv">
-                        <img src="assets/userPerfil/${post.img}" alt="" />
+                        <img src="assets/userPerfil/${post.img}" alt="imgPerfil" />
                     </a>
                     <div class="nomeArroba">
                         <div class="infoPostUser">
@@ -162,10 +161,9 @@ function exibirModalPost(post, comentarios,reload) {
             </div>
         </div>
      `;
-     listaComentarios.innerHTML = ''
-     comentarios.forEach(c => {
-       listaComentarios.innerHTML +=
-        `
+  listaComentarios.innerHTML = "";
+  comentarios.forEach((c) => {
+    listaComentarios.innerHTML += `
         <div class="comentario">
                         <a href="perfil.html?id=${c.idUsuario}" class="perfil">
                             <div class="imgUserPerfilDiv">
@@ -179,10 +177,8 @@ function exibirModalPost(post, comentarios,reload) {
                         <p class="textoComentario">${c.comentario}</p>
                     </div>
 
-        `
-       
-       
-     });
+        `;
+  });
   if (img) {
     ImgcontainerModal.style = "display:block";
     modalPostComfoto.classList.add("ModalPostAtivo");
@@ -194,10 +190,9 @@ function exibirModalPost(post, comentarios,reload) {
     modalPostComfoto.classList.add("semFoto");
     document.querySelector("body").style = "overflow: hidden;";
   }
-    if(!reload){
-         PostDetalhesmodal.style = ' animation: ease-in-out infoPost 400ms;'
-    }
-
+  if (!reload) {
+    PostDetalhesmodal.style = " animation: ease-in-out infoPost 400ms;";
+  }
 }
 
 function fecharModalPost() {
@@ -211,7 +206,7 @@ document.querySelector("body").innerHTML += `
     </div>
     `;
 
-function chamarNovoCardInput () {
+function chamarNovoCardInput() {
   novoPostCardContainer.innerHTML = `
        <div id="novoPostCard" class="box">
                     <div class="topoNovoPost">

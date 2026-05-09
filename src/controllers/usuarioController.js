@@ -58,9 +58,10 @@ async function login(req, res) {
   }
 }
 async function buscarDados(req, res) {
-  const id = req.params.idUser;
+  const idPerfil = req.params.idUser;
+  const idEspectador = req.params.espectador;
   try {
-    let usuario = await usuarioModel.buscarDados(id);
+    let usuario = await usuarioModel.buscarDados(idPerfil,idEspectador);
     res.status(221).json({
       nome: usuario[0].nome,
       arroba: usuario[0].arroba,

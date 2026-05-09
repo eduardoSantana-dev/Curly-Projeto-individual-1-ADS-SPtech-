@@ -13,7 +13,7 @@ router.post("/verificarCadastro", function (req, res) {
 router.post("/logar", function (req, res) {
     usuarioController.login(req,res);
 });
-router.get("/userDados/:idUser",function(req,res){
+router.get("/userDados/:idUser/:espectador",function(req,res){
    usuarioController.buscarDados(req,res)
 })
 router.post("/seguirPerfil", function (req, res) {

@@ -42,7 +42,7 @@ async function imprimir() {
     "email":"eduardo@curley.com",
     "senha":'adm123'
 }
-  console.log(await reqPost('http://localhost:3333/admin/login',a))
+  console.log(await reqGet('http://localhost:3333/dash/graficoTanqueEspecifico/2'))
 }
 
 imprimir()

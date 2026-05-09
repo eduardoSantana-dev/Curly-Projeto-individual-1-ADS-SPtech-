@@ -7,7 +7,7 @@ if(idPerfil == localUser.id){
 }
 async function buscarUser(){
    try{
-     let usuario = await reqGet(`/usuarios/userDados/${idPerfil}`);
+     let usuario = await reqGet(`/usuarios/userDados/${idPerfil}/${localUser.id}`);
      console.log(usuario)
     nomeUserPerfil.innerHTML = usuario.nome
     usuarioUserPerfil.innerHTML = `@${usuario.arroba}`
@@ -19,7 +19,7 @@ async function buscarUser(){
     if(usuario.usuario_segue){
       spanButtonSeguir.innerHTML = `<button class="botao button_seguir seguindo idButtonSeguir${idPerfil}" onclick="deixarDeSeguir(${idPerfil})" >Seguindo</button>`
     }else{
-      spanButtonSeguir.innerHTML = `<button class="botao button_seguir  idButtonSeguir${idPerfil}" onclick="seguir(${idPerfil})" >Seguindo</button>`
+      spanButtonSeguir.innerHTML = `<button class="botao button_seguir idButtonSeguir${idPerfil}" onclick="seguir(${idPerfil})" >Seguir</button>`
 
     }
     buscarPostUSer(idPerfil)
@@ -28,7 +28,7 @@ async function buscarUser(){
    }
 }
 
-async function buscarPopulares(id) {
+async function buscaSeguindo(id) {
   const seguindo = await reqGet(`/usuarios//seguindo/${id}`);
   console.log(seguindo.data);
   seguindo.data.forEach((user) => {
@@ -46,5 +46,5 @@ async function buscarPopulares(id) {
         `;
   });
 }
-buscarPopulares(idPerfil)
+buscaSeguindo(idPerfil)
 buscarUser()

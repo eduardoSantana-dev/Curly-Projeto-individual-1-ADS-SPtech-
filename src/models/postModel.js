@@ -20,7 +20,7 @@ function buscarPost(filtro1, filtro2, idEspectador) {
   }
 
   let query = `
-   select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(DISTINCT curtida.idCurtida) as curtidas,count(idComentario) as comentarios
+   select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(DISTINCT curtida.idCurtida) as curtidas,count(DISTINCT idComentario) as comentarios
     ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,
     case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo,
     case when espectadorCurtida.idUsuario IS NOT NULL then 1 else 0 end as curtido
@@ -36,7 +36,7 @@ function buscarPostUser(idPerfil,idEspectador) {
 
   let query = `
    select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',
-   count(DISTINCT curtida.idCurtida) as curtidas,count(idComentario) as comentarios ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,
+   count(DISTINCT curtida.idCurtida) as curtidas,count(DISTINCT idComentario) as comentarios ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,
    case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo,
    case when espectadorCurtida.idUsuario IS NOT NULL then 1 else 0 end as curtido
     from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
@@ -76,7 +76,7 @@ async function buscarComentarios(idPost) {
 }
 async function buscarPostUnico(idPost,idEspectador) {
   let query = `
-  select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(DISTINCT curtida.idCurtida) as curtidas,count(idComentario) as comentarios ,
+  select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(DISTINCT curtida.idCurtida) as curtidas,count(DISTINCT idComentario) as comentarios ,
   case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo,
   case when espectadorCurtida.idUsuario IS NOT NULL then 1 else 0 end as curtido
   from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost 

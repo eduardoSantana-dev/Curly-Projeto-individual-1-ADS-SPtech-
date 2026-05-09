@@ -183,7 +183,7 @@
 .usuariosDash{
     background-color: var(--box);
     border-radius: var(--radius);
-    height: 420px;
+    height: 280px;
     width: 47%;
     padding: 2% 3%;
     p{
@@ -232,7 +232,7 @@
     }
     .grafico{
 
-        height:340px;
+        height:450px;
 
 
     }

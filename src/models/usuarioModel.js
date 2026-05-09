@@ -15,12 +15,13 @@ function login(email, senha) {
   let query = `select idUsuario as id,nome,arroba,img,curvatura,email from usuario where email = '${email}' and senha ='${senha}';`;
   return database.executar(query);
 }
-function buscarDados(id) {
+function buscarDados(id,idEspectador) {
+  console.log(idEspectador)
   let query = `select u.*, count(distinct seguidores.idSeguimento) as seguidores, count(distinct seguindo.idSeguimento) as seguindo,
 case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as usuario_segue
 from usuario as u left join seguir_usuario as seguidores on idUsuarioSeguido = u.idUsuario  
 left join seguir_usuario as seguindo on seguindo.idUsuarioSeguidor = u.idUsuario 
-left join seguir_usuario espectador on u.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = 101
+left join seguir_usuario espectador on u.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = ${idEspectador}
 where idUsuario = ${id};`;
   return database.executar(query);
 }
