@@ -8,8 +8,9 @@ nome varchar(100)  not null,
 arroba varchar(50)  not null,
 email varchar(100) unique,
 senha varchar(100)  not null,
-dataNasc date,
+dataNasc datetime not null default current_timestamp,
 img varchar(1000) default('semImg.png'),
+dataRegistro datetime not null default current_timestamp,
 curvatura char(2)  not null,
 constraint chkCurvatura check(curvatura in('2A','2B','2C','3A','3B','3C','4A','4B','4C'))
 ) auto_increment = 100;
@@ -40,6 +41,7 @@ create table seguir_usuario (
 idSeguimento int auto_increment,
 idUsuarioSeguido int, 
 idUsuarioSeguidor int,
+dataSeguimento datetime not null default current_timestamp,
 constraint idUsuarioSeguido foreign key (idUsuarioSeguido) references usuario(idUsuario),
 constraint idUsuarioSeguidor foreign key (idUsuarioSeguidor) references usuario(idUsuario),
 primary key(idSeguimento,idUsuarioSeguido,idUsuarioSeguidor)
@@ -50,6 +52,7 @@ create table curtida (
 idCurtida int auto_increment,
 idPost int,
 idUsuario int,
+dataCurtida datetime not null default current_timestamp,
 constraint idPostCurtida foreign key (idPost) references post(idPost),
 constraint idUsuarioCurtida foreign key (idUsuario) references usuario(idUsuario),
 primary key(idCurtida,idPost,idUsuario)
