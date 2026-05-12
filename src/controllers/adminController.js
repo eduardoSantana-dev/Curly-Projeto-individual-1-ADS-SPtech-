@@ -63,9 +63,28 @@ async function desativarOuAtivarUser(req, res) {
         });
     }
 }
+async function buscarPosts(req,res) {
+    try{
+        let params = req.params
+        console.log(params)
+      
+        const posts = await admModel.buscarPosts(params.ordem,params.pesquisa,params.categoria)
+         res.status(202).json({
+          sucesso: true,
+          data: posts,
+        });
+    }catch(posts){
+         res.status(402).json({
+          sucesso: false,
+          data:posts,
+        });
+    }
+}
+
 module.exports = {
   logar,
   dadosDash,
   buscarUsuarios,
-  desativarOuAtivarUser
+  desativarOuAtivarUser,
+  buscarPosts
 };

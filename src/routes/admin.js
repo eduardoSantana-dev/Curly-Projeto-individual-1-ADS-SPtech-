@@ -11,6 +11,9 @@ router.get("/dadosDash",function(req,res){
 router.get("/buscarUsuarios/:status/:ordem/:pesquisa",function(req,res){
      adminController.buscarUsuarios(req,res)
 })
+router.get("/buscarPosts/:ordem/:categoria/:pesquisa",function(req,res){
+     adminController.buscarPosts(req,res)
+})
 router.post("/desativarOuAtivarUser",function(req,res){
      adminController.desativarOuAtivarUser(req,res)
 })

@@ -89,10 +89,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: fit-content;
+        width: 730px;
         height: 170px;
         .img {
-            width: 190px;
+            width: 160px;
             height: 150px;
             overflow: hidden;
             border-radius: var(--radius);
@@ -105,7 +105,7 @@
         }
 
         .infoPost {
-            margin-left: 5%;
+        
             height: 100%;
             
             .perfil {

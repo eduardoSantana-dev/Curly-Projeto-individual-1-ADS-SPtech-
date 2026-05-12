@@ -12,7 +12,9 @@ dataNasc datetime not null default current_timestamp,
 img varchar(1000) default('semImg.png'),
 dataRegistro datetime not null default current_timestamp,
 curvatura char(2)  not null,
-constraint chkCurvatura check(curvatura in('2A','2B','2C','3A','3B','3C','4A','4B','4C'))
+constraint chkCurvatura check(curvatura in('2A','2B','2C','3A','3B','3C','4A','4B','4C')),
+statusUsuario varchar(10) default('ativo'),
+constraint chkStatus check(statusUsuario in('ativo','desativado'))
 ) auto_increment = 100;
 
 create table adm (

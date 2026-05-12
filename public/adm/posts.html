@@ -19,66 +19,32 @@
     <div class="container">
         <div class="titulo">Posts</div>
         <div class="selects">
-             <div class="inputPesquisar">
-                 <input type="text" placeholder="Pesquisar pelo nome">
+             <div class="inputPesquisar" oninput="buscarPosts()">
+                 <input type="text" placeholder="Pesquisar" id="input_pesquisa">
                  <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-            <select name="" id="">
-                <option value="">Todos usuários</option>
-                <option value="">Ativos</option>
-                <option value="">Desativados</option>
-                
+           
+             <select name="" id="select_ordem" onchange="buscarPosts()">
+                <option value="recentes">Mais recentes</option>
+                <option value="seguidores">Mais seguidos</option>
             </select>
-             <select name="" id="">
-                <option value="">Mais recentes</option>
-                <option value="">Mais seguidos</option>
-                <option value="">Mais engajados</option>
-             
+             <select name="" id="select_tipo" onchange="buscarPosts()">
+                 <option value="todos">Todos</option>
+                 <option value="comum">Comum</option>
+                <option value="galeria">Galeria</option>
             </select>
         </div>
         <div id="listaPosts">
           
         </div>
     </div>
-
+<img src="../assets/imgPosts/" alt="">
 </body>
 <script src="js/componentes/nav.js"></script>
+<script src="js/scripts/posts.js"></script>
 
 <script>
-     for(let i =0; i<10; i++){
-         listaPosts.innerHTML +=`
-          <div class="post">
-                <div class="img">
-                    <img src="../assets/userPerfil/2f0374091dd7c9417c115542.jpg" alt="">
-                </div>
-                <div class="infoPost">
-                    <div class="perfil">
-                    
-                        <img src="../assets/userPerfil/semImg.png" alt="" >
-                            
-                            <div class="nomeArroba">
-                                <span class="nomeUserPerfil">Eduardo Santana Santos <span class="curvatura">2B</span></span>
-                                <span class="usuarioUserPerfil">@edu.san</span>
-                            </div>
-                    </div>
-                    <p class="descPost">Gente hoje Conseguir finalizar meu cabelo com dedoliss e ficou4242442442 perfeito!!</p>
-                    <div class="statusPost">
-                         <div class="status">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            <span>50</span>
-                        </div>
-                        <div class="status">
-                            <i class="fa-regular fa-comment"></i>
-                            <span>50</span>
-                        </div>
-                        <div class="tipoPost">Comum</div>
-                    </div>
-                </div>
-                <div class="deletar"><i class="fa-solid fa-xmark"></i></div>
-           </div>
-         `
-
-     }
+  
 </script>
 
 

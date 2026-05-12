@@ -1,4 +1,4 @@
-var database = require("../database/config");
+  var database = require("../database/config");
 
 function logar(email, senha) {
   const query = ` select * from adm where email = '${email}' and senha ='${senha}';`;
@@ -59,8 +59,6 @@ function buscarUsuarios(pesquisa, status, ordem) {
   from usuario as u left join seguir_usuario as seguidores on idUsuarioSeguido = u.idUsuario
   ${where}
   group by idUsuario order by ${ordem} desc ;`;
-  
-  console.log(query)
 
   return database.executar(query);
 }
@@ -71,7 +69,30 @@ async function desativarOuAtivarUser(idUser){
   return database.executar(query)
 
 }
-
+async function buscarPosts(ordem,pesquisa,categoria) {
+  let whereOrdem = 'minutos asc'
+  let likePesquisa = ''
+  let whereCategoria = ''
+  if(categoria !='todos'){
+    whereCategoria = `and categoria ='${categoria}'`
+  }
+  if(ordem == 'seguidores'){
+    whereOrdem = 'seguidores desc'
+  }
+  if(pesquisa !='0'){
+    likePesquisa = `and ( descricao like '%${pesquisa}%' or usuario.nome like '%${pesquisa}%' or usuario.arroba like '%${pesquisa}%')`
+  }
+  let query =`
+    select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(DISTINCT curtida.idCurtida) as curtidas,count(DISTINCT idComentario) as comentarios
+    ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores, categoria
+    from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  
+    left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
+    where statusUsuario = 'ativo' ${whereCategoria}  ${likePesquisa}
+    group by usuario.idUsuario, post.idPost order by ${whereOrdem};
+  `
+     return database.executar(query)
+}
+// 
 module.exports = {
   logar,
   kpisGraficosRosca,
@@ -80,4 +101,5 @@ module.exports = {
   ultimosCadastros,
   buscarUsuarios,
   desativarOuAtivarUser,
+  buscarPosts
 };
