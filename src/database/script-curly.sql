@@ -22,7 +22,7 @@ idAdm int primary key auto_increment,
 nome varchar(100)  not null,
 email varchar(100) unique,
 senha varchar(100)  not null
-) auto_increment = 100;
+) auto_increment = 1;
 insert into adm (nome,email,senha) value('Eduardo','eduardo@curley.com','adm123');
 
 create table post (

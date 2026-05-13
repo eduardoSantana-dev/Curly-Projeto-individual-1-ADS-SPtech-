@@ -130,6 +130,8 @@
                         font-weight: bold;
                         display: flex;
                         gap: 10PX;
+                    text-transform: capitalize;
+
                         align-items: center;
                         .curvatura {
                             font-size: 0.6rem;
@@ -171,6 +173,7 @@
                     border-radius: 5px;
                     font-size: 1.1rem;
                     font-weight: 500;
+                    text-transform: capitalize;
                 }
             }
         }

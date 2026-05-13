@@ -1,7 +1,7 @@
 nav.innerHTML = `
 
         <div class="logo"><img src="../assets/icon/SimboNeon.svg" alt=""> <span class="textosNav">Administrativo</span></div>
-        <div class="perfil"><img src="../assets/userPerfil/semImg.png" alt=""><span class="textosNav">Eduardo Santana Santos</span></div>
+        <div class="perfil"><img src="../assets/userPerfil/semImg.png" alt=""><span class="textosNav">${localAdm.nome}</span></div>
         <a href="dashboard.html" class="acesso " id="acessoDash">
             <i class="fa-regular fa-house"></i>
             <span class="textosNav">Dashboard</span>
@@ -14,22 +14,22 @@ nav.innerHTML = `
             <i class="fa-regular fa-compass"></i>
             <span class="textosNav">Posts</span>
         </a>
-         <a href="#" class="acesso"  id="acessoConfig">
-            <i class="fa-solid fa-gear"></i>
-            <span class="textosNav">Configurações</span>
+        <a href = "login.html" class="acesso" onclick="sessionStorage.clear()">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span class="textosNav">Sair</span>
         </a>
+         
        
     
-`
+`;
 
-    const paginaAtual = window.location.href
-    if(paginaAtual.includes('usuarios')){
-     acessoUser.classList.add('acessoSelecionado')
-    }else if(paginaAtual.includes('posts')){
-     acessoPosts.classList.add('acessoSelecionado')
-      
-    }else if(paginaAtual.includes('config')){
-     acessoConfig.classList.add('acessoSelecionado')
-    }else{
-     acessoDash.classList.add('acessoSelecionado')
-    }
+const paginaAtual = window.location.href;
+if (paginaAtual.includes("usuarios")) {
+  acessoUser.classList.add("acessoSelecionado");
+} else if (paginaAtual.includes("posts")) {
+  acessoPosts.classList.add("acessoSelecionado");
+} else if (paginaAtual.includes("config")) {
+  acessoConfig.classList.add("acessoSelecionado");
+} else {
+  acessoDash.classList.add("acessoSelecionado");
+}

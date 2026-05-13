@@ -66,7 +66,7 @@ async function desativarOuAtivarUser(req, res) {
 async function buscarPosts(req,res) {
     try{
         let params = req.params
-        console.log(params)
+
       
         const posts = await admModel.buscarPosts(params.ordem,params.pesquisa,params.categoria)
          res.status(202).json({
@@ -80,11 +80,26 @@ async function buscarPosts(req,res) {
         });
     }
 }
-
+async function deletarPost(req, res) {
+   const idPost = req.body.idPost
+   
+    try{
+        const resultado = await admModel.deletarPost(idPost)
+        res.status(202).json({
+          sucesso: true,
+        });
+    }catch(resultado){
+        res.status(402).json({
+          sucesso: false,
+          data:resultado
+        });
+    }
+}
 module.exports = {
   logar,
   dadosDash,
   buscarUsuarios,
   desativarOuAtivarUser,
-  buscarPosts
+  buscarPosts,
+  deletarPost
 };

@@ -34,12 +34,21 @@ async function buscarPosts() {
                             <i class="fa-regular fa-comment"></i>
                             <span>${post.comentarios}</span>
                         </div>
-                        <div class="tipoPost"   ${post.categoria =='galeria'? 'style="background-color:var(--roxo)"':''}>${post.categoria}</div>
+                        <div class="tipoPost"  ${post.categoria =='galeria'? 'style="background-color:var(--roxo)"':''}>${post.categoria}</div>
                     </div>
                 </div>
-                <div class="deletar"><i class="fa-solid fa-xmark"></i></div>
+                <div class="deletar" onclick ="deletar(${post.idPost})"><i class="fa-solid fa-xmark"></i></div>
            </div>
          `
     });
 }
 buscarPosts()
+async function deletar(idPost) {
+    const objeto = {
+        idPost
+    }
+    const resposta = await reqPost('/admin/deletarPost',objeto)
+    if(resposta){
+        buscarPosts()
+    }
+}

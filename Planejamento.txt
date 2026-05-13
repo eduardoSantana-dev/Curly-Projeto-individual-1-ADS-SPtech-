@@ -1,5 +1,4 @@
 Proximos passo{
-    telas de configurações e posts na dash
     pesquisar na home
     terminar documentação
     refatorar codigo
