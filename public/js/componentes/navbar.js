@@ -15,7 +15,7 @@ const temaNav = localStorage.TEMA
                 <div class="acessosNav">
                     <a href = "/" class="acesso" id="acessoInicio">
                         <i class="fa-regular fa-compass"></i>
-                        <span>Pagina inicial</span>
+                        <span>Feed</span>
                     </a>
                     <a href = "galeriaSelecao.html" class="acesso" id="acessoGaleria">
                     <i class="fa-solid fa-images"></i>
