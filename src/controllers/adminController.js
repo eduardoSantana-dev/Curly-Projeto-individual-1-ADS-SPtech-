@@ -17,13 +17,15 @@ async function logar(req, res) {
 }
 async function dadosDash(req,res) {
   try{
-              const kpisGraficosRosca = await admModel.kpisGraficosRosca()
+        const kpisGraficosRosca = await admModel.kpisGraficosRosca()
         const graficoUsuario = await admModel.graficoUsuario()
+        const graficoInteracoes = await admModel.graficoInteracoes()
         const populares = await admModel.populares()
         const ultimosCadastros = await admModel.ultimosCadastros()
+        
         res.status(202).json({
           sucesso: true,
-          data: {kpisGraficosRosca,graficoUsuario,populares,ultimosCadastros}
+          data: {kpisGraficosRosca,graficoUsuario,populares,ultimosCadastros,graficoInteracoes}
         });
     }catch(resultado){
         res.status(402).json({

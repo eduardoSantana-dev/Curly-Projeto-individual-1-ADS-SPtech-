@@ -4,6 +4,9 @@ let qtdUsuarioDados = [];
 let dataUsuarioDados = [];
 let dataUsuarioMin = 1000;
 let dataUsuarioMax = 0;
+let listaPostsPorHora =[]
+let listaComentariosPorHora =[]
+let listaCurtidasPorHora =[]
 function carregarGraficos() {
   let gridColor = "#354155a5";
   let ticksColor = "#fff";
@@ -173,19 +176,15 @@ function carregarGraficos() {
     type: "line",
     data: {
       labels: [
-        "0:00-2:59",
-        "3:00-5:59",
-        "6:00-8:59",
-        "9:00-11:59",
-        "12:00-14:59",
-        "15:00-17:59",
-        "18:00-20:59",
-        "21:00-23:59",
+        "0:00-7:00",
+        "7:00-12:00",
+        "12:00-18:00",
+        "18:00-23:00",
       ],
       datasets: [
         {
           label: "Posts",
-          data: [8, 5, 18, 42, 58, 74, 95, 70],
+          data: listaPostsPorHora,
           borderWidth: 2,
           borderRadius: 3,
           borderColor: "#00C2FF",
@@ -194,7 +193,7 @@ function carregarGraficos() {
         },
         {
           label: "Curtidas",
-          data: [40, 25, 120, 150, 140, 160, 110, 170],
+          data: listaComentariosPorHora,
           borderWidth: 2,
           borderRadius: 3,
           borderColor: "#CB3CFF",
@@ -204,7 +203,7 @@ function carregarGraficos() {
         },
         {
           label: "Comentarios",
-          data: [5, 3, 18, 60, 95, 140, 110, 170],
+          data: listaComentariosPorHora,
           borderWidth: 2,
           borderRadius: 3,
           borderColor: linhaComentarioColor,

@@ -4,6 +4,7 @@ async function buscarDados() {
   await setarKpiEGraficoRosca(dados.data.kpisGraficosRosca[0]);
   await setarGraficoUsuarios(dados.data.graficoUsuario);
   await setarListaUsuarios(dados.data.populares, dados.data.ultimosCadastros);
+  await setarGraficoInteracoes(dados.data.graficoInteracoes);
   carregarGraficos();
 }
 buscarDados();
@@ -75,7 +76,7 @@ function setarListaUsuarios(populares, ultimosCadastros) {
                         </div>
     `;
   });
-    ultimosCadastros.forEach((usuario) => {
+  ultimosCadastros.forEach((usuario) => {
     listaCadastrosPerfil.innerHTML += `
      <div class="perfil">
                            
@@ -88,4 +89,13 @@ function setarListaUsuarios(populares, ultimosCadastros) {
                         </div>
     `;
   });
+}
+
+function setarGraficoInteracoes(dados) {
+  console.log(dados);
+  for (let i = 0; i < dados.post.length; i++) {
+    listaPostsPorHora.push(dados.post[i].quantidade);
+    listaComentariosPorHora.push(dados.comentarios[i].quantidade);
+    listaCurtidasPorHora.push(dados.curtidas[i].quantidade);
+  }
 }

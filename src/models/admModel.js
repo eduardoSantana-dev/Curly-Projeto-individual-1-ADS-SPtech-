@@ -35,6 +35,58 @@ function ultimosCadastros() {
   const query = `select nome,arroba,img from usuario order by dataRegistro desc limit 3; `;
   return database.executar(query);
 }
+async function graficoInteracoes() {
+  const queryPosts = ` 
+  SELECT 
+      CASE
+          WHEN HOUR(dataPost) BETWEEN 0 AND 6 THEN '0:00-7:00'
+          WHEN HOUR(dataPost) BETWEEN 7 AND 11 THEN '7:00-12:00'
+          WHEN HOUR(dataPost) BETWEEN 12 AND 17 THEN '12:00-18:00'
+          WHEN HOUR(dataPost) BETWEEN 18 AND 23 THEN '18:00-00:00'
+      END AS faixaHorario,
+
+
+      COUNT(*) AS quantidade
+
+      FROM post
+      GROUP BY faixaHorario
+      ORDER BY MIN(HOUR(dataPost));
+`;
+  const queryCurtidas = `
+      SELECT 
+      CASE
+          WHEN HOUR(dataCurtida) BETWEEN 0 AND 6 THEN '0:00-7:00'
+          WHEN HOUR(dataCurtida) BETWEEN 7 AND 11 THEN '7:00-12:00'
+          WHEN HOUR(dataCurtida) BETWEEN 12 AND 17 THEN '12:00-18:00'
+          WHEN HOUR(dataCurtida) BETWEEN 18 AND 23 THEN '18:00-00:00'
+      END AS faixaHorario,
+
+      COUNT(*) AS quantidade
+
+      FROM curtida
+      GROUP BY faixaHorario
+      ORDER BY MIN(HOUR(dataCurtida));
+`;
+  const queryComentarios = `
+    SELECT 
+    CASE
+    WHEN HOUR(dataComentario) BETWEEN 0 AND 6 THEN '0:00-7:00'
+    WHEN HOUR(dataComentario) BETWEEN 7 AND 11 THEN '7:00-12:00'
+    WHEN HOUR(dataComentario) BETWEEN 12 AND 17 THEN '12:00-18:00'
+    WHEN HOUR(dataComentario) BETWEEN 18 AND 23 THEN '18:00-00:00'
+    END AS faixaHorario,
+
+    COUNT(*) AS quantidade
+
+    FROM comentario
+    GROUP BY faixaHorario
+    ORDER BY MIN(HOUR(dataComentario));
+  `;
+    const post = await database.executar(queryPosts)
+    const curtidas = await database.executar(queryCurtidas)
+    const comentarios = await database.executar(queryComentarios)
+    return {post,curtidas,comentarios}
+}
 function buscarUsuarios(pesquisa, status, ordem) {
   let whereStatus = false;
   let likePesquisa = false;
@@ -94,19 +146,20 @@ async function buscarPosts(ordem, pesquisa, categoria) {
   return database.executar(query);
 }
 async function deletarPost(idPost) {
-  const deletarCurtidas = `delete from curtida where idPost = ${idPost};`
-  const deletarComentarios = `delete from comentario where idPost = ${idPost};`
-  const deletarPost = `delete from post where idPost = ${idPost};`
-  database.executar(deletarCurtidas)
-  database.executar(deletarComentarios)
-  
-  return database.executar(deletarPost)
+  const deletarCurtidas = `delete from curtida where idPost = ${idPost};`;
+  const deletarComentarios = `delete from comentario where idPost = ${idPost};`;
+  const deletarPost = `delete from post where idPost = ${idPost};`;
+  database.executar(deletarCurtidas);
+  database.executar(deletarComentarios);
+
+  return database.executar(deletarPost);
   return;
 }
 module.exports = {
   logar,
   kpisGraficosRosca,
   graficoUsuario,
+  graficoInteracoes,
   populares,
   ultimosCadastros,
   buscarUsuarios,
