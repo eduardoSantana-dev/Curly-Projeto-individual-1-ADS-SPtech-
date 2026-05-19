@@ -33,7 +33,7 @@ const temaNav = localStorage.TEMA
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span>Sair</span>
                     </a>
-                    <button>Novo post</button>
+                    
                 </div>
             </div>
         </div>

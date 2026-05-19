@@ -34,6 +34,8 @@ async function postar() {
         window.location == "http://localhost:3333/index.html"
       ) {
         buscarPost(ordemPost.value, filtroPost.value);
+      }else{
+        buscarPostUSer(localUser.id)
       }
     } else {
       alert("Erro ao realizar a postagem");

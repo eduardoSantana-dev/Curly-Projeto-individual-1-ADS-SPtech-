@@ -193,7 +193,7 @@ function carregarGraficos() {
         },
         {
           label: "Curtidas",
-          data: listaComentariosPorHora,
+          data: listaCurtidasPorHora,
           borderWidth: 2,
           borderRadius: 3,
           borderColor: "#CB3CFF",
@@ -223,6 +223,7 @@ function carregarGraficos() {
       },
       scales: {
         y: {
+         grace: 2,
           grid: {
             color: gridColor,
             lineWidth: 1,
