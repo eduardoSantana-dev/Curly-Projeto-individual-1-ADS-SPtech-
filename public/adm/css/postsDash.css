@@ -91,6 +91,7 @@
         justify-content: space-between;
         width: 730px;
         height: 170px;
+
         .img {
             width: 160px;
             height: 150px;
@@ -105,17 +106,19 @@
         }
 
         .infoPost {
-        
+
             height: 100%;
-            
+
             .perfil {
                 display: flex;
                 align-items: center;
                 gap: 15px;
 
                 img {
-                    width: 45px;
-                    height: 45px;
+                    width: 50px;
+                    min-width: 50px;
+                    height: 50px;
+                    min-height: 50px;
                     border-radius: 100%;
                     object-fit: cover;
                     display: flex;
@@ -130,9 +133,10 @@
                         font-weight: bold;
                         display: flex;
                         gap: 10PX;
-                    text-transform: capitalize;
+                        text-transform: capitalize;
 
                         align-items: center;
+
                         .curvatura {
                             font-size: 0.6rem;
                             width: 20px;
@@ -148,23 +152,27 @@
                     }
                 }
             }
-            .descPost{
+
+            .descPost {
                 margin-top: 2%;
                 width: 500px;
                 height: 55px;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
-            .statusPost{
+
+            .statusPost {
                 display: flex;
                 gap: 30px;
                 margin-top: 2%;
                 align-items: center;
-                .status{
+
+                .status {
                     color: var(--azul);
                     font-weight: 500;
                 }
-                .tipoPost{
+
+                .tipoPost {
                     width: 160px;
                     background-color: var(--azul);
                     display: flex;
@@ -178,11 +186,13 @@
             }
         }
     }
-    .deletar{
-        
+
+    .deletar {
+
         height: 110%;
         padding-right: 1%;
-          i{    
+
+        i {
             cursor: pointer;
             margin-left: 5%;
         }

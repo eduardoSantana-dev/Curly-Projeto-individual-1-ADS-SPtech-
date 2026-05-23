@@ -200,7 +200,7 @@ body {
     background-color: var(--box);
     box-shadow: var(--sombra);
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     position: sticky;
     top: 0px;

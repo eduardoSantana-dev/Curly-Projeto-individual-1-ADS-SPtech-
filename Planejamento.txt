@@ -1,14 +1,5 @@
 Proximos passo{
-    Corrigir erros{
-        usuario consegue se seguir no perfil;
-        filtro por seguindo não funciona;
-    }
-    apagar coisas que não funciona{
-        pesquisar na home,
-        3 pontos posts
-    }
     corrigir imagens{
-        login,cadastro(se necessario),
         galeria
     }
     atividades{

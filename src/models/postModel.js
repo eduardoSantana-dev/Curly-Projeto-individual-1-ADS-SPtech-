@@ -6,6 +6,7 @@ function novoPost(idUser, desc, img,categoria) {
 }
 
 function buscarPost(filtro1, filtro2, idEspectador) {
+  
   let where = "";
   if (filtro1 != "minutos") {
     filtro1 += " desc";
@@ -13,10 +14,10 @@ function buscarPost(filtro1, filtro2, idEspectador) {
     filtro1 = "dataPost desc";
   }
   if (filtro2.includes("curvatura")) {
-    where = `and where usuario.curvatura = '${filtro2.substring(9)}'`;
+    where = `and usuario.curvatura = '${filtro2.substring(9)}'`;
   }
   if (filtro2 == "seguindo") {
-    where = "and where espectador.idUsuarioSeguidor IS NOT NULL";
+    where = "and espectador.idUsuarioSeguidor IS NOT NULL";
   }
 
   let query = `

@@ -6,6 +6,7 @@ async function buscarDados() {
   await setarListaUsuarios(dados.data.populares, dados.data.ultimosCadastros);
   await setarGraficoInteracoes(dados.data.graficoInteracoes);
   carregarGraficos();
+  
 }
 buscarDados();
 

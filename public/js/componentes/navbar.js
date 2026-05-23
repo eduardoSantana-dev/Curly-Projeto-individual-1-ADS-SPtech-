@@ -41,10 +41,7 @@ const temaNav = localStorage.TEMA
             <div class="navTopo">
                <a href="index.html"> <img src="./assets/icon/${temaNav =='azul' ? 'completoAzul': temaNav =='escuro' ? 'completoDark':temaNav =='neon' ? 'completoNeon': 'completo'}.svg" id="navLogo" alt=""></a>
                 <div class="navTopoElements">
-                    <div class="inputPesquisar">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
+                    
                 </div>
             </div>
             <div id="container" >

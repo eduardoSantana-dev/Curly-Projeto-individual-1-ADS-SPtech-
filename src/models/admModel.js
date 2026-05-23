@@ -22,7 +22,7 @@ function kpisGraficosRosca() {
   return database.executar(query);
 }
 function graficoUsuario() {
-  const query = `select count(*) usuarios, date(dataRegistro) as dia from usuario group by dia;`;
+  const query = `select count(*) usuarios, date(dataRegistro) as dia from usuario group by dia order by dia limit 15;`;
   return database.executar(query);
 }
 function populares() {

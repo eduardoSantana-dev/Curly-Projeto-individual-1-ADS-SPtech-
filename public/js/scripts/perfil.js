@@ -16,11 +16,13 @@ async function buscarUser(){
     document.title = `Perfil de ${usuario.nome}`
     curvaturaUSerPerfil.innerHTML = usuario.curvatura
     imgUserPerfilPage.src = `/assets/userPerfil/${usuario.img}`
-    if(usuario.usuario_segue){
-      spanButtonSeguir.innerHTML = `<button class="botao button_seguir seguindo idButtonSeguir${idPerfil}" onclick="deixarDeSeguir(${idPerfil})" >Seguindo</button>`
-    }else{
-      spanButtonSeguir.innerHTML = `<button class="botao button_seguir idButtonSeguir${idPerfil}" onclick="seguir(${idPerfil})" >Seguir</button>`
-
+    if(!(idPerfil == localUser.id)){
+      if(usuario.usuario_segue){
+        spanButtonSeguir.innerHTML = `<button class="botao button_seguir seguindo idButtonSeguir${idPerfil}" onclick="deixarDeSeguir(${idPerfil})" >Seguindo</button>`
+      }else{
+        spanButtonSeguir.innerHTML = `<button class="botao button_seguir idButtonSeguir${idPerfil}" onclick="seguir(${idPerfil})" >Seguir</button>`
+  
+      }
     }
     buscarPostUSer(idPerfil)
    }catch(dados){
@@ -28,7 +30,7 @@ async function buscarUser(){
    }
 }
 
-async function buscaSeguindo(id) {
+async function buscarSeguindo(id) {
   const seguindo = await reqGet(`/usuarios//seguindo/${id}`);
   console.log(seguindo.data);
   seguindo.data.forEach((user) => {
@@ -46,5 +48,5 @@ async function buscaSeguindo(id) {
         `;
   });
 }
-buscaSeguindo(idPerfil)
+buscarSeguindo(idPerfil)
 buscarUser()

@@ -40,14 +40,7 @@ function listarPost(posts, div) {
     }
     div.innerHTML += `
         <div class="post box">
-                    <div class="OptionsPost">
-                        <i class="fa-solid fa-ellipsis" onclick="abrirTresPontos(${post.idPost})"></i>
-                          <div class="selecionarDeletePost" id="tresPontoPost${post.idPost}">
-                            Deletar Post
-                        </div>
-                       
-                        
-                    </div>
+                  
                     <div class="perfilPost">
                     
                         <a href="perfil.html?id=${post.idUsuario}" class="imgUserPostDiv">
@@ -87,19 +80,7 @@ function listarPost(posts, div) {
         `;
   });
 }
-function abrirTresPontos(id){
-  let div = document.getElementById(`tresPontoPost${id}`)
-  div.style.display ='flex'
-  document.querySelector("body").innerHTML +=` <div class="selecionarDeletePostFechar" id="tresPontoPostFechar${id}" onclick ="fecharTresPonto(${id})">
-                            
-                        </div>`
-}
-function fecharTresPonto(id){
-  let div = document.getElementById(`tresPontoPost${id}`)
-  div.style.display ='none'
-  let divFechar = document.getElementById(`tresPontoPostFechar${id}`)
-  divFechar.remove()
-}
+
 function mostrarPreview() {
   if (fotoNovoPost.value != "") {
     imgNovoPost.src = URL.createObjectURL(fotoNovoPost.files[0]);
