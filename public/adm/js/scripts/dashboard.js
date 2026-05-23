@@ -1,11 +1,14 @@
 async function buscarDados() {
+
   const dados = await reqGet("/admin/dadosDash");
   console.log(dados.data);
   await setarKpiEGraficoRosca(dados.data.kpisGraficosRosca[0]);
   await setarGraficoUsuarios(dados.data.graficoUsuario);
   await setarListaUsuarios(dados.data.populares, dados.data.ultimosCadastros);
   await setarGraficoInteracoes(dados.data.graficoInteracoes);
-  carregarGraficos();
+  await carregarGraficos();
+ 
+    loading_div.style.display='none'
   
 }
 buscarDados();

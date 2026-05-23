@@ -17,7 +17,8 @@ function formatarTempo(minutos) {
 }
 
 function listarPost(posts, div) {
-  div.innerHTML = "";
+  
+  let html = ''
   posts.forEach((post) => {
     let imgPost = ``;
     let temIMG = false;
@@ -38,7 +39,7 @@ function listarPost(posts, div) {
       bCurtir = "buttonCurtircurtido";
       iconLike = "solid";
     }
-    div.innerHTML += `
+    html += `
         <div class="post box">
                   
                     <div class="perfilPost">
@@ -79,6 +80,7 @@ function listarPost(posts, div) {
                 </div>
         `;
   });
+  div.innerHTML =html
 }
 
 function mostrarPreview() {

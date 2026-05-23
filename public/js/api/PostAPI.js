@@ -48,7 +48,7 @@ async function postar() {
 async function buscarPost(ordem, filtro) {
   var postSelect = [{}];
 
-  feedPost.innerHTML =`<img src="assets/loading.gif" class="loading" alt="">`
+  feedPost.innerHTML =`<img style="margin-top:200px" src="assets/img/loading_spinner_orange.gif" class="loading" alt="">`
    if (filtroDePosts) {
       ordemPost.value = ordem;
       filtroPost.value = filtro;

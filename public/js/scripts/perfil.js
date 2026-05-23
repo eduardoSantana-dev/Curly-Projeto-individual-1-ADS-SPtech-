@@ -1,3 +1,4 @@
+
 const idPerfil = window.location.search.substring(4)
 if(idPerfil == localUser.id){
   div_novoPostCardContainer.innerHTML = `<div id="novoPostCardContainer"></div>` 
@@ -48,5 +49,12 @@ async function buscarSeguindo(id) {
         `;
   });
 }
-buscarSeguindo(idPerfil)
-buscarUser()
+async function carregar() {
+  await buscarSeguindo(idPerfil)
+    await buscarUser()
+  setTimeout(()=>{
+    loading_div.style.display='none'
+  },500)
+
+}
+carregar()
