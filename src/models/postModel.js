@@ -118,6 +118,28 @@ function galeria(filtro,ordem){
   group by usuario.idUsuario, post.idPost order by ${orderBy} desc;`
   return database.executar(query);
 }
+function pesquisarUsuarios (pesquisa){
+  let query = `select idUsuario,nome,arroba,img
+    from usuario where nome like '%${pesquisa}%' or arroba like '%${pesquisa}%' limit 8;
+  `
+  return database.executar(query);
+}
+function pesquisarPosts (pesquisa,idEspectador){
+   let query = `
+   select usuario.*,post.idPost,descricao as 'desc', post.img as 'img_post', TIMESTAMPDIFF(minute,dataPost,now()) as 'minutos',count(DISTINCT curtida.idCurtida) as curtidas,count(DISTINCT idComentario) as comentarios
+    ,count(DISTINCT postador.idUsuarioSeguidor) as seguidores,
+    case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as seguindo,
+    case when espectadorCurtida.idUsuario IS NOT NULL then 1 else 0 end as curtido
+    from post join usuario on post.idUsuario = usuario.idUsuario left join curtida on post.idPost = curtida.idPost  left join comentario on comentario.idPost = post.idPost left join seguir_usuario as postador on usuario.idUsuario = idUsuarioSeguido
+    left join seguir_usuario espectador on usuario.idUsuario = espectador.idUsuarioSeguido and espectador.idUsuarioSeguidor = ${idEspectador}
+    left join curtida espectadorCurtida on post.idPost = espectadorCurtida.idPost and espectadorCurtida.idUsuario = ${idEspectador}
+    where statusUsuario = 'ativo' and (usuario.nome like '%${pesquisa}%' or usuario.arroba like '%${pesquisa}%' or descricao like '%${pesquisa}%') 
+    group by usuario.idUsuario, post.idPost order by minutos
+    `;
+    
+  return database.executar(query)
+
+}
 module.exports = {
   novoPost,
   buscarPost,
@@ -127,4 +149,6 @@ module.exports = {
   novoComentario,
   buscarPostUser,
   galeria,
+  pesquisarUsuarios,
+  pesquisarPosts
 };

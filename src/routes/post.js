@@ -24,4 +24,7 @@ router.post("/comentar", function(req, res){
 router.get("/galeria/:filtro/:ordem", function(req, res){
      postController.galeria(req,res);
 });
+router.get("/pesquisar/:pesquisa/:idEspectador", function(req, res){
+     postController.pesquisar(req,res);
+});
 module.exports = router;

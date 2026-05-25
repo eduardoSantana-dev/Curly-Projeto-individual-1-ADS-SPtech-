@@ -1,5 +1,12 @@
-const temaNav = localStorage.TEMA
- containerGlobal.innerHTML = `
+const temaNav = localStorage.TEMA;
+function renderizarContainer(pesquisaContainer) {
+  let conteudo = "";
+  if (pesquisaContainer) {
+    conteudo = pesquisaContainer;
+  } else {
+    conteudo = container.innerHTML;
+  }
+  containerGlobal.innerHTML = `
            <div class="navLateral">
             <div class="containerNavLateral">
                 <a href="perfil.html?id=${localUser.id}" class="perfil">
@@ -39,28 +46,83 @@ const temaNav = localStorage.TEMA
         </div>
         <div class="subContainerGlobal">
             <div class="navTopo">
-               <a href="index.html"> <img src="./assets/icon/${temaNav =='azul' ? 'completoAzul': temaNav =='escuro' ? 'completoDark':temaNav =='neon' ? 'completoNeon': 'completo'}.svg" id="navLogo" alt=""></a>
+               <a href="index.html"> <img src="./assets/icon/${temaNav == "azul" ? "completoAzul" : temaNav == "escuro" ? "completoDark" : temaNav == "neon" ? "completoNeon" : "completo"}.svg" id="navLogo" alt=""></a>
                 <div class="navTopoElements">
-                    
+                     <form class="inputPesquisar" onsubmit="pesquisar(); return false">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="input_pesquisa_navbar" placeholder="Pesquisar">
+                    </form>
                 </div>
             </div>
             <div id="container" >
-                ${container.innerHTML}
+                ${conteudo}
             </div>
              </div>
         </div>
 
 
     
-    `
-    const paginaAtual = window.location.href
-    if(paginaAtual.includes('galeria')){
-        acessoGaleria.style.color ='var(--amarelo1)'
-    }else if(paginaAtual.includes('configuracao')){
-        acessoConfig.style.color ='var(--amarelo1)'
-    }else if(paginaAtual.includes('sobre')){
-        acessoSobre.style.color ='var(--amarelo1)'
+    `;
+}
+renderizarContainer();
+const paginaAtual = window.location.href;
+if (paginaAtual.includes("galeria")) {
+  acessoGaleria.style.color = "var(--amarelo1)";
+} else if (paginaAtual.includes("configuracao")) {
+  acessoConfig.style.color = "var(--amarelo1)";
+} else if (paginaAtual.includes("sobre")) {
+  acessoSobre.style.color = "var(--amarelo1)";
+} else {
+  acessoInicio.style.color = "var(--amarelo1)";
+}
 
-    }else{
-        acessoInicio.style.color ='var(--amarelo1)'
-    }
+async function pesquisar() {
+  const pesquisa = input_pesquisa_navbar.value;
+
+  const resultado = await reqGet(
+    `/posts/pesquisar/${pesquisa}/${localUser.id}`,
+  );
+  const posts = resultado.data.posts;
+  const usuarios = resultado.data.usuarios;
+  if (posts.length > 0 || usuarios.length > 0) {
+    let listaUsuarios = ``;
+    usuarios.forEach((user) => {
+      listaUsuarios += `
+    <a href="perfil.html?id=${user.idUsuario}" class="perfil">
+                        <div class="imgUserPerfilDiv">
+                            <img src="assets/userPerfil/${user.img}" alt=""
+                                id="imgUserPerfil">
+                        </div>
+                        <div class="nomeArroba">
+                            <span class="nomeUserPerfilPesquisa ">${user.nome}</span>
+                            <span class="usuarioUserPerfilPesquisa ">@${user.arroba}</span>
+                        </div>
+                    </a>
+    `;
+    });
+    let containerPesquisa = `
+         <div id="container" class="containerPesquisa" style="margin-top:0px">
+            <span class="tituloPesquisa">Resultado para:'${pesquisa}'</span>
+            <div class="usuariosPesquisados box">
+                <p>Pessoas</p>
+                <div class="lista" >
+                ${listaUsuarios}
+                </div>
+            </div>
+            <div id="feedPost" class="feedPesquisa"></div>
+        </div>
+        `;
+    await renderizarContainer(containerPesquisa);
+    listarPost(posts, feedPost);
+  }else{
+    let constainerVazio = `
+      <div id="container" class="containerPesquisa" style="margin-top:0px">
+        <p class="resVazio">Nenhum resultado encontrado</p>
+      </div>
+    `
+    renderizarContainer(constainerVazio)
+    
+  }
+     input_pesquisa_navbar.value = pesquisa;
+    input_pesquisa_navbar.focus()
+}

@@ -19,5 +19,4 @@ async function buscarPopulares() {
 
 chamarNovoCardInput();
 buscarPost(ordemPost.value, filtroPost.value);
-buscarPost(ordemPost.value, filtroPost.value);
 buscarPopulares();

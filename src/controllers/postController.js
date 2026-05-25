@@ -100,6 +100,23 @@ async function galeria(req,res) {
         })
     }
 }
+async function pesquisar(req,res){
+    const pesquisa = req.params.pesquisa
+    const idEspectador = req.params.idEspectador
+    try{
+        const posts = await postModel.pesquisarPosts(pesquisa,idEspectador)
+        const usuarios = await postModel.pesquisarUsuarios(pesquisa)
+        res.status(202).json({
+            sucess:true,
+            data:{usuarios,posts}
+        })
+    }catch(usuarios){
+         res.status(402).json({
+            sucess:false,
+            data:usuarios
+        })
+    }
+}
 module.exports = {
     postar,
     buscarPost,
@@ -108,4 +125,5 @@ module.exports = {
     comentar,
     buscarPostsUser,
     galeria,
+    pesquisar
 }
