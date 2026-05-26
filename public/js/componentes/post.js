@@ -209,7 +209,7 @@ document.querySelector("body").innerHTML += `
 
 function chamarNovoCardInput() {
   novoPostCardContainer.innerHTML = `
-       <div id="novoPostCard" class="box">
+       <form id="novoPostCard" class="box" onsubmit="postar(); return false">
                     <div class="topoNovoPost">
                         <div class="imgUserNovoPost">
                             <img src="assets/userPerfil/${localUser.img}" alt=""
@@ -228,8 +228,8 @@ function chamarNovoCardInput() {
                                 <option value="galeria">Galeria</option>
                             </select>
                         </div>
-                        <button class="botao" type="button"  onclick = "postar()">Postar</button>
+                        <button class="botao" onclick = "postar()">Postar</button>
                     </div>
-                </div>
+          </form>
     `;
 }

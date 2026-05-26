@@ -120,7 +120,7 @@ async function pesquisar() {
     `;
     });
     let containerPesquisa = `
-         <div id="container" class="containerPesquisa" style="margin-top:0px">
+         <div class="containerPesquisa" style="margin-top:0px">
             <span class="tituloPesquisa">Resultado para:'${pesquisa}'</span>
             <div class="usuariosPesquisados box">
                 <p>Pessoas</p>
@@ -135,7 +135,7 @@ async function pesquisar() {
     listarPost(posts, feedPost);
   } else {
     let constainerVazio = `
-      <div id="container" class="containerPesquisa" style="margin-top:0px">
+      <div class="containerPesquisa" style="margin-top:0px">
         <p class="resVazio">Nenhum resultado encontrado</p>
       </div>
     `;
@@ -143,6 +143,9 @@ async function pesquisar() {
   }
   input_pesquisa_navbar.value = pesquisa;
   input_pesquisa_navbar.focus();
+   container.style.justifyContent = 'flex-start';
+
+ 
 }
 
 
