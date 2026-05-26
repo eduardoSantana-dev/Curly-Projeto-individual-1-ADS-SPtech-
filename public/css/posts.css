@@ -157,54 +157,13 @@ body{
     }
 
 }
-.selecionarDeletePostFechar{
-            background-color: transparent;
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0px;
-            left: 0px;
-           z-index: 99;
 
-        }
 .post {
     margin-top: 10px;
     width: 100%;
     padding: 1% 1%;
     
-    .OptionsPost{
-        i{
-            cursor: pointer;
-        }
-        margin-bottom: -2%;
-        display: flex;
-        justify-content: end;
-      
-        position: relative;
-        .selecionarDeletePost{
-            position: absolute;
-            background-color: var(--box);
-           box-shadow: var(--sombra);
-           z-index: 100;
-            width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 20px;
-            border-radius: var(--radius);
-            top: -30px;
-            right:  -70px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            color: red;
-            display: none;
-            &:hover{
-                background-color: red;
-                color: #fff;
-            }
-        }
-        
-    }
+  
     .perfilPost {
         display: flex;
         gap: 20px;
@@ -350,7 +309,7 @@ body{
     padding: 0px;
     opacity: 0;
     transition: 500ms;
-    z-index: 110;
+    z-index: 30;
 
     .fa-x {
         color: #fff;

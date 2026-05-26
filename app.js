@@ -42,9 +42,9 @@ app.use((req, res, next) => {
 
 app.post("/perguntar", async (req, res) => {
     const pergunta = req.body.pergunta;
-
+    const conversa = req.body.conversa;
     try {
-        const resultado = await gerarResposta(pergunta);
+        const resultado = await gerarResposta(pergunta,conversa);
         res.json({ resultado });
     } catch (error) {
         res.status(500).json({ error: 'Erro interno do servidor' });
@@ -53,8 +53,8 @@ app.post("/perguntar", async (req, res) => {
 });
 
 // função para gerar respostas usando o gemini
-async function gerarResposta(mensagem) {
-
+async function gerarResposta(mensagem,conversa) {
+    
     try {
         // gerando conteúdo com base na pergunta
         const modeloIA = chatIA.models.generateContent({
@@ -63,7 +63,8 @@ async function gerarResposta(mensagem) {
 A Curly é uma plataforma focada em cabelos ondulados, cacheados e crespos.
 Seu objetivo é ajudar os usuários com dicas capilares, autoestima, cuidados, finalização, cronograma capilar e inspirações.
 Responda de forma amigável, curta e natural.
-
+a conversa até então está assim:
+${conversa}
 Pergunta do usuário:
 ${mensagem}
 `

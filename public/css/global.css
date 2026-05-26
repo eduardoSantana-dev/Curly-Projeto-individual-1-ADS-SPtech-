@@ -81,7 +81,7 @@ body {
 }
 
 .navLateral {
-    z-index: 99;
+    z-index: 29;
     width: 18.5%;
     height: 100vh;
     position: sticky;
@@ -209,7 +209,7 @@ body {
     align-items: center;
     position: sticky;
     top: 0px;
-    z-index: 90;
+    z-index: 20;
 
     img {
         margin-left: 20px;
@@ -342,6 +342,7 @@ body {
     transition: 100ms;
 }
 .cacheiaButton{
+    z-index: 15;
     position: fixed;
     top: 800px;
     right: 150px;
@@ -364,13 +365,15 @@ body {
     }
 }
 .chatBotContainer {
+    z-index: 15;
+
     position: fixed;
-   top: 100px;
-    right: 70px;
+    top: 25vh;
+    right: 4vw;
+    width: 20vw;
+    height: 72vh;
     background-color: var(--box);
     box-shadow: 0px 0px 14px 0px hsla(0, 0%, 0%, 0.215);
-    width: 400px;
-    height: 800px;
     border-radius: 10px;
     overflow: hidden;
     display: none;
@@ -422,6 +425,7 @@ body {
         flex-direction: column;
         gap: 10px;
         padding-inline: 4%;
+        margin-bottom: 2%;
         .mensagem {
             font-size: 0.8rem;
             font-weight: 500;
@@ -446,16 +450,33 @@ body {
     }
     form{
         width: 90%;
+        display: flex;
+        background-color: var(--box);
+        box-shadow: var(--sombra);
+        border: 1px var(--cinza2) solid;
+        border-radius: 15px;
+        button{
+            display: none;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--roxo);
+            i{
+                font-size: 25px;
+                 rotate: 45deg;
+            }
+            &:hover{
+                transition: 0.1s;
+                color: var(--amarelo1);
+            }
+        }
     }
     input{
 
         border: none;
         outline: none;
-        background-color: var(--box);
-        box-shadow: var(--sombra);
-        border: 1px var(--cinza2) solid;
-        border-radius: 15px;
-        width: 100%;
+        background-color: transparent;
+        width: 87%;
         height: 50px;
         font-weight: bold;
         color: var(--texto2);

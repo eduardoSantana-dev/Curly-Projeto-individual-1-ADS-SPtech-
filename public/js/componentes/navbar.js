@@ -7,6 +7,25 @@ function renderizarContainer(pesquisaContainer) {
     conteudo = container.innerHTML;
   }
   containerGlobal.innerHTML = `
+   <div class="cacheiaButton" id="cacheiaButton" onclick="abrirChat()">
+        <img src="./assets/img/cacheiaBot.png" alt="">
+    </div>
+    <div class="chatBotContainer" id="chatBotDiv">
+        <div class="topo">
+            <img src="assets/img/cacheiaBot.png" alt="">
+            <span class="nome">CacheIA</span>
+            <i class="fa-solid fa-xmark" onclick=" chatBotDiv.classList.remove('ativo');cacheiaButton.style.display ='flex'"></i>
+        </div>
+        <div class="conversa" id="conversa_bot">
+
+            
+        </div>
+        <form  onsubmit="enviarMsgBot(); return false">
+        <input type="text" id="input_msg_para_bot" placeholder="Digite sua mensagem" oninput="button_enviar_msg.style.display ='block'">
+        <button id="button_enviar_msg"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+        <span class="aviso">Respostas geradas por IA podem conter erros.</span>
+    </div>
            <div class="navLateral">
             <div class="containerNavLateral">
                 <a href="perfil.html?id=${localUser.id}" class="perfil">
@@ -126,51 +145,69 @@ async function pesquisar() {
   input_pesquisa_navbar.focus();
 }
 
-document.querySelector("body").innerHTML += `
-    <div class="cacheiaButton" id="cacheiaButton" onclick=" chatBotDiv.classList.add('ativo');cacheiaButton.style.display ='none'">
-        <img src="./assets/img/cacheiaBot.png" alt="">
-    </div>
-    <div class="chatBotContainer" id="chatBotDiv">
-        <div class="topo">
-            <img src="assets/img/cacheiaBot.png" alt="">
-            <span class="nome">CacheIA</span>
-            <i class="fa-solid fa-xmark" onclick=" chatBotDiv.classList.remove('ativo');cacheiaButton.style.display ='flex'"></i>
-        </div>
-        <div class="conversa" id="conversa_bot">
-            <p class="mensagem botMsg">
-                Olá ${localUser.nome}!  
-      Eu sou o CacheIA, seu assistente de cachos da Curly ✨  
-        Estou aqui para te ajudar com dicas, cuidados e inspirações para valorizar ainda mais seus cachos 😊
-            </p>
-            
-        </div>
-        <form  onsubmit="enviarMsgBot(); return false">
-        <input type="text" id="input_msg_para_bot" placeholder="Digite sua mensagem">
-        </form>
-        <span class="aviso">Respostas geradas por IA podem conter erros.</span>
-    </div>
-`;
+
+// codigos do CacheIA 
+const chatConversa = document.getElementById("conversa_bot"); 
+function abrirChat(){
+  chatBotDiv.classList.add('ativo');
+  cacheiaButton.style.display ='none'
+  chatConversa.scrollTop = chatConversa.scrollHeight;
+
+}
+
+if (sessionStorage.CHAT != undefined) {
+  chatConversa.innerHTML = sessionStorage.CHAT;
+} else {
+  sessionStorage.CHAT = `
+    <p class="mensagem botMsg">
+    Olá ${localUser.nome}!  
+    Eu sou o CacheIA, seu assistente de cachos da Curly ✨  
+    Estou aqui para te ajudar com dicas, cuidados e inspirações para valorizar ainda mais seus cachos 😊
+    </p>
+    `;
+  sessionStorage.CONVERSA = `CacheIA:
+    Olá ${localUser.nome}!  
+    Eu sou o CacheIA, seu assistente de cachos da Curly ✨  
+    Estou aqui para te ajudar com dicas, cuidados e inspirações para valorizar ainda mais seus cachos 😊;
+    `;
+  chatConversa.innerHTML = sessionStorage.CHAT;
+  sessionStorage.CONVERSACONTAGEM = 0
+  console.log(sessionStorage.CHAT);
+}
+
+
 async function enviarMsgBot() {
-  let contador = 0;
   let msg = input_msg_para_bot.value;
+  let contadorDeMSG = sessionStorage.CONVERSACONTAGEM
   input_msg_para_bot.value = "";
-  conversa_bot.innerHTML += `
+
+  chatConversa.innerHTML += `
      <p class="mensagem UserMsg">
                ${msg}
             </p>
     `;
-  const chat = document.getElementById("conversa_bot");
-  conversa_bot.innerHTML += `
-     <p class="mensagem botMsg" id="botMsgCarregando${contador}">
+  
+  chatConversa.innerHTML += `
+     <p class="mensagem botMsg" id="botMsgCarregando${contadorDeMSG}">
                Só um momento...
             </p>
     `;
-  chat.scrollTop = chat.scrollHeight;
-  resposta = await reqPost("/perguntar", { pergunta: msg });
-  document.getElementById(`botMsgCarregando${contador}`).style.display = "none";
-  conversa_bot.innerHTML += `
+  chatConversa.scrollTop = chatConversa.scrollHeight;
+
+  resposta = await reqPost("/perguntar", {
+    pergunta: msg,
+    conversa: sessionStorage.CONVERSA,
+  });
+  console.log(resposta.resultado);
+  document.getElementById(`botMsgCarregando${contadorDeMSG}`).style.display = "none";
+  contadorDeMSG++;
+
+  chatConversa.innerHTML += `
      <p class="mensagem botMsg">
                ${resposta.resultado}
             </p>
     `;
+  sessionStorage.CHAT = chatConversa.innerHTML;
+  sessionStorage.CONVERSA += `Usuario: ${msg}; CacheIA:${resposta.resultado};`;
+  sessionStorage.CONVERSACONTAGEM = contadorDeMSG
 }
