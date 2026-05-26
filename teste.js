@@ -39,10 +39,9 @@ async function reqPost(url,jsonDados){
 }
 async function imprimir() {
   a = {
-    "email":"eduardo@curley.com",
-    "senha":'adm123'
+    pergunta:'oiiii'
 }
-  console.log(await reqGet('http://localhost:3333/dash/graficoTanqueEspecifico/2'))
+  console.log(await reqPost('http://localhost:3333/perguntar',a))
 }
 
 imprimir()

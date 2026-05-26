@@ -6,7 +6,7 @@ var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 // A sintaxe do operador ternário é: condição ? valor_se_verdadeiro : valor_se_falso
 
 require("dotenv").config({ path: caminho_env });
-
+const { GoogleGenAI } = require("@google/genai");
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
@@ -32,6 +32,55 @@ app.use("/usuarios",usuarioRouter)
 app.use("/posts",postRouter)
 app.use("/admin",admRouter)
 
+// configurando o gemini (IA)
+const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
+    next();
+});
+
+app.post("/perguntar", async (req, res) => {
+    const pergunta = req.body.pergunta;
+
+    try {
+        const resultado = await gerarResposta(pergunta);
+        res.json({ resultado });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+
+});
+
+// função para gerar respostas usando o gemini
+async function gerarResposta(mensagem) {
+
+    try {
+        // gerando conteúdo com base na pergunta
+        const modeloIA = chatIA.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: `Você é a CacheIA, uma assistente virtual da rede social Curly.
+A Curly é uma plataforma focada em cabelos ondulados, cacheados e crespos.
+Seu objetivo é ajudar os usuários com dicas capilares, autoestima, cuidados, finalização, cronograma capilar e inspirações.
+Responda de forma amigável, curta e natural.
+
+Pergunta do usuário:
+${mensagem}
+`
+
+        });
+        const resposta = (await modeloIA).text;
+        const tokens = (await modeloIA).usageMetadata;
+
+        console.log(resposta);
+        console.log("Uso de Tokens:", tokens);
+
+        return resposta;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
 app.listen(PORTA_APP, function () {
     console.log(`                                                                 

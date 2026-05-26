@@ -138,44 +138,39 @@ document.querySelector("body").innerHTML += `
         </div>
         <div class="conversa" id="conversa_bot">
             <p class="mensagem botMsg">
-                Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
-                posso te ajudar:
-            </p>
-              <p class="mensagem UserMsg">
-                Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
-                posso te ajudar:
-            </p>
-             <p class="mensagem botMsg">
-                Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
-                posso te ajudar:
-            </p>
-              <p class="mensagem UserMsg">
-                Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
-                posso te ajudar:
-            </p> <p class="mensagem botMsg">
-                Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
-                posso te ajudar:
+                Olá ${localUser.nome}!  
+      Eu sou o CacheIA, seu assistente de cachos da Curly ✨  
+        Estou aqui para te ajudar com dicas, cuidados e inspirações para valorizar ainda mais seus cachos 😊
             </p>
             
         </div>
         <form  onsubmit="enviarMsgBot(); return false">
         <input type="text" id="input_msg_para_bot" placeholder="Digite sua mensagem">
         </form>
-        <span class="aviso">Isso é uma IA e pode cometer erros</span>
+        <span class="aviso">Respostas geradas por IA podem conter erros.</span>
     </div>
 `;
 async function enviarMsgBot() {
+  let contador = 0;
   let msg = input_msg_para_bot.value;
+  input_msg_para_bot.value = "";
   conversa_bot.innerHTML += `
      <p class="mensagem UserMsg">
                ${msg}
             </p>
     `;
   const chat = document.getElementById("conversa_bot");
+  conversa_bot.innerHTML += `
+     <p class="mensagem botMsg" id="botMsgCarregando${contador}">
+               Só um momento...
+            </p>
+    `;
   chat.scrollTop = chat.scrollHeight;
+  resposta = await reqPost("/perguntar", { pergunta: msg });
+  document.getElementById(`botMsgCarregando${contador}`).style.display = "none";
+  conversa_bot.innerHTML += `
+     <p class="mensagem botMsg">
+               ${resposta.resultado}
+            </p>
+    `;
 }
