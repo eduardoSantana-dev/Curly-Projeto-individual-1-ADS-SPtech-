@@ -1,7 +1,7 @@
 async function buscarDados() {
 
   const dados = await reqGet("/admin/dadosDash");
-  console.log(dados.data);
+
   await setarKpiEGraficoRosca(dados.data.kpisGraficosRosca[0]);
   await setarGraficoUsuarios(dados.data.graficoUsuario);
   await setarListaUsuarios(dados.data.populares, dados.data.ultimosCadastros);
@@ -96,7 +96,6 @@ function setarListaUsuarios(populares, ultimosCadastros) {
 }
 
 function setarGraficoInteracoes(dados) {
-  console.log(dados);
   for (let i = 0; i < dados.post.length; i++) {
     listaPostsPorHora.push(dados.post[i].quantidade);
     listaComentariosPorHora.push(dados.comentarios[i].quantidade);

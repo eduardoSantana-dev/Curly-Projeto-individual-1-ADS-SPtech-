@@ -107,7 +107,7 @@ function galeria(filtro,ordem){
       orderBy = 'count(distinct idUsuarioSeguidor)'
       break
   }
-  console.log("AQUI"+filtro)
+  
   if(filtro == 'todos'){
     filtro =''
   }

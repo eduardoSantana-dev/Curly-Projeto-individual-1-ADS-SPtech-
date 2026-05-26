@@ -4,7 +4,6 @@ async function chamarGaleria(filtro,ordem) {
   }
 
   const posts = await reqGet(`posts/galeria/${filtro}/${ordem}`)
-  console.log(posts)
   listaImagensGaleria.innerHTML =''
   posts.data.forEach(post => {
     listaImagensGaleria.innerHTML += `

@@ -74,7 +74,6 @@ async function buscarPostUSer(idUser) {
       `/posts/buscarPostsUser/${idUser}/${localUser.id}`,
     );
     postsLista = await postSelect.json();
-    console.log(postsLista);
     listarPost(postsLista, postsDoPerfil);
    
   } catch (err) {
@@ -122,7 +121,6 @@ async function abrirPost(idPost,reload) {
     const dados = await resposta.json();
     const postInfo = dados.post[0]; 
     const comentarios = dados.comentarios;
-    console.log(dados)
     exibirModalPost(postInfo, comentarios,reload);
   } catch (dados) {
     console.error(dados);

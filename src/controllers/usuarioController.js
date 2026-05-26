@@ -77,7 +77,7 @@ async function buscarDados(req, res) {
   }
 }
 async function seguirUsuario(req, res) {
-  console.log(req.body);
+  
   try {
     const resposta = await usuarioModel.seguirUsuario(
       req.body.idUser,
@@ -90,7 +90,7 @@ async function seguirUsuario(req, res) {
   }
 }
 async function deixarDeSeguir(req, res) {
-  console.log(req.body);
+ 
   try {
     const resposta = await usuarioModel.deixaDeSeguir(
       req.body.idUser,
@@ -108,7 +108,7 @@ async function verificarSenha(req, res) {
       req.body.idUser,
       req.body.senha,
     );
-    console.log(resposta);
+    
     res.status(202).json({
       sucess: true,
       data: resposta[0].user,
@@ -136,7 +136,7 @@ async function atualizarUser(req, res) {
       user.senha,
       imgNome,
     );
-    console.log(resposta);
+    
     res.status(202).json({
       sucess: true,
       data: resposta,

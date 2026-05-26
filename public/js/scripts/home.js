@@ -1,6 +1,6 @@
 async function buscarPopulares() {
   const populares = await reqGet("/usuarios/populares");
-  console.log(populares.data);
+  
   populares.data.forEach((user) => {
     listaPopulares.innerHTML += `
         <a href="perfil.html?id=${user.idUsuario}" class="perfil">

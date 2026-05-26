@@ -9,7 +9,7 @@ if(idPerfil == localUser.id){
 async function buscarUser(){
    try{
      let usuario = await reqGet(`/usuarios/userDados/${idPerfil}/${localUser.id}`);
-     console.log(usuario)
+     
     nomeUserPerfil.innerHTML = usuario.nome
     usuarioUserPerfil.innerHTML = `@${usuario.arroba}`
     seguidores.innerHTML = `Seguidores: ${usuario.seguidores}`
@@ -33,7 +33,7 @@ async function buscarUser(){
 
 async function buscarSeguindo(id) {
   const seguindo = await reqGet(`/usuarios//seguindo/${id}`);
-  console.log(seguindo.data);
+  
   seguindo.data.forEach((user) => {
     listaSeguindoPerfil.innerHTML += `
         <a href="perfil.html?id=${user.idUsuario}" class="perfil">

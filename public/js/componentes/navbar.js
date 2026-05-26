@@ -175,7 +175,6 @@ if (sessionStorage.CHAT != undefined) {
     `;
   chatConversa.innerHTML = sessionStorage.CHAT;
   sessionStorage.CONVERSACONTAGEM = 0
-  console.log(sessionStorage.CHAT);
 }
 
 
@@ -201,7 +200,6 @@ async function enviarMsgBot() {
     pergunta: msg,
     conversa: sessionStorage.CONVERSA,
   });
-  console.log(resposta.resultado);
   document.getElementById(`botMsgCarregando${contadorDeMSG}`).style.display = "none";
   contadorDeMSG++;
 

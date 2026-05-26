@@ -20,7 +20,7 @@ function login(email, senha) {
 }
 
 function buscarDados(id,idEspectador) {
-  console.log(idEspectador)
+  
   let query = `select u.*, count(distinct seguidores.idSeguimento) as seguidores, count(distinct seguindo.idSeguimento) as seguindo,
 case when espectador.idUsuarioSeguidor IS NOT NULL then 1 else 0 end as usuario_segue
 from usuario as u left join seguir_usuario as seguidores on idUsuarioSeguido = u.idUsuario  
@@ -46,7 +46,7 @@ function verificarSenha(id, senha) {
 }
 
 function atualizarUser(id, nome, arroba, email, senha, img) {
-  console.log(senha);
+  
   if (senha) {
     senha = `,senha = '${senha}'`;
   } else {
@@ -58,7 +58,7 @@ function atualizarUser(id, nome, arroba, email, senha, img) {
   } else {
     img = " ";
   }
-  console.log(img);
+  
   let query = `update usuario set nome = '${nome}',email ='${email}',arroba ='${arroba}' ${senha} ${img} where idUsuario = ${id};`;
   return database.executar(query);
 }
