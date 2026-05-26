@@ -114,21 +114,19 @@ async function pesquisar() {
         `;
     await renderizarContainer(containerPesquisa);
     listarPost(posts, feedPost);
-  }else{
+  } else {
     let constainerVazio = `
       <div id="container" class="containerPesquisa" style="margin-top:0px">
         <p class="resVazio">Nenhum resultado encontrado</p>
       </div>
-    `
-    renderizarContainer(constainerVazio)
-    
+    `;
+    renderizarContainer(constainerVazio);
   }
-     input_pesquisa_navbar.value = pesquisa;
-    input_pesquisa_navbar.focus()
+  input_pesquisa_navbar.value = pesquisa;
+  input_pesquisa_navbar.focus();
 }
 
-
-document.querySelector('body').innerHTML += `
+document.querySelector("body").innerHTML += `
     <div class="cacheiaButton" id="cacheiaButton" onclick=" chatBotDiv.classList.add('ativo');cacheiaButton.style.display ='none'">
         <img src="./assets/img/cacheiaBot.png" alt="">
     </div>
@@ -138,46 +136,46 @@ document.querySelector('body').innerHTML += `
             <span class="nome">CacheIA</span>
             <i class="fa-solid fa-xmark" onclick=" chatBotDiv.classList.remove('ativo');cacheiaButton.style.display ='flex'"></i>
         </div>
-        <div class="conversa">
+        <div class="conversa" id="conversa_bot">
             <p class="mensagem botMsg">
                 Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
-                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
                 posso te ajudar:
             </p>
               <p class="mensagem UserMsg">
                 Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
-                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
                 posso te ajudar:
             </p>
              <p class="mensagem botMsg">
                 Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
-                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
                 posso te ajudar:
             </p>
               <p class="mensagem UserMsg">
                 Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
-                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
                 posso te ajudar:
             </p> <p class="mensagem botMsg">
                 Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
-                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                Sou o Robby, seu assistente. Estou aqui para ajudar com suas dúvidas, 
                 posso te ajudar:
             </p>
-              <p class="mensagem UserMsg">
-                Olá, EDUARDO SANTANA SANTOS .!
-                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
-                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
-                posso te ajudar:
-            </p>
+            
         </div>
-        <form>
-        <input type="text" id="input_msg_para_bot" on placeholder="Digite sua mensagem">
+        <form  onsubmit="enviarMsgBot(); return false">
+        <input type="text" id="input_msg_para_bot" placeholder="Digite sua mensagem">
         </form>
         <span class="aviso">Isso é uma IA e pode cometer erros</span>
     </div>
-`
+`;
+async function enviarMsgBot() {
+  let msg = input_msg_para_bot.value;
+  conversa_bot.innerHTML += `
+     <p class="mensagem UserMsg">
+               ${msg}
+            </p>
+    `;
+  const chat = document.getElementById("conversa_bot");
+  chat.scrollTop = chat.scrollHeight;
+}

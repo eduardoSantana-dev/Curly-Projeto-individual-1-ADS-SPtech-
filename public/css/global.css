@@ -425,11 +425,13 @@ body {
         .mensagem {
             font-size: 0.8rem;
             font-weight: 500;
-            
             margin-top: 20px;
             width: 80%;
             padding: 3%;
             border-radius: 20px;
+            word-wrap: break-word;
+            text-wrap: wrap;
+            
         }
         .botMsg{
             background-color: var(--roxo);
