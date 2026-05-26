@@ -10,12 +10,12 @@
     --sombra: 0px 0px 4px 0px hsla(0, 0%, 0%, 0.100);
     --cinza: #E9E9EA;
     --cinza3: #cccccc;
-    --cinza2:#f1f1f1;
+    --cinza2: #f1f1f1;
     --tamanhoPost: 755px;
-    --radius:15px;
-    --centroContainer:13.5%;
-    --feed:49.7%;
-
+    --radius: 15px;
+    --centroContainer: 13.5%;
+    --feed: 49.7%;
+    
 }
 
 /* modo dark(teste)
@@ -40,38 +40,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-   transition: 400ms; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 400ms;
 }
+
 body {
-    
+
     font-family: 'Inter', sans-serif;
     margin: 0px;
     color: var(--texto1);
     background-color: var(--fundo);
-     
-            &::-webkit-scrollbar {
-                width: 8px;
-            }
 
-            /* fundo do scroll */
-            &::-webkit-scrollbar-track {
-                background: transparent;
-                border-radius: 10px;
-            }
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
 
-            /* parte que você arrasta */
-            &::-webkit-scrollbar-thumb {
-                background: #4e4e4e;
-                border-radius: 10px;
-            }
+    /* fundo do scroll */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 10px;
+    }
 
-            /* quando passa o mouse */
-            &::-webkit-scrollbar-thumb:hover {
-                background: var(--amarelo1);
-            }
+    /* parte que você arrasta */
+    &::-webkit-scrollbar-thumb {
+        background: #4e4e4e;
+        border-radius: 10px;
+    }
+
+    /* quando passa o mouse */
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--amarelo1);
+    }
 }
 
 #containerGlobal {
@@ -101,7 +102,8 @@ body {
             display: flex;
             gap: 15px;
             text-decoration: none;
-                .imgUserNavDiv {
+
+            .imgUserNavDiv {
                 width: 50px;
                 height: 50px;
                 overflow: hidden;
@@ -116,6 +118,7 @@ body {
                     object-fit: cover;
                 }
             }
+
             .nomeArroba {
                 display: flex;
                 flex-direction: column;
@@ -141,9 +144,10 @@ body {
             gap: 2.2rem;
 
             .acesso {
-                 &:hover{
-                transform: scale(1.04);
-            }
+                &:hover {
+                    transform: scale(1.04);
+                }
+
                 width: 100%;
                 display: flex;
                 color: var(--texto2);
@@ -151,6 +155,7 @@ body {
                 gap: 1.2rem;
                 cursor: pointer;
                 text-decoration: none;
+
                 i {
                     font-size: 1.7rem;
 
@@ -176,7 +181,7 @@ body {
             font-weight: bold;
             font-size: 1.6rem;
             padding-block: 7px;
-    cursor: pointer;
+            cursor: pointer;
 
             background-color: var(--roxo);
         }
@@ -205,6 +210,7 @@ body {
     position: sticky;
     top: 0px;
     z-index: 90;
+
     img {
         margin-left: 20px;
         width: 220px;
@@ -224,7 +230,7 @@ body {
 
         i {
 
-            color:var(--texto1);
+            color: var(--texto1);
             opacity: 0.5;
         }
 
@@ -247,84 +253,235 @@ body {
     font-weight: bold;
     background-color: var(--roxo);
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         opacity: 0.8;
     }
 }
-#container{
+
+#container {
     margin-top: 30px;
 }
- .perfil {
-            display: flex;
-            gap: 15px;
 
-            .imgUserPerfilDiv {
-                width: 50px;
-                height: 50px;
-                overflow: hidden;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 100px;
+.perfil {
+    display: flex;
+    gap: 15px;
 
-                img {
-                    
-                    width: 120%;
-                    height: 120%;
-                    object-fit: cover;
+    .imgUserPerfilDiv {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100px;
+
+        img {
+
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
 
 
 
-                }
-            }
+        }
+    }
 
-            .nomeArroba {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+    .nomeArroba {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-                #nomeUserPerfil {
-                    font-weight: bold;
-                    font-size: 1.2rem;
-                }
-
-                #usuarioUserPerfil {
-                    font-size: 1rem;
-                    color: var(--texto2);
-                }
-            }
+        #nomeUserPerfil {
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
+        #usuarioUserPerfil {
+            font-size: 1rem;
+            color: var(--texto2);
+        }
+    }
+}
 
-        .curvatura{
-            border-radius: 100px;
-            padding: 4px;
-            font-size: 0.7rem;
+
+.curvatura {
+    border-radius: 100px;
+    padding: 4px;
+    font-size: 0.7rem;
+    color: #fff;
+    font-weight: 500;
+    background-color: var(--amarelo1);
+}
+
+.c2 {
+    background-color: var(--amarelo2);
+
+}
+
+.c3 {
+    background-color: var(--amarelo1);
+
+}
+
+.c4 {
+    background-color: var(--amarelo3);
+
+}
+
+.box {
+    background-color: var(--box);
+    box-shadow: var(--sombra);
+    border-radius: var(--radius);
+}
+
+.loading {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    transition: 100ms;
+}
+.cacheiaButton{
+    position: fixed;
+    top: 800px;
+    right: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px hsla(0, 0%, 0%, 0.366);
+    background-color: var(--roxo);
+    &:hover{
+        transition: 200ms;
+        background-color: var(--amarelo1);
+    }
+    cursor: pointer;
+    img{
+        width: 70px;
+    }
+}
+.chatBotContainer {
+    position: fixed;
+   top: 100px;
+    right: 70px;
+    background-color: var(--box);
+    box-shadow: 0px 0px 14px 0px hsla(0, 0%, 0%, 0.215);
+    width: 400px;
+    height: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: .3s;
+    .topo {
+        width: 100%;
+        background-color: var(--roxo);
+        height: 60px;
+        display: flex;
+        align-items: center;
+        
+        padding-inline: 3%;
+        box-shadow: 0px 0px 20px 0px hsla(0, 0%, 0%, 0.535);
+        
+        img{
+            width: 50px;
+            
+        }
+        .nome {
+            font-size: 1.1rem;
+            font-weight: bold;
             color: #fff;
+        }
+
+        i {
+            margin-left: 60%;
+            font-size: 1.1rem;
+            color: #fff;
+            cursor: pointer;
+             &:hover{
+        transition: 200ms;
+        color: var(--amarelo1);
+    }
+        }
+    }
+
+    .conversa {
+        width: 100%;
+       
+        height: 82%;
+        overflow-y: scroll;
+        display: flex;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        flex-direction: column;
+        gap: 10px;
+        padding-inline: 4%;
+        .mensagem {
+            font-size: 0.8rem;
             font-weight: 500;
-            background-color: var(--amarelo1);
+            
+            margin-top: 20px;
+            width: 80%;
+            padding: 3%;
+            border-radius: 20px;
         }
-        .c2{
-            background-color: var(--amarelo2);
+        .botMsg{
+            background-color: var(--roxo);
+            color: #Fff;
+        }
+        .UserMsg{
+            margin-left: 20%;
+            background-color: var(--cinza);
+            color:  var(--texto1);
 
         }
-        .c3{
-            background-color: var(--amarelo1);
+    }
+    form{
+        width: 90%;
+    }
+    input{
 
-        }
-        .c4{
-            background-color: var(--amarelo3);
+        border: none;
+        outline: none;
+        background-color: var(--box);
+        box-shadow: var(--sombra);
+        border: 1px var(--cinza2) solid;
+        border-radius: 15px;
+        width: 100%;
+        height: 50px;
+        font-weight: bold;
+        color: var(--texto2);
+        padding: 5px 20px;
+        margin-top: 1%;
+    }
+    .aviso{
+        font-size: 0.6rem;
+        margin-top: 2%;
+        color: var(--roxo);
+    }
+}
+.chatBotContainer.ativo{
+    display: flex;
 
-        }
-        .box{
-            background-color: var(--box);
-            box-shadow: var(--sombra);
-            border-radius: var(--radius);
-        }
+    opacity: 1;
+    transform: translateX(0);
+     animation: abrirChat .4s ease forwards;
+}
+@keyframes abrirChat {
+    from{
+        opacity: 0;
+        transform: translateX(100px) scale(0.3);
+    }
 
-        .loading{
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-            transition: 100ms;
-        }
+    to{
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+

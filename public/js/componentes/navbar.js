@@ -126,3 +126,58 @@ async function pesquisar() {
      input_pesquisa_navbar.value = pesquisa;
     input_pesquisa_navbar.focus()
 }
+
+
+document.querySelector('body').innerHTML += `
+    <div class="cacheiaButton" id="cacheiaButton" onclick=" chatBotDiv.classList.add('ativo');cacheiaButton.style.display ='none'">
+        <img src="./assets/img/cacheiaBot.png" alt="">
+    </div>
+    <div class="chatBotContainer" id="chatBotDiv">
+        <div class="topo">
+            <img src="assets/img/cacheiaBot.png" alt="">
+            <span class="nome">CacheIA</span>
+            <i class="fa-solid fa-xmark" onclick=" chatBotDiv.classList.remove('ativo');cacheiaButton.style.display ='flex'"></i>
+        </div>
+        <div class="conversa">
+            <p class="mensagem botMsg">
+                Olá, EDUARDO SANTANA SANTOS .!
+                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
+                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                posso te ajudar:
+            </p>
+              <p class="mensagem UserMsg">
+                Olá, EDUARDO SANTANA SANTOS .!
+                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
+                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                posso te ajudar:
+            </p>
+             <p class="mensagem botMsg">
+                Olá, EDUARDO SANTANA SANTOS .!
+                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
+                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                posso te ajudar:
+            </p>
+              <p class="mensagem UserMsg">
+                Olá, EDUARDO SANTANA SANTOS .!
+                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
+                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                posso te ajudar:
+            </p> <p class="mensagem botMsg">
+                Olá, EDUARDO SANTANA SANTOS .!
+                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
+                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                posso te ajudar:
+            </p>
+              <p class="mensagem UserMsg">
+                Olá, EDUARDO SANTANA SANTOS .!
+                Sou o Robby, seu assistente acadêmico. Estou aqui para ajudar com suas dúvidas, incluindo questões
+                relacionadas à secretaria, documentação ou assuntos financeiros. Confira as opções abaixo e escolha como
+                posso te ajudar:
+            </p>
+        </div>
+        <form>
+        <input type="text" id="input_msg_para_bot" on placeholder="Digite sua mensagem">
+        </form>
+        <span class="aviso">Isso é uma IA e pode cometer erros</span>
+    </div>
+`
