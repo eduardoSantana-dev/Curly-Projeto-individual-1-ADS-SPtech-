@@ -1,7 +1,7 @@
 :root {
     --fundo: #F0F2F5;
     --box: #fff;
-    --roxo: #693B99;
+    --roxo: #6D28D9;
     --amarelo1: #F8AC35;
     --amarelo2: #FFC161;
     --amarelo3: #FE9B00;
@@ -12,7 +12,7 @@
     --cinza3: #cccccc;
     --cinza2: #f1f1f1;
     --tamanhoPost: 755px;
-    --radius: 15px;
+    --radius: 10px;
     --centroContainer: 13.5%;
     --feed: 49.7%;
     

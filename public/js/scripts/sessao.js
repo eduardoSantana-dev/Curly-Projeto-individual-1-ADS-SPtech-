@@ -76,7 +76,7 @@ function setarTema(tema,button) {
     
     document.documentElement.style.setProperty("--fundo", "#F0F2F5");
     document.documentElement.style.setProperty("--box", "#fff");
-    document.documentElement.style.setProperty("--roxo", "#693B99");
+    document.documentElement.style.setProperty("--roxo", "#6D28D9");
     document.documentElement.style.setProperty("--amarelo1", "#F8AC35");
     document.documentElement.style.setProperty("--amarelo2", "#FFC161");
     document.documentElement.style.setProperty("--amarelo3", "#FE9B00");

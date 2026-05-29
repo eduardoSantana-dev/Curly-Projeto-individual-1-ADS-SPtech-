@@ -112,6 +112,46 @@
         
     }
 }
+
+.odsOnu{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 10%;
+    width: 100%;
+    .subtitulo{
+        font-size: 45px;
+        font-weight: 700;
+    }
+  .ODSs{
+    display: flex;
+    margin-top: 5%;
+    width: 100%;
+    justify-content: space-around;
+      .odsContainer{
+        width: 260px;
+        text-decoration: none;
+        color: var(--texto1);
+        
+        img{
+            width: 100%;
+            height: 260px;
+            border-radius: 20px;
+            &:hover{
+                transform: scale(1.06);
+            }
+        }
+        p{
+            width: 100%;
+            text-align: center;
+            margin-top:2% ;
+        }
+    }
+  }
+}
+
+
+
 .edu{
     margin-top: 10%;
     width: 100%;
