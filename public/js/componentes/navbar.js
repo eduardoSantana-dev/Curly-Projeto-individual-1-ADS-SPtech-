@@ -55,7 +55,7 @@ function renderizarContainer(pesquisaContainer) {
                         <i class="fa-solid fa-gear"></i>
                         <span>Configurações</span>
                     </a>
-                       <a href = "login.html" class="acesso" onclick="localStorage.clear()">
+                       <a href = "login.html" class="acesso" onclick="localStorage.clear(); sessionStorage.clear();">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span>Sair</span>
                     </a>

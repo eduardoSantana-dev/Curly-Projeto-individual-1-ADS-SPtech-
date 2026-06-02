@@ -58,11 +58,11 @@ async function gerarResposta(mensagem,conversa) {
     try {
         // gerando conteúdo com base na pergunta
         const modeloIA = chatIA.models.generateContent({
-            model: "gemini-2.5-flash",
+            model: "gemini-2.5-flash-lite",
             contents: `Você é a CacheIA, uma assistente virtual da rede social Curly.
 A Curly é uma plataforma focada em cabelos ondulados, cacheados e crespos.
 Seu objetivo é ajudar os usuários com dicas capilares, autoestima, cuidados, finalização, cronograma capilar e inspirações.
-Responda de forma amigável, curta e natural.
+Responda de forma amigável enatural.
 a conversa até então está assim:
 ${conversa}
 Pergunta do usuário:

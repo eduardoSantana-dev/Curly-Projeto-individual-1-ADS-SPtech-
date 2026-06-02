@@ -228,7 +228,7 @@ function chamarNovoCardInput() {
                                 <option value="galeria">Galeria</option>
                             </select>
                         </div>
-                        <button class="botao" onclick = "postar()">Postar</button>
+                        <button class="botao">Postar</button>
                     </div>
           </form>
     `;
